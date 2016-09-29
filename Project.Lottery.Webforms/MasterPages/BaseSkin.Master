@@ -1,5 +1,9 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="BaseSkin.master.cs" Inherits="Project.Lottery.Webforms.MasterPages.BaseSkin" %>
 
+<%@ Register TagPrefix="CustomControl" TagName="LeftNavigationControl" Src="~/UserControls/LeftNavigationControl.ascx" %>
+<%@ Register TagPrefix="CustomControl" TagName="HeaderControl" Src="~/UserControls/HeaderControl.ascx" %>
+<%@ Register TagPrefix="CustomControl" TagName="ContentBodyNavControl" Src="~/UserControls/ContentBodyNavControl.ascx" %>
+
 <!DOCTYPE html>
 
 <html>
@@ -15,32 +19,28 @@
 		<%--  ||  BEGIN-INSET-1  ||==  { PAGE } ==||  --%>
 		<div id="Container_Page">
 
+			<%--  ||  BEGIN-INSET-2  ||==  { LEFT -NAVIGATION-CONTROL } ==||  --%>
+			<CustomControl:LeftNavigationControl runat="server" id="leftNavigationControl" >
 
-			<%--  ||  BEGIN-INSET-2  ||==  { LEFT-NAV } ==||  --%>
-			<div id="Container_LeftNav" >
-
-				<%--  ||  BEGIN-INSET-3  ||==  { LEFT-AVATAR } ==||  --%>
-				<div class="Container_LeftNav_Avatar" > FOR AVATAR 
-
-				</div>	<%--  ||  END  ||==  { LEFT-AVATAR } ==||  --%>
-
-				 FOR HIDDEN LEFT NAVIGATION USER CONTROL 
-			</div>  <%--  ||  END  ||==  { LEFT-NAV } ==||  --%>
-
+			</CustomControl:LeftNavigationControl>   <%--  ||  END  ||==  { LEFT-NAVIGATION-CONTROL } ==||  --%>
 
 
 			<%--  ||  BEGIN-INSET-2  ||==  { HEADER } ==||  --%>
-			<div class="Container_Header"> FOR LOGO TITLE USER CONTROL 
+			<CustomControl:HeaderControl runat="server" ID="headerControl" > 
 
-			</div>  <%--  ||  END  ||==  { HEADER } ==||  --%>
+			</CustomControl:HeaderControl >  <%--  ||  END  ||==  { HEADER } ==||  --%>
 
+			
+			<%--  ||  BEGIN-INSET-2  ||==  { CONTENT-BODY-NAV-CONTROL } ==||  --%>
+			<CustomControl:ContentBodyNavControl runat="server" ID="contentBodyNavControl">
 
+			</CustomControl:ContentBodyNavControl>  
+			<%--  ||  END  ||==  { CONTENT-BODY-NAV-CONTROL } ==||  --%>
 
 			<%--  ||  BEGIN-INSET-2  ||==  { CONTENT-PLACEHOLDER-BODY } ==||  --%>
 			<asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
 
 			</asp:ContentPlaceHolder>  <%--  ||  END  ||==  { CONTENT-PLACEHOLDER-BODY } ==||  --%>
-
 
 
 			<%--  ||  BEGIN-INSET-2  ||==  { FOOTER } ==||  --%>
@@ -50,7 +50,6 @@
 
 				</div>  <%--  ||  END  ||==  { FOOTER-INSET-1 } ==||  --%>
 			</footer> <%--  ||  END  ||==  { FOOTER } ==||  --%>
-
 
 		</div> <%-- ||  END  ||== { PAGE } ==||  --%>
 		</form>

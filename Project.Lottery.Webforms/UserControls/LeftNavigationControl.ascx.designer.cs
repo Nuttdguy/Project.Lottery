@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Project.Lottery.Webforms {
+namespace Project.Lottery.Webforms.UserControls {
     
     
-    public partial class Index {
+    public partial class LeftNavigationControl {
     }
 }
