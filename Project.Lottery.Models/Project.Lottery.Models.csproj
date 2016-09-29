@@ -40,7 +40,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BallType.cs" />
+    <Compile Include="Collections\BaseCollection.cs" />
+    <Compile Include="Collections\ClassCollections.cs" />
+    <Compile Include="Cost.cs" />
+    <Compile Include="Enums\BallQuantityEnum.cs" />
+    <Compile Include="Enums\BallTypeEnum.cs" />
+    <Compile Include="Enums\CostToPlayEnum.cs" />
+    <Compile Include="Enums\QueryExecuteType.cs" />
+    <Compile Include="Enums\QuerySelectType.cs" />
+    <Compile Include="Exceptions\CustomExceptions.cs" />
+    <Compile Include="Extensions\Extension.cs" />
+    <Compile Include="GameOdd.cs" />
+    <Compile Include="Helpers\PageTitleCaptionHelper.cs" />
+    <Compile Include="Instruction.cs" />
+    <Compile Include="Lottery.cs" />
+    <Compile Include="LotteryDrawing.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Helpers\ImageUrl.cs" />
+    <Compile Include="Validation\BrokenRule.cs" />
+    <Compile Include="Validation\BrokenRuleCollection.cs" />
+    <Compile Include="WinningNumber.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

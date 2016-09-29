@@ -1,0 +1,58 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="BaseSkin.master.cs" Inherits="Project.Lottery.Webforms.MasterPages.BaseSkin" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+		<title></title>
+		<asp:ContentPlaceHolder ID="head" runat="server">
+		</asp:ContentPlaceHolder>
+</head>
+
+<body>
+		<form id="form1" runat="server">
+		
+		<%--  ||  BEGIN-INSET-1  ||==  { PAGE } ==||  --%>
+		<div id="Container_Page">
+
+
+			<%--  ||  BEGIN-INSET-2  ||==  { LEFT-NAV } ==||  --%>
+			<div id="Container_LeftNav" >
+
+				<%--  ||  BEGIN-INSET-3  ||==  { LEFT-AVATAR } ==||  --%>
+				<div class="Container_LeftNav_Avatar" > FOR AVATAR 
+
+				</div>	<%--  ||  END  ||==  { LEFT-AVATAR } ==||  --%>
+
+				 FOR HIDDEN LEFT NAVIGATION USER CONTROL 
+			</div>  <%--  ||  END  ||==  { LEFT-NAV } ==||  --%>
+
+
+
+			<%--  ||  BEGIN-INSET-2  ||==  { HEADER } ==||  --%>
+			<div class="Container_Header"> FOR LOGO TITLE USER CONTROL 
+
+			</div>  <%--  ||  END  ||==  { HEADER } ==||  --%>
+
+
+
+			<%--  ||  BEGIN-INSET-2  ||==  { CONTENT-PLACEHOLDER-BODY } ==||  --%>
+			<asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+
+			</asp:ContentPlaceHolder>  <%--  ||  END  ||==  { CONTENT-PLACEHOLDER-BODY } ==||  --%>
+
+
+
+			<%--  ||  BEGIN-INSET-2  ||==  { FOOTER } ==||  --%>
+			<footer>
+				<%--  ||  BEGIN-INSET-3  ||==  { FOOTER-INSET-1 } ==||  --%>
+				<div class="Container_Footer"> PLACEHOLDER FOR FOOTER 
+
+				</div>  <%--  ||  END  ||==  { FOOTER-INSET-1 } ==||  --%>
+			</footer> <%--  ||  END  ||==  { FOOTER } ==||  --%>
+
+
+		</div> <%-- ||  END  ||== { PAGE } ==||  --%>
+		</form>
+</body>
+</html>

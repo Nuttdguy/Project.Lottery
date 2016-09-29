@@ -1,0 +1,82 @@
+﻿* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.cf {
+  clear: both;
+  display: table;
+}
+#Container_Page {
+  border: 1px solid #00ffff;
+  height: 100%;
+  margin: auto;
+  min-width: 100%;
+  position: relative;
+  left: 4%;
+}
+#Container_LeftNav {
+  border: 1px solid #000000;
+  height: 100vh;
+  width: 20%;
+  position: fixed;
+  left: -16%;
+  top: 0;
+}
+.Container_LeftNav_Avatar {
+  border: 1px solid blue;
+  width: 100%;
+  height: 144px;
+}
+.Container_Header {
+  border: 1px solid red;
+  width: 100%;
+  height: 96px;
+}
+.Container_ContentBody_Nav {
+  border: 1px solid orange;
+  height: 48px;
+}
+.Container_ContentBody {
+  border: 1px solid yellow;
+  width: 100%;
+  min-height: 80vh;
+}
+.Container_ContentBody_Form {
+  border: 1px solid green;
+  width: 27%;
+  min-height: inherit;
+  float: left;
+  display: block;
+}
+.Container_ContentBody_ListView {
+  border: 1px solid blue;
+  width: 73%;
+  min-height: inherit;
+  float: right;
+}
+.Container_Footer {
+  border: 1px solid purple;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 48px;
+}
+.containerL1 {
+  border: 1px solid red;
+}
+.containerL2 {
+  border: 1px solid orange;
+}
+.containerL3 {
+  border: 1px solid yellow;
+}
+.containerL4 {
+  border: 1px solid green;
+}
+.containerL5 {
+  border: 1px solid blue;
+}
+.containerL6 {
+  border: 1px solid purple;
+}
