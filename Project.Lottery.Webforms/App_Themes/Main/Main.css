@@ -4,6 +4,7 @@
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  font-family: 'Arial Narrow', Arial, sans-serif;
 }
 body {
   overflow-x: hidden;
@@ -18,6 +19,7 @@ body {
   min-width: 80%;
   position: relative;
   left: 0;
+  z-index: 0;
   -moz-transition: 1s all;
   -o-transition: 1s all;
   -webkit-transition: 1s all;
@@ -25,8 +27,9 @@ body {
   border: 1px solid #00ffff;
 }
 .Container_ContentBody_Nav {
-  border: 1px solid orange;
   height: 70px;
+  width: 100%;
+  /*min-width: 640px;*/
 }
 .Container_ContentBody {
   border: 1px solid yellow;
@@ -127,25 +130,27 @@ body {
 .IContainer_ContentBody_Nav {
   display: block;
   position: relative;
-  min-height: inherit;
+  min-width: 680px;
   font-size: 21px;
 }
 .IContainer_ContentBody_Nav .ILotteryGame_DropDownList {
-  display: block;
-  float: left;
-  border: 1px solid #000;
+  display: inline-block;
+  vertical-align: top;
 }
 .IContainer_ContentBody_Nav .ILotteryGame_DropDownList label {
+  display: inline-block;
   padding: 0 1em;
   line-height: 70px;
 }
 .IContainer_ContentBody_Nav .ILotteryGame_DropDownList select {
-  height: 27px;
+  display: inline-block;
+  height: 34px;
   width: 220px;
+  font-size: 18px;
 }
 .IContainer_ContentBody_Nav .ILotteryGame_AddButton {
-  display: block;
-  float: left;
+  display: inline-block;
+  padding-top: 18px;
   padding-left: 21px;
   min-height: inherit;
 }
@@ -153,8 +158,7 @@ body {
   position: relative;
   display: block;
   overflow: hidden;
-  min-height: 48px;
-  margin-top: 12px;
+  min-height: 36px;
   width: 180px;
   text-align: center;
   font-size: 18px;
@@ -166,7 +170,7 @@ body {
   top: 0;
   left: 0;
   width: 180px;
-  line-height: 52px;
+  line-height: 36px;
   display: inline-block;
   -moz-transition: all 1.5s;
   -o-transition: all 1.5s;
@@ -185,12 +189,13 @@ body {
   -o-transition: all .5s;
   -webkit-transition: all .5s;
   transition: all .5s;
-  padding: 18px;
+  padding: 16px;
   font-size: 18px;
   text-transform: uppercase;
 }
 .IContainer_ContentBody_Nav .ILotteryGame_AddButton span:hover input {
-  top: -15px;
+  font-size: 21px;
+  top: -21px;
   left: -4px;
   -moz-transition: all .5s;
   -o-transition: all .5s;
@@ -205,17 +210,83 @@ body {
   transition: all .5s;
 }
 .Container_ContentBody_Form {
-  border: 1px solid green;
-  width: 27%;
+  /*border: 1px solid green;*/
+  width: 33%;
+  min-width: 200px;
   min-height: inherit;
+  position: relative;
   float: left;
   display: block;
+  padding-left: 2.5em;
+  padding-top: 1.3em;
+}
+.Container_ContentBody_Form label,
+.Container_ContentBody_Form input {
+  display: block;
+  font-size: 18px;
+  margin: .5em 0 .5em;
+}
+.Container_ContentBody_Form label ~ input {
+  height: 27px;
+  width: 80%;
+  max-width: 220px;
+}
+.Container_ContentBody_Form input[type="checkbox"] {
+  height: 24px;
+  width: 24px;
+}
+.Container_ContentBody_Form input[type="number"] {
+  width: 44px;
+  height: 27px;
+  text-align: center;
+  scrollbar-arrow-color: transparent;
+}
+.Container_ContentBody_Form input[type="Submit"] {
+  position: absolute;
+  bottom: 105px;
+  right: 40px;
+  padding: 8px;
+  max-width: 50%;
+  background-color: transparent;
+  border: 4px solid #000;
+  transition: 1s all;
+}
+.Container_ContentBody_Form input[type="Submit"]:hover {
+  background-color: red;
+  border: 4px solid rgba(255, 0, 0, 0.73);
+  transition: 1s all;
 }
 .Container_ContentBody_ListView {
   border: 1px solid blue;
-  width: 73%;
+  width: 67%;
   min-height: inherit;
   float: right;
+  padding: 12px 8px;
+}
+.Container_ContentBody_ListView table {
+  width: 100%;
+  min-width: 800px;
+  border-collapse: collapse;
+}
+.Container_ContentBody_ListView table th,
+.Container_ContentBody_ListView table td {
+  word-wrap: break-word;
+  min-width: 10%;
+  text-align: center;
+  font-size: 18px;
+  padding: 6px 0;
+}
+.Container_ContentBody_ListView table tr:nth-of-type(2n+1) {
+  background-color: #fff;
+}
+.Container_ContentBody_ListView table tr:nth-of-type(2n+2) {
+  background-color: rgba(165, 42, 42, 0.19);
+}
+.Container_ContentBody_ListView table input {
+  color: #fff;
+  background-color: red;
+  font-size: 18px;
+  padding: 4px;
 }
 /*.containerL1 { border: 1px solid red;  }
 .containerL2 { border: 1px solid orange; }

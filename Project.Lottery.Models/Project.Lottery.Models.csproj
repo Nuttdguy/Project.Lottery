@@ -54,7 +54,7 @@
     <Compile Include="GameOdd.cs" />
     <Compile Include="Helpers\PageTitleCaptionHelper.cs" />
     <Compile Include="Instruction.cs" />
-    <Compile Include="Lottery.cs" />
+    <Compile Include="LotteryDetail.cs" />
     <Compile Include="LotteryDrawing.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Helpers\ImageUrl.cs" />

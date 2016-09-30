@@ -40,7 +40,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BallTypeBLL.cs" />
+    <Compile Include="CostBLL.cs" />
+    <Compile Include="GameOddBLL.cs" />
+    <Compile Include="InstructionBLL.cs" />
+    <Compile Include="LotteryDetailBLL.cs" />
+    <Compile Include="LotteryDrawingBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WinningNumberBLL.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Project.Lottery.DAL\Project.Lottery.DAL.csproj">
+      <Project>{e3333902-ef10-4e3b-80b1-e548e928713d}</Project>
+      <Name>Project.Lottery.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Project.Lottery.Models\Project.Lottery.Models.csproj">
+      <Project>{d6783741-f8d8-44a1-99b9-edc11f97352b}</Project>
+      <Name>Project.Lottery.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -27,7 +27,7 @@ namespace Project.Lottery.Models.Collections
 
     }
 
-    public class LotteryCollection : BaseCollection<Lottery>
+    public class LotteryDetailCollection : BaseCollection<LotteryDetail>
     {
 
     }

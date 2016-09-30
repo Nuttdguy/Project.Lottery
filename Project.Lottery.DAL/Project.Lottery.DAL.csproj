@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,7 +41,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppConfiguration.cs" />
+    <Compile Include="BallTypeDAL.cs" />
+    <Compile Include="CostDAL.cs" />
+    <Compile Include="GameOddDAL.cs" />
+    <Compile Include="InstructionDAL.cs" />
+    <Compile Include="LotteryDetailDAL.cs" />
+    <Compile Include="LotteryDrawingDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WinningNumberDAL.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Project.Lottery.Common\Project.Lottery.Common.csproj">
+      <Project>{47c999ad-dd30-4371-bf7d-7b6e2f15209d}</Project>
+      <Name>Project.Lottery.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Project.Lottery.Models\Project.Lottery.Models.csproj">
+      <Project>{d6783741-f8d8-44a1-99b9-edc11f97352b}</Project>
+      <Name>Project.Lottery.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -4,6 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Project.Lottery.Models;
+using Project.Lottery.Models.Extensions;
+using Project.Lottery.Models.Collections;
+using Project.Lottery.BLL;
 
 namespace Project.Lottery.Webforms.UserControls
 {
@@ -11,7 +15,32 @@ namespace Project.Lottery.Webforms.UserControls
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            BindListView();
+        }
+
+        public void BindListView()
+        {
+            LotteryDetailCollection tmpCollect = LotteryDetailBLL.GetCollection();
+
+            rptListView.DataSource = tmpCollect;
+            rptListView.DataBind();
 
         }
+
+        protected void rptListView_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListItemType.Item)
+            {
+                LotteryDetail tmpItem = (LotteryDetail)e.Item.DataItem;
+
+                Button edit = (Button)e.Item.FindControl("Edit");
+                Button delete = (Button)e.Item.FindControl("Delete");
+
+                edit.CommandArgument = tmpItem.LotteryId.ToString();
+                delete.CommandArgument = tmpItem.LotteryId.ToString();
+            }
+        }
+
+
     }
 }

@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Project.Lottery.Models;
+using Project.Lottery.Models.Collections;
+using Project.Lottery.BLL;
 
 namespace Project.Lottery.Webforms.UserControls
 {
@@ -11,7 +14,17 @@ namespace Project.Lottery.Webforms.UserControls
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            BindLotteryGameDropDownList();
         }
+
+        //====  FOR BINDING LOTTERY GAME NAME TO DROP DOWN BOX  ====||
+        public void BindLotteryGameDropDownList()
+        {
+            LotteryDetailCollection tmpCollect = LotteryDetailBLL.GetCollection();
+
+            drp_LotteryGameName.DataSource = tmpCollect;
+            drp_LotteryGameName.DataBind();
+        }
+
     }
 }

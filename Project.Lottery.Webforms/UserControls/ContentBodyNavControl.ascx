@@ -10,7 +10,7 @@
 		<%--  ||  BEGIN-INSET-4  ||==  { LOTTERY-GAME-DROPDOWNLIST } ==||  --%>
 		<div class="ILotteryGame_DropDownList">
 			<label>Select A Lottery Game</label>
-			 <asp:DropDownList ID="LotteryGameName" runat="server" DataTextField="LotteryName" DataValueField="LotteryId" ></asp:DropDownList>
+			 <asp:DropDownList ID="drp_LotteryGameName" runat="server" DataTextField="LotteryName" DataValueField="LotteryId" ></asp:DropDownList>
 		</div>  <%--  ||  END ||==  { LOTTERY-GAME-DROPDOWNLIST } ==||  --%>
 
 

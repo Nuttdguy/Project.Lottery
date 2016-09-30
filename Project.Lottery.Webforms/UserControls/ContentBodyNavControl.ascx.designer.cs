@@ -13,13 +13,13 @@ namespace Project.Lottery.Webforms.UserControls {
     public partial class ContentBodyNavControl {
         
         /// <summary>
-        /// LotteryGameName control.
+        /// drp_LotteryGameName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList LotteryGameName;
+        protected global::System.Web.UI.WebControls.DropDownList drp_LotteryGameName;
         
         /// <summary>
         /// LotteryGameAdd control.

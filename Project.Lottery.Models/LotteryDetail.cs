@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Project.Lottery.Models
 {
-    public class Lottery
+    public class LotteryDetail
     {
         public int LotteryId { get; set; }
         public string LotteryName { get; set; }

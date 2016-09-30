@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Project.Lottery.Models.Enums
+namespace Project.Lottery.Models
 {
     public enum QueryExecuteType
     {

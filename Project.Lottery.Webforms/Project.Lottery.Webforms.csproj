@@ -168,6 +168,16 @@
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Project.Lottery.BLL\Project.Lottery.BLL.csproj">
+      <Project>{feffdf6f-24f5-4bae-95ae-423740ae1414}</Project>
+      <Name>Project.Lottery.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Project.Lottery.Models\Project.Lottery.Models.csproj">
+      <Project>{d6783741-f8d8-44a1-99b9-edc11f97352b}</Project>
+      <Name>Project.Lottery.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

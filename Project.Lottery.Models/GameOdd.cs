@@ -9,14 +9,14 @@ namespace Project.Lottery.Models
     public class GameOdd
     {
         public int GameOddId { get; set; }
-        public Lottery Lottery { get; set; }
+        public LotteryDetail Lottery { get; set; }
         public string Match { get; set; }
         public string CanWinAmount { get; set; }
         public string Odds { get; set; }
 
         public GameOdd()
         {
-            this.Lottery = new Lottery();
+            this.Lottery = new LotteryDetail();
         }
 
     }
