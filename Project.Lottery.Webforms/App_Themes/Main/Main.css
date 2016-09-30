@@ -179,11 +179,12 @@ body {
   left: -4px;
   width: 184px;
   height: 80px;
-  background-color: #a90329;
-  -moz-transition: all 1s;
-  -o-transition: all 1s;
-  -webkit-transition: all 1s;
-  transition: all 1s;
+  color: #eee;
+  background-color: red;
+  -moz-transition: all .5s;
+  -o-transition: all .5s;
+  -webkit-transition: all .5s;
+  transition: all .5s;
   padding: 18px;
   font-size: 18px;
   text-transform: uppercase;
@@ -191,10 +192,10 @@ body {
 .IContainer_ContentBody_Nav .ILotteryGame_AddButton span:hover input {
   top: -15px;
   left: -4px;
-  -moz-transition: all 1s;
-  -o-transition: all 1s;
-  -webkit-transition: all 1s;
-  transition: all 1s;
+  -moz-transition: all .5s;
+  -o-transition: all .5s;
+  -webkit-transition: all .5s;
+  transition: all .5s;
 }
 .IContainer_ContentBody_Nav .ILotteryGame_AddButton span:hover label {
   color: transparent;

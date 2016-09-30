@@ -66,6 +66,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin\GameManage.aspx" />
     <Content Include="App_Themes\Main\Images\gopher5Logo.png" />
     <Content Include="App_Themes\Main\Images\lottery-banner.jpg" />
     <Content Include="App_Themes\Main\Images\megaMillionsLogo.png" />
@@ -95,11 +96,20 @@
     <Content Include="Global.asax" />
     <Content Include="Index.aspx" />
     <Content Include="UserControls\ContentBodyNavControl.ascx" />
+    <Content Include="UserControls\GameFormControl.ascx" />
+    <Content Include="UserControls\GameListViewControl.ascx" />
     <Content Include="UserControls\HeaderControl.ascx" />
     <Content Include="UserControls\LeftNavigationControl.ascx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\GameManage.aspx.cs">
+      <DependentUpon>GameManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\GameManage.aspx.designer.cs">
+      <DependentUpon>GameManage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -125,6 +135,20 @@
     <Compile Include="UserControls\ContentBodyNavControl.ascx.designer.cs">
       <DependentUpon>ContentBodyNavControl.ascx</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\GameFormControl.ascx.cs">
+      <DependentUpon>GameFormControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\GameFormControl.ascx.designer.cs">
+      <DependentUpon>GameFormControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\GameListViewControl.ascx.cs">
+      <DependentUpon>GameListViewControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\GameListViewControl.ascx.designer.cs">
+      <DependentUpon>GameListViewControl.ascx</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\HeaderControl.ascx.cs">
       <DependentUpon>HeaderControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -141,7 +165,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Admin\" />
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
   </ItemGroup>
