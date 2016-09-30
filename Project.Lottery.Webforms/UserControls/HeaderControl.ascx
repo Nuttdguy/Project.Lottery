@@ -3,8 +3,12 @@
 
 	<%--  ||  BEGIN-INSET-2  ||==  { HEADER } ==||  --%>
 	<div class="Container_Header"> 
-		<div class="Header_Banner" >
 
-		</div>FOR LOGO TITLE USER CONTROL 
+
+		<div class="Header_Banner" >
+			<asp:Label runat="server" ID="HeaderTitle" >TEMP PLACEHOLDER FOR SELECTED PAGE</asp:Label>
+			<asp:Image runat="server" ID="HeaderImage" />
+		</div>
+
 
 	</div>  <%--  ||  END  ||==  { HEADER } ==||  --%>
