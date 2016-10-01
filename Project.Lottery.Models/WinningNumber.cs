@@ -9,15 +9,10 @@ namespace Project.Lottery.Models
     public class WinningNumber
     {
         public int WinningNumberId { get; set; }
-        public LotteryDrawing LotteryDrawing { get; set; }
-        public BallType BallType { get; set; }
+        public LotteryDrawing LotteryDrawing { get; set; } = new LotteryDrawing();
+        public BallType BallType { get; set; } = new BallType();
         public int BallNumber { get; set; }
 
-        public WinningNumber()
-        {
-            this.LotteryDrawing = new LotteryDrawing();
-            this.BallType = new BallType();
-        }
 
     }
 }

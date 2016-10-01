@@ -19,6 +19,7 @@ namespace Project.Lottery.Webforms.UserControls
 
             UCDropDownEventDelegate.selectedEvent += new UCDropDownEventDelegate.OnSelectedChangeEvent(UCDropDownEvent);
 
+
         }
 
         public void BindListView(int id)

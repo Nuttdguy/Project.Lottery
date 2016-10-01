@@ -56,6 +56,12 @@
     <Compile Include="GameOdd.cs" />
     <Compile Include="Helpers\PageTitleCaptionHelper.cs" />
     <Compile Include="Instruction.cs" />
+    <Compile Include="Interfaces\IBallType.cs" />
+    <Compile Include="Interfaces\ICost.cs" />
+    <Compile Include="Interfaces\IGameOdd.cs" />
+    <Compile Include="Interfaces\IInstruction.cs" />
+    <Compile Include="Interfaces\ILotteryDrawing.cs" />
+    <Compile Include="Interfaces\IWinningNumber.cs" />
     <Compile Include="LotteryDetail.cs" />
     <Compile Include="LotteryDrawing.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -64,9 +70,7 @@
     <Compile Include="Validation\BrokenRuleCollection.cs" />
     <Compile Include="WinningNumber.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Interfaces\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

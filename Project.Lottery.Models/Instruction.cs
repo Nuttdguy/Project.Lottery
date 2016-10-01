@@ -9,13 +9,9 @@ namespace Project.Lottery.Models
     public class Instruction
     {
         public int InstructionId { get; set; }
-        public LotteryDetail Lottery { get; set; }
+        public LotteryDetail Lottery { get; set; } = new LotteryDetail();
         public string Description { get; set; }
 
-        public Instruction()
-        {
-            this.Lottery = new LotteryDetail();
-        }
 
     }
 }

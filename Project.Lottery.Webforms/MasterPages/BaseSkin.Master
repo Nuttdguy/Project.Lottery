@@ -17,7 +17,7 @@
 		<form id="form1" runat="server">
 		
 		<input type="checkbox" id="Container_ExpandControl" />
-		<label id="Container_ExpandControlLabel" for="Container_ExpandControl"> > </label>
+		<label id="Container_ExpandControlLabel" for="Container_ExpandControl"></label>
 		<%--  ||  BEGIN-INSET-1  ||==  { PAGE } ==||  --%>
 		<div id="Container_Page">
 

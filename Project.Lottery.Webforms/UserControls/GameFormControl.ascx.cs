@@ -23,7 +23,6 @@ namespace Project.Lottery.Webforms.UserControls
         public void BindUpdateInfo(int id)
         {
 
-            // string id = (string)(Session["CurrentGameId"]);
             if (id != 0)
             {
                 LotteryDetail tmpItem = LotteryDetailBLL.GetItem(id);
@@ -34,7 +33,13 @@ namespace Project.Lottery.Webforms.UserControls
                 if (tmpItem.HasRegularBall)
                     chkHasRegularBall.Checked = true;
                 txtNumberOfBalls.Text = tmpItem.NumberOfBalls.ToString();
-                //Session["CurrentGameId"] = tmpItem.LotteryId.ToString();
+            }
+            else if (id == 0)
+            {
+                txtLotteryName.Text = string.Empty;
+                txtNumberOfBalls.Text = string.Empty;
+                chkHasRegularBall.Checked = false;
+                chkHasSpecialBall.Checked = false;
             }
         }
 
