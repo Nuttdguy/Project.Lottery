@@ -25,7 +25,7 @@ namespace Project.Lottery.DAL
                 using (SqlCommand myCommand = new SqlCommand("usp_GetLottery", myConnection))
                 {
                     myCommand.CommandType = CommandType.StoredProcedure;
-                    myCommand.Parameters.AddWithValue("@QueryId", QuerySelectType.GetCollection);
+                    myCommand.Parameters.AddWithValue("@QueryId", QuerySelectType.GetItem);
                     myCommand.Parameters.AddWithValue("@LotteryId", id);
 
                     myConnection.Open();
@@ -84,6 +84,40 @@ namespace Project.Lottery.DAL
 
         #endregion
 
+        #region ||=======  GET COLLECTION | ALL  =======|| REQUIRED FOR DATA BINDING LIST
+        public static LotteryDetailCollection GetCollection(int id)
+        {
+            LotteryDetailCollection tmpCollection = null;
+
+            using (SqlConnection myConnection = new SqlConnection(AppConfiguration.ConnectionString))
+            {
+                using (SqlCommand myCommand = new SqlCommand("usp_GetLottery", myConnection))
+                {
+
+                    myCommand.CommandType = CommandType.StoredProcedure;
+                    myCommand.Parameters.AddWithValue("@QueryId", QuerySelectType.GetCollectionName_ByLotteryId);
+                    myCommand.Parameters.AddWithValue("@LotteryId", id);
+
+                    myConnection.Open();
+                    using (SqlDataReader myReader = myCommand.ExecuteReader())
+                    {
+                        if (myReader.HasRows)
+                        {
+                            tmpCollection = new LotteryDetailCollection();
+                            while (myReader.Read())
+                            {
+                                tmpCollection.Add(FillDataRecord(myReader));
+                            }
+                        }
+                        myReader.Close();
+                    }
+                    myConnection.Close();
+                }
+            }
+            return tmpCollection;
+        }
+
+        #endregion
         #endregion
 
 

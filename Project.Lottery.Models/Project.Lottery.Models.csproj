@@ -44,6 +44,8 @@
     <Compile Include="Collections\BaseCollection.cs" />
     <Compile Include="Collections\ClassCollections.cs" />
     <Compile Include="Cost.cs" />
+    <Compile Include="Delegates\UCDropDownEventDelegate.cs" />
+    <Compile Include="Delegates\UCButtonClickEventDelegate.cs" />
     <Compile Include="Enums\BallQuantityEnum.cs" />
     <Compile Include="Enums\BallTypeEnum.cs" />
     <Compile Include="Enums\CostToPlayEnum.cs" />

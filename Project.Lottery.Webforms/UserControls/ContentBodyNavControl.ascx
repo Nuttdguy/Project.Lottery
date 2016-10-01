@@ -6,11 +6,12 @@
 	<%--  ||  BEGIN-INSET-3  ||==  { INNER-CONTAINER-CONTENTBODY-NAV } ==||  --%>
 	<div class="IContainer_ContentBody_Nav cf">
 
+		<asp:Label runat="server" ID="lblTestUC"> </asp:Label>
 
 		<%--  ||  BEGIN-INSET-4  ||==  { LOTTERY-GAME-DROPDOWNLIST } ==||  --%>
 		<div class="ILotteryGame_DropDownList">
 			<label>Select A Lottery Game</label>
-			 <asp:DropDownList ID="drp_LotteryGameName" runat="server" DataTextField="LotteryName" DataValueField="LotteryId" ></asp:DropDownList>
+			<asp:DropDownList ID="drp_LotteryGameName" runat="server" DataTextField="LotteryName" DataValueField="LotteryId" AutoPostBack="true" OnSelectedIndexChanged="drp_LotteryGameName_SelectedIndexChanged"></asp:DropDownList>
 		</div>  <%--  ||  END ||==  { LOTTERY-GAME-DROPDOWNLIST } ==||  --%>
 
 

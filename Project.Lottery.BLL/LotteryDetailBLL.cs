@@ -36,6 +36,14 @@ namespace Project.Lottery.BLL
         }
         #endregion
 
+        #region ||=======  GET COLLECTION | PARAM LOTTERY-ID  =======||
+        public static LotteryDetailCollection GetCollection(int id)
+        {
+            LotteryDetailCollection tmpCollect = LotteryDetailDAL.GetCollection(id);
+            return tmpCollect;
+        }
+        #endregion
+
         #endregion
 
 

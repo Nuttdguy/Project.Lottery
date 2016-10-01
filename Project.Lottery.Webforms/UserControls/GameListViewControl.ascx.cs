@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Project.Lottery.Models;
 using Project.Lottery.Models.Extensions;
+using Project.Lottery.Models.Delegates;
 using Project.Lottery.Models.Collections;
 using Project.Lottery.BLL;
 
@@ -15,17 +16,27 @@ namespace Project.Lottery.Webforms.UserControls
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            BindListView();
+
+            UCDropDownEventDelegate.selectedEvent += new UCDropDownEventDelegate.OnSelectedChangeEvent(UCDropDownEvent);
+
         }
 
-        public void BindListView()
+        public void BindListView(int id)
         {
             LotteryDetailCollection tmpCollect = LotteryDetailBLL.GetCollection();
-
+            
             rptListView.DataSource = tmpCollect;
             rptListView.DataBind();
 
         }
+
+        void UCDropDownEvent(object sender, EventArgs e)
+        {
+            DropDownList ddl = (DropDownList)sender;
+            int id = ddl.SelectedValue.ToInt();
+            BindListView(id);
+        }
+
 
         protected void rptListView_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {

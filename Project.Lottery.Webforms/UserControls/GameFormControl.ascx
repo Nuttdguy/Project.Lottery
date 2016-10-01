@@ -3,6 +3,8 @@
 
 <div class="Container_ContentBody_Form">
 
+	<asp:Label runat="server" ID="lblSessionCookieTest" />
+
 	<asp:Panel ID="MessageArea" runat="server" >TEMP ERROR MESSAGE AREA </asp:Panel>
 
 	<%-- ||  BEGIN  ||====  FORM PANEL FOR ADDING NEW LOTTERY GAME  ====||--%>
@@ -26,7 +28,7 @@
 
 			<div>
 				<label>Number of Game Ball(s)</label>
-				<asp:TextBox runat="server" TextMode="Number" MaxLength="2" />
+				<asp:TextBox runat="server" ID="txtNumberOfBalls" TextMode="Number" MaxLength="2" />
 			</div>
 
 			<div class="Button Button_Save">

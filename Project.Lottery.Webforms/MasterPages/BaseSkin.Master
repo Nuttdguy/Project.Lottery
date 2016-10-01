@@ -26,18 +26,16 @@
 
 			</CustomControl:LeftNavigationControl>   <%--  ||  END  ||==  { LEFT-NAVIGATION-CONTROL } ==||  --%>
 
-
 			<%--  ||  BEGIN-INSET-2  ||==  { HEADER } ==||  --%>
 			<CustomControl:HeaderControl runat="server" ID="headerControl" > 
 
 			</CustomControl:HeaderControl >  <%--  ||  END  ||==  { HEADER } ==||  --%>
 
-			
+
 			<%--  ||  BEGIN-INSET-2  ||==  { CONTENT-BODY-NAV-CONTROL } ==||  --%>
 			<CustomControl:ContentBodyNavControl runat="server" ID="contentBodyNavControl">
 
-			</CustomControl:ContentBodyNavControl>  
-			<%--  ||  END  ||==  { CONTENT-BODY-NAV-CONTROL } ==||  --%>
+			</CustomControl:ContentBodyNavControl>  <%--  ||  END  ||==  { CONTENT-BODY-NAV-CONTROL } ==||  --%>
 
 
 			<%--  ||  BEGIN-INSET-2  ||==  { CONTENT-PLACEHOLDER-BODY } ==||  --%>

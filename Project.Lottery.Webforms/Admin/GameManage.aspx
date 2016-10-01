@@ -7,10 +7,10 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+	
 
 	<%--  ||  BEGIN-INSET-3  ||==  { CONTENT-PLACEHOLDER-BODY } ==||  --%>
 	<div class="Container_ContentBody cf"> 
-		
 
 
 		<%--  ||  BEGIN-INSET-4  ||==  { GAME-CONTROL } ==||  --%>
