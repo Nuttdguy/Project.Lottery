@@ -19,7 +19,7 @@
 		<input type="checkbox" id="Container_ExpandControl" />
 		<label id="Container_ExpandControlLabel" for="Container_ExpandControl"></label>
 		<%--  ||  BEGIN-INSET-1  ||==  { PAGE } ==||  --%>
-		<div id="Container_Page">
+		<div id="Container_Page" class="cf">
 
 			<%--  ||  BEGIN-INSET-2  ||==  { LEFT -NAVIGATION-CONTROL } ==||  --%>
 			<CustomControl:LeftNavigationControl runat="server" id="leftNavigationControl" >

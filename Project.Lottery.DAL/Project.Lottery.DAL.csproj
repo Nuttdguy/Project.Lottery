@@ -45,6 +45,7 @@
     <Compile Include="BallTypeDAL.cs" />
     <Compile Include="CostDAL.cs" />
     <Compile Include="GameOddDAL.cs" />
+    <Compile Include="HelperDAL.cs" />
     <Compile Include="InstructionDAL.cs" />
     <Compile Include="LotteryDetailDAL.cs" />
     <Compile Include="LotteryDrawingDAL.cs" />

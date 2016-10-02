@@ -28,11 +28,19 @@ namespace Project.Lottery.Webforms.UserControls
                 LotteryDetail tmpItem = LotteryDetailBLL.GetItem(id);
 
                 txtLotteryName.Text = tmpItem.LotteryName;
+
                 if (tmpItem.HasSpecialBall)
                     chkHasSpecialBall.Checked = true;
+                else
+                    chkHasSpecialBall.Checked = false;
+
                 if (tmpItem.HasRegularBall)
                     chkHasRegularBall.Checked = true;
+                else
+                    chkHasRegularBall.Checked = false;
+
                 txtNumberOfBalls.Text = tmpItem.NumberOfBalls.ToString();
+                btn_NewLotteryGame.Text = "Update Game";
             }
             else if (id == 0)
             {
@@ -40,6 +48,7 @@ namespace Project.Lottery.Webforms.UserControls
                 txtNumberOfBalls.Text = string.Empty;
                 chkHasRegularBall.Checked = false;
                 chkHasSpecialBall.Checked = false;
+                btn_NewLotteryGame.Text = "Add New Game";
             }
         }
 

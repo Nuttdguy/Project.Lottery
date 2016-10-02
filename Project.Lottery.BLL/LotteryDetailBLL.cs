@@ -50,7 +50,11 @@ namespace Project.Lottery.BLL
         #region SECTION 3 ||=======  SAVE/UPDATE ITEM  =======||
 
         #region ||=======  SAVE/UPDATE LOTTERY-ITEM | PARAM ~ NONE, LOTTERY-ID [OP]  =======||
-
+        public static int SaveItem(LotteryDetail lottoItem)
+        {
+            int recordId = LotteryDetailDAL.SaveItem(lottoItem);
+            return recordId;
+        }
         #endregion
 
         #endregion
@@ -59,7 +63,11 @@ namespace Project.Lottery.BLL
         #region SECTION 4 ||=======  DELETE ITEM  =======||
 
         #region ||=======  DELETE LOTTERY-ITEM | PARAM ~ LOTTERY-ID  =======||
-
+        public static int DeleteItem(int id)
+        {
+            int deletedRecord = LotteryDetailDAL.DeleteItem(id);
+            return deletedRecord;
+        }
         #endregion
 
         #endregion

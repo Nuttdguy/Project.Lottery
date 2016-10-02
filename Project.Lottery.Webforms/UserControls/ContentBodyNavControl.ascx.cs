@@ -20,9 +20,6 @@ namespace Project.Lottery.Webforms.UserControls
 
         }
 
-        public string currentGameId { get; set; }
-
-
         //====  FOR BINDING LOTTERY GAME NAME TO DROP DOWN BOX  ====||
         public void BindLotteryGameDropDownList()
         {

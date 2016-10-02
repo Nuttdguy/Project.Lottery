@@ -10,7 +10,7 @@
 namespace Project.Lottery.Webforms.Admin {
     
     
-    public partial class GameManage {
+    public partial class DrawingManage {
         
         /// <summary>
         /// hidLotteryId control.
@@ -40,40 +40,40 @@ namespace Project.Lottery.Webforms.Admin {
         protected global::System.Web.UI.WebControls.Panel panelForm;
         
         /// <summary>
-        /// txtLotteryName control.
+        /// txtDrawingId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtLotteryName;
+        protected global::System.Web.UI.WebControls.TextBox txtDrawingId;
         
         /// <summary>
-        /// chkHasSpecialBall control.
+        /// txtJackpot control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkHasSpecialBall;
+        protected global::System.Web.UI.WebControls.TextBox txtJackpot;
         
         /// <summary>
-        /// chkHasRegularBall control.
+        /// txtCashOption control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkHasRegularBall;
+        protected global::System.Web.UI.WebControls.TextBox txtCashOption;
         
         /// <summary>
-        /// txtNumberOfBalls control.
+        /// txtDrawingDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNumberOfBalls;
+        protected global::System.Web.UI.WebControls.TextBox txtDrawingDate;
         
         /// <summary>
         /// SaveItemButton control.

@@ -124,6 +124,46 @@ namespace Project.Lottery.DAL
         #region SECTION 3 ||=======  SAVE/UPDATE ITEM  =======||
 
         #region ||=======  SAVE/UPDATE LOTTERY-ITEM | PARAM ~ NONE, LOTTERY-ID [OP]  =======||
+        public static int SaveItem(LotteryDetail lottoItem)
+        {
+            int recordId = 0;
+
+            QueryExecuteType queryId = QueryExecuteType.InsertItem;
+
+            if (lottoItem.LotteryId > 0)
+                queryId = QueryExecuteType.UpdateItem;
+
+            using (SqlConnection myConnection = new SqlConnection(AppConfiguration.ConnectionString))
+            {
+                using (SqlCommand myCommand = new SqlCommand("usp_ExecuteLottery", myConnection))
+                {
+                    myCommand.CommandType = CommandType.StoredProcedure;
+                    myCommand.Parameters.AddWithValue("@QueryId", queryId);
+
+                    if (lottoItem.LotteryId != 0)
+                        myCommand.Parameters.AddWithValue("@LotteryId", lottoItem.LotteryId);
+
+                    if (!string.IsNullOrEmpty(lottoItem.LotteryName))
+                        myCommand.Parameters.AddWithValue("@LotteryName", lottoItem.LotteryName);
+
+                    myCommand.Parameters.AddWithValue("@HasSpecialBall", lottoItem.HasSpecialBall);
+                    myCommand.Parameters.AddWithValue("@HasRegularBall", lottoItem.HasRegularBall);
+
+                    if (lottoItem.NumberOfBalls != 0)
+                        myCommand.Parameters.AddWithValue("@NumberOfBalls", lottoItem.NumberOfBalls);
+
+                    myCommand.Parameters.Add(HelperDAL.GetReturnParameterInt("ReturnValue"));
+
+                    myConnection.Open();
+                    myCommand.ExecuteNonQuery();
+
+                    recordId = (int)myCommand.Parameters["@ReturnValue"].Value;
+                }
+                myConnection.Close();
+            }
+            return recordId;
+
+        }
 
         #endregion
 
@@ -133,6 +173,29 @@ namespace Project.Lottery.DAL
         #region SECTION 4 ||=======  DELETE ITEM  =======||
 
         #region ||=======  DELETE LOTTERY-ITEM | PARAM ~ LOTTERY-ID  =======||
+        public static int DeleteItem(int id)
+        {
+            int deletedRecord = 0;
+
+            using (SqlConnection myConnection = new SqlConnection(AppConfiguration.ConnectionString))
+            {
+                using (SqlCommand myCommand = new SqlCommand("usp_ExecuteLottery", myConnection))
+                {
+                    myCommand.CommandType = CommandType.StoredProcedure;
+                    myCommand.Parameters.AddWithValue("@QueryId", QueryExecuteType.DeleteItem);
+                    myCommand.Parameters.AddWithValue("@LotteryId", id);
+                    myCommand.Parameters.Add(HelperDAL.GetReturnParameterInt("ReturnValue"));
+
+                    myConnection.Open();
+                    myCommand.ExecuteNonQuery();
+
+                    deletedRecord = (int)myCommand.Parameters["@ReturnValue"].Value;
+
+                }
+                myConnection.Close();
+            }
+            return deletedRecord;
+        }
 
         #endregion
 

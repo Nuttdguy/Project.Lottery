@@ -21,7 +21,7 @@
 			<tr>
 				<td>
 					<asp:Button runat="server" ID="Edit" CommandName="Edit_Button" Text="Edit" />
-					<asp:Button runat="server" ID="Delete" CommandName="Ebit_Button" Text="Delete" />
+					<asp:Button runat="server" ID="Delete" CommandName="Edit_Button" Text="Delete" />
 				</td>
 				<td><%# Eval("LotteryId") %></td>
 				<td><%# Eval("LotteryName") %></td>

@@ -2,7 +2,7 @@
 
 
 	<%--  ||  BEGIN-INSET-2  ||==  { HEADER } ==||  --%>
-	<div class="Container_Header"> 
+	<div class="Container_Header cf"> 
 
 
 		<div class="Header_Banner" >

@@ -10,11 +10,18 @@
 
 body {
     overflow-x: hidden;
+    position: relative;
+    top: 0;
+    left: 0;
 }
 
 .cf {
     clear: both;
     display: table;
+}
+
+a {
+    text-decoration: none;
 }
 
 //=============================================================||
@@ -24,30 +31,33 @@ body {
 #Container_Page {
     height: 100%;
     margin: auto;
-    min-width: 80%;
+    min-width: 100%;
+    min-height: 100vh;
     position: relative;
+    top: 0;
     left: 0;
-    z-index: 0;
-    //background: url(http://api.thumbr.it/whitenoise-361x370.png?);
+    z-index: 10;
+    //background-color: rgba(10, 9, 9, 0.30);
 
     -moz-transition: 1s all;
     -o-transition: 1s all;
     -webkit-transition: 1s all;
     transition: 1s all;
-    border: 1px solid #00ffff;
+    //border: 1px solid #00ffff;
 }
 
 .Container_ContentBody_Nav {
-    //border: 1px solid orange;
+    border-bottom: 3px solid #000;
     height: 70px;
     width: 100%;
     /*min-width: 640px;*/
 }
 
 .Container_ContentBody {
-    border: 1px solid yellow;
-    width: 100%;
-    min-height: 80vh;
+    //border: 1px solid yellow;
+    width: 80%;
+    height: inherit;
+    min-width: inherit;
 }
 
 .Container_Footer {
@@ -70,7 +80,12 @@ body {
 //=============================================================||
 
 .Container_LeftNav {
-    border: 1px solid #000000;
+    border-right: 1px solid #000;
+    //background-color: beige;
+
+    box-shadow:  rgba(10, 9, 9, 0.30) 1px 3px 3px;
+    z-index: 10;
+
     min-height: 100vh;
     width: 20%;
     position: fixed;
@@ -82,16 +97,43 @@ body {
     transition: 1s all;
 
     .Container_LeftNav_Avatar {
-        border: 1px solid blue;
+        border-bottom: 3px solid #000;
         width: 100%;
         height: 214px;
     }
+
+    ul {
+        //margin-top: 21px;
+    }
+
+    li {
+        //border: 1px solid red;
+        list-style: none;
+        min-height: 34px;
+
+        padding-top: 16px;
+        padding-bottom: 16px;
+
+        transition: 1s all;
+    }
+
+    a {
+        padding-left: 21px;
+        font-size: 18px;
+    }
+
+    li:hover, li:visited {
+        color: rgba(10, 9, 9, 0.30);
+        background-color: red;
+        transition: 1s all;
+    }
+
 }
 
 #Container_ExpandControlLabel {
     position: absolute;
     left: 0;
-    z-index: 6;
+    z-index: 20;
     min-height: 100%;
     width: 2%;
     text-align: center;
@@ -104,7 +146,8 @@ body {
 }
 
 #Container_ExpandControlLabel:hover {
-    background-color: red;
+    background-color: rgba(10, 9, 9, 0.30);
+
     -moz-transition: 1s all;
     -o-transition: 1s all;
     -webkit-transition: 1s all;
@@ -114,14 +157,16 @@ body {
 #Container_ExpandControl {
     position: absolute;
     left: 0;
-    z-index: 5;
+    z-index: 20;
     width: 44px;
     visibility: hidden;
 }
 
+
 #Container_ExpandControl:checked ~ #Container_ExpandControlLabel {
-    background-color: red;
-    left: 0%;
+    background-color: rgba(10, 9, 9, 0.30);
+    left: 20%;
+    z-index: 20;
     -moz-transition: 1s all;
     -o-transition: 1s all;
     -webkit-transition: 1s all;
@@ -129,16 +174,16 @@ body {
 }
 
 #Container_ExpandControl:checked ~ #Container_Page {
-    left: 22%;
-    z-index: 5;
+    left: 20%;
+    z-index: 10;
     -moz-transition: 1s all;
     -o-transition: 1s all;
     -webkit-transition: 1s all;
     transition: 1s all;
 
     .Container_LeftNav {
-        left: 2%;
-        z-index: 5;
+        left: 0%;
+        z-index: 20;
         -moz-transition: 1s all;
         -o-transition: 1s all;
         -webkit-transition: 1s all;
@@ -153,8 +198,8 @@ body {
 
 .Container_Header {
     position: relative;
-    border: 1px solid red;
     background-color: rgba(10, 9, 9, 0.30);
+    box-shadow: 2px 3px 3px rgba(10, 9, 9, 0.30) inset;
     width: 100%;
     height: 144px;
 
@@ -279,10 +324,12 @@ body {
 //=============================================================||
 
 .Container_ContentBody_Form {
-    /*border: 1px solid green;*/
+    //border: 1px solid green;
+    //background: rgba(255, 0, 0, 0.73);
+
     width: 33%;
     min-width: 200px;
-    min-height: inherit;
+    height: 100%;
 
     position: relative;
     float: left;
@@ -318,10 +365,11 @@ body {
 
     input[type="Submit"] {
         position: absolute;
-        bottom: 105px;
+        top: 65vh;
         right: 40px;
 
         padding: 8px;
+        min-width: 144px;
         max-width: 50%;
 
         background-color: transparent;
@@ -343,7 +391,7 @@ body {
 //=============================================================||
 
 .Container_ContentBody_ListView {
-    border: 1px solid blue;
+    border-left: 3px solid #000;
     width: 67%;
     min-height: inherit;
     float: right;

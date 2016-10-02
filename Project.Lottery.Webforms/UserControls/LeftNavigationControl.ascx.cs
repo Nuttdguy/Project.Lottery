@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Project.Lottery.Models.Enums;
 
 namespace Project.Lottery.Webforms.UserControls
 {
@@ -13,5 +14,7 @@ namespace Project.Lottery.Webforms.UserControls
         {
 
         }
+
+
     }
 }

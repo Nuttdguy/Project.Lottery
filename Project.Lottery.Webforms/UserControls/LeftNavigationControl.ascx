@@ -2,12 +2,29 @@
 
 
 	<%--  ||  BEGIN-INSET-2  ||==  { LEFT-NAV } ==||  --%>
-	<div class="Container_LeftNav" >
+	<div class="Container_LeftNav cf" >
+
 
 		<%--  ||  BEGIN-INSET-3  ||==  { LEFT-AVATAR } ==||  --%>
-		<div class="Container_LeftNav_Avatar" > FOR AVATAR 
+		<div class="Container_LeftNav_Avatar " > FOR AVATAR 
 
 		</div>	<%--  ||  END  ||==  { LEFT-AVATAR } ==||  --%>
 
-			FOR HIDDEN LEFT NAVIGATION USER CONTROL 
+
+
+		<%--  ||  BEGIN-INSET-3  ||==  { PAGE-SELECTION } ==||  --%>
+		<div class="LeftNav_Selection">
+
+			<ul>
+				<li><a href="../Admin/GameManage.aspx"> Game Manage </a></li>
+				<li><a href="../Admin/DrawingManage.aspx"> Lottery Drawing Manage </a></li>
+				<li><a href="../Admin/GameManage.aspx"> Winning Number Manage </a></li>
+				<li><a href="../Admin/GameManage.aspx"> Game Available Manage </a></li>
+			</ul>
+
+		</div>  <%--  ||  END  ||==  { PAGE-SELECTION} ==||  --%>
+
+
+
+
 	</div>  <%--  ||  END  ||==  { LEFT-NAV } ==||  --%>

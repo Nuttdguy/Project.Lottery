@@ -10,56 +10,56 @@ using Project.Lottery.Models.Extensions;
 using Project.Lottery.Models;
 using Project.Lottery.BLL;
 
+
+
 namespace Project.Lottery.Webforms.Admin
 {
-    public partial class GameManage : System.Web.UI.Page
+    public partial class DrawingManage : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
             UCDropDownEventDelegate.selectedEvent += new UCDropDownEventDelegate.OnSelectedChangeEvent(UCDropDownEvent);
         }
-
 
         #region SECTION 1 ||=======  BIND EVENTS  =======||
         public void BindUpdateInfo(int id)
         {
 
-            if (id != 0)
-            {
-                LotteryDetail tmpItem = LotteryDetailBLL.GetItem(id);
+            //if (id != 0)
+            //{
+            //    LotteryDetail tmpItem = LotteryDetailBLL.GetItem(id);
 
-                txtLotteryName.Text = tmpItem.LotteryName;
+            //    txtDrawingId.Text = tmpItem.LotteryDrawingId.ToString();
 
-                if (tmpItem.HasSpecialBall)
-                    chkHasSpecialBall.Checked = true;
-                else
-                    chkHasSpecialBall.Checked = false;
+            //    if (!string.IsNullOrEmpty(tmpItem.Jackpot))
+            //        chkHasSpecialBall.Checked = true;
+            //    else
+            //        chkHasSpecialBall.Checked = false;
 
-                if (tmpItem.HasRegularBall)
-                    chkHasRegularBall.Checked = true;
-                else
-                    chkHasRegularBall.Checked = false;
+            //    if (tmpItem.HasRegularBall)
+            //        chkHasRegularBall.Checked = true;
+            //    else
+            //        chkHasRegularBall.Checked = false;
 
-                txtNumberOfBalls.Text = tmpItem.NumberOfBalls.ToString();
-                SaveItemButton.Text = "Update Game";
-            }
-            else if (id == 0)
-            {
-                txtLotteryName.Text = string.Empty;
-                txtNumberOfBalls.Text = string.Empty;
-                chkHasRegularBall.Checked = false;
-                chkHasSpecialBall.Checked = false;
-                SaveItemButton.Text = "Add New Game";
-            }
+            //    txtNumberOfBalls.Text = tmpItem.NumberOfBalls.ToString();
+            //    SaveItemButton.Text = "Update Game";
+            //}
+            //else if (id == 0)
+            //{
+            //    txtLotteryName.Text = string.Empty;
+            //    txtNumberOfBalls.Text = string.Empty;
+            //    chkHasRegularBall.Checked = false;
+            //    chkHasSpecialBall.Checked = false;
+            //    SaveItemButton.Text = "Add New Game";
+            //}
 
-            hidLotteryId.Value = id.ToString();
+            //hidLotteryId.Value = id.ToString();
 
         }
 
         public void BindListView(int id)
         {
-            LotteryDetailCollection tmpCollect = LotteryDetailBLL.GetCollection();
+            LotteryDetailCollection tmpCollect = LotteryDrawingBLL.GetCollection();
 
             rptListView.DataSource = tmpCollect;
             rptListView.DataBind();
@@ -70,7 +70,7 @@ namespace Project.Lottery.Webforms.Admin
         {
             DropDownList ddl = (DropDownList)sender;
             int id = ddl.SelectedValue.ToInt();
-            BindUpdateInfo(id);
+            //BindUpdateInfo(id);
             BindListView(id);
         }
 
@@ -84,11 +84,10 @@ namespace Project.Lottery.Webforms.Admin
                 Button edit = (Button)e.Item.FindControl("Edit");
                 Button delete = (Button)e.Item.FindControl("Delete");
 
-                edit.CommandArgument = tmpItem.LotteryId.ToString();
-                delete.CommandArgument = tmpItem.LotteryId.ToString();
+                edit.CommandArgument = tmpItem.LotteryDrawingId.ToString();
+                delete.CommandArgument = tmpItem.LotteryDrawingId.ToString();
             }
         }
-
 
 
         #endregion
@@ -102,8 +101,8 @@ namespace Project.Lottery.Webforms.Admin
         #region ||=======  DELETE CLICK-BTN
         protected void DeleteItem(int id)
         {
-            int deletedRecord = LotteryDetailBLL.DeleteItem(id);
-            ReloadPage();
+            //int deletedRecord = LotteryDetailBLL.DeleteItem(id);
+            //ReloadPage();
 
         }
 
@@ -113,7 +112,7 @@ namespace Project.Lottery.Webforms.Admin
         #region ||=======  RELOAD PAGE
         protected void ReloadPage()
         {
-            Response.Redirect("GameManage.aspx");
+            //Response.Redirect("GameManage.aspx");
         }
 
         #endregion
@@ -135,25 +134,25 @@ namespace Project.Lottery.Webforms.Admin
         #region ||=======  SAVE CLICK-BTN
         protected void SaveItemButton_Click(object sender, EventArgs e)
         {
-            LotteryDetail tmpItem = new LotteryDetail();
+            //LotteryDetail tmpItem = new LotteryDetail();
 
-            tmpItem.LotteryId = hidLotteryId.Value.ToInt();
-            tmpItem.LotteryName = txtLotteryName.Text;
-            tmpItem.HasSpecialBall = chkHasSpecialBall.Checked;
-            tmpItem.HasRegularBall = chkHasRegularBall.Checked;
-            tmpItem.NumberOfBalls = txtNumberOfBalls.Text.ToInt();
+            //tmpItem.LotteryId = hidLotteryId.Value.ToInt();
+            //tmpItem.LotteryName = txtLotteryName.Text;
+            //tmpItem.HasSpecialBall = chkHasSpecialBall.Checked;
+            //tmpItem.HasRegularBall = chkHasRegularBall.Checked;
+            //tmpItem.NumberOfBalls = txtNumberOfBalls.Text.ToInt();
 
-            int recordId = LotteryDetailBLL.SaveItem(tmpItem);
-            ReloadPage();
-            
-            if (recordId > 0)
-            {
-                txtLotteryName.Text = string.Empty;
-                txtNumberOfBalls.Text = string.Empty;
-                chkHasRegularBall.Checked = false;
-                chkHasSpecialBall.Checked = false;
-                SaveItemButton.Text = "Add New Game";
-            }
+            //int recordId = LotteryDetailBLL.SaveItem(tmpItem);
+            //ReloadPage();
+
+            //if (recordId > 0)
+            //{
+            //    txtLotteryName.Text = string.Empty;
+            //    txtNumberOfBalls.Text = string.Empty;
+            //    chkHasRegularBall.Checked = false;
+            //    chkHasSpecialBall.Checked = false;
+            //    SaveItemButton.Text = "Add New Game";
+            //}
         }
 
         #endregion
@@ -161,7 +160,7 @@ namespace Project.Lottery.Webforms.Admin
         #region ||=======  EDIT/DELETE GAME COMMAND BUTTON  =======||
         protected void Game_Command(object sender, CommandEventArgs e)
         {
-            switch(e.CommandName)
+            switch (e.CommandName)
             {
                 case "Edit":
                     BindUpdateInfo(e.CommandArgument.ToString().ToInt());

@@ -1,10 +1,10 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ContentBodyNavControl.ascx.cs" Inherits="Project.Lottery.Webforms.UserControls.ContentBodyNavControl" %>
 
 
-<div class="Container_ContentBody_Nav">
+<div class="Container_ContentBody_Nav cf">
 
 	<%--  ||  BEGIN-INSET-3  ||==  { INNER-CONTAINER-CONTENTBODY-NAV } ==||  --%>
-	<div class="IContainer_ContentBody_Nav cf">
+	<div class="IContainer_ContentBody_Nav">
 
 		<asp:Label runat="server" ID="lblTestUC"> </asp:Label>
 
