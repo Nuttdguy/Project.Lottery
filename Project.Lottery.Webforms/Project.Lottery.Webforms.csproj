@@ -69,6 +69,7 @@
     <Content Include="Admin\DrawingDetailManage.aspx" />
     <Content Include="Admin\DrawingManage.aspx" />
     <Content Include="Admin\GameManage.aspx" />
+    <Content Include="Admin\WinningNumberManage.aspx" />
     <Content Include="App_Themes\Main\Images\gopher5Logo.png" />
     <Content Include="App_Themes\Main\Images\lottery-banner.jpg" />
     <Content Include="App_Themes\Main\Images\megaMillionsLogo.png" />
@@ -125,6 +126,13 @@
     </Compile>
     <Compile Include="Admin\GameManage.aspx.designer.cs">
       <DependentUpon>GameManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\WinningNumberManage.aspx.cs">
+      <DependentUpon>WinningNumberManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\WinningNumberManage.aspx.designer.cs">
+      <DependentUpon>WinningNumberManage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

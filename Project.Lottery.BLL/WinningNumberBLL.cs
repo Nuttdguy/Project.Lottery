@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Project.Lottery.Models.Collections;
+using Project.Lottery.Models;
+using Project.Lottery.DAL;
+
 
 namespace Project.Lottery.BLL
 {
@@ -11,8 +10,13 @@ namespace Project.Lottery.BLL
 
         #region SECTION 1 ||=======  GET ITEM  =======||
 
-        #region ||=======  GET LOTTERY-ITEM | PARAM ~ LOTTERY-ID  =======||
+        #region ||=======  GET WINNNG-NUMBER-ITEM | PARAM ~ DRAWING-ID  =======||
+        public static LotteryDetail GetItem(int id)
+        {
+            LotteryDetail tmpObj = WinningNumberDAL.GetItem(id);
+            return tmpObj;
 
+        }
         #endregion
 
         #endregion
@@ -21,7 +25,19 @@ namespace Project.Lottery.BLL
         #region SECTION 2 ||=======  GET COLLECTION  =======||
 
         #region ||=======  GET COLLECTION | ALL  =======||
+        public static LotteryDetailCollection GetCollection()
+        {
+            LotteryDetailCollection tmpCollect = WinningNumberDAL.GetCollection();
+            return tmpCollect;
+        }
+        #endregion
 
+        #region ||=======  GET COLLECTION | PARAM DRAWING-ID  =======||
+        public static LotteryDetailCollection GetCollection(int id)
+        {
+            LotteryDetailCollection tmpCollect = WinningNumberDAL.GetCollection(id);
+            return tmpCollect;
+        }
         #endregion
 
         #endregion
@@ -29,8 +45,12 @@ namespace Project.Lottery.BLL
 
         #region SECTION 3 ||=======  SAVE/UPDATE ITEM  =======||
 
-        #region ||=======  SAVE/UPDATE LOTTERY-ITEM | PARAM ~ NONE, LOTTERY-ID [OP]  =======||
-
+        #region ||=======  SAVE/UPDATE WINNING-NUMBER-ITEM | PARAM ~ NONE, DRAWING-ID [OP]  =======||
+        public static int SaveItem(LotteryDetail lottoItem)
+        {
+            int recordId = WinningNumberDAL.SaveItem(lottoItem);
+            return recordId;
+        }
         #endregion
 
         #endregion
@@ -38,8 +58,12 @@ namespace Project.Lottery.BLL
 
         #region SECTION 4 ||=======  DELETE ITEM  =======||
 
-        #region ||=======  DELETE LOTTERY-ITEM | PARAM ~ LOTTERY-ID  =======||
-
+        #region ||=======  DELETE WINNING-NUMBER-ITEM | PARAM ~ DRAWING-ID  =======||
+        public static int DeleteItem(int id)
+        {
+            int deletedRecord = WinningNumberDAL.DeleteItem(id);
+            return deletedRecord;
+        }
         #endregion
 
         #endregion
