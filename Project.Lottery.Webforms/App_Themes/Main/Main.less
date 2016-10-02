@@ -56,7 +56,7 @@ a {
 .Container_ContentBody {
     //border: 1px solid yellow;
     background: rgba(10, 9, 9, 0.30);
-    width: 100%;
+    width: 100vw;
 
     height: inherit;
     min-width: inherit;
@@ -133,7 +133,7 @@ a {
 }
 
 #Container_ExpandControlLabel {
-    position: absolute;
+    position: fixed;
     left: 0;
     z-index: 20;
     min-height: 100%;
@@ -398,17 +398,21 @@ a {
 
 .Container_ContentBody_ListView {
     border-left: 3px solid #000;
-    width: 70%;
+    width: 70vw;
+    height: 100%;
     min-height: inherit;
+    overflow-y: auto;
+    overflow-x: hidden;
+    
 
     display: inline-block;
     padding: 12px 8px;
+    margin-bottom: 70px;
 
     table {
-        width: 112%;
+        width: 100%;
         margin-left: 2%;
         text-align: center;
-        min-width: 700px;
         border-collapse: collapse;
 
         th, td {

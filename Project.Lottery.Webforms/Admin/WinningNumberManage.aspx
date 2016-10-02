@@ -9,6 +9,7 @@
 
 		<%--  ||  BEGIN-INSET-3  ||==  { CONTENT-PLACEHOLDER-BODY } ==||  --%>
 	<div class="Container_ContentBody cf"> 
+		<asp:HiddenField ID="hidLotteryId" runat="server" />
 		<asp:HiddenField ID="hidDrawingId" runat="server" />
 		<asp:HiddenField ID="hidWinningNumberId" runat="server" />
 
@@ -54,7 +55,7 @@
 
 
 		<%--  ||  BEGIN-INSET-4  ||==  { WINNING-NUMBER-LIST-VIEW } ==||  --%>
-		<div class="Container_ContentBody_ListView">
+		<div class="Container_ContentBody_ListView cf">
 
 			<asp:Label ID="lblMessageArea" runat="server" ></asp:Label>
 	
@@ -76,7 +77,7 @@
 							<asp:Button runat="server" ID="Edit" CommandName="Edit" Text="Edit" OnCommand="Game_Command" />
 							<asp:Button runat="server" ID="Delete" CommandName="Delete" Text="Delete"  OnCommand="Game_Command"/>
 						</td>
-						<td><%# Eval("WinnningNumberId") %></td>
+						<td><%# Eval("WinningNumberId") %></td>
 						<td><%# Eval("LotteryDrawingId") %></td>
 						<td><%# Eval("BallNumber") %></td>
 						<td><%# Eval("BallTypeId") %></td>
@@ -89,7 +90,7 @@
 							<asp:Button runat="server" ID="Edit" CommandName="Edit" Text="Edit" OnCommand="Game_Command" />
 							<asp:Button runat="server" ID="Delete" CommandName="Delete" Text="Delete"  OnCommand="Game_Command"/>
 						</td>
-						<td><%# Eval("WinnningNumberId") %></td>
+						<td><%# Eval("WinningNumberId") %></td>
 						<td><%# Eval("LotteryDrawingId") %></td>
 						<td><%# Eval("BallNumber") %></td>
 						<td><%# Eval("BallTypeId") %></td>

@@ -13,6 +13,15 @@ namespace Project.Lottery.Webforms.Admin {
     public partial class WinningNumberManage {
         
         /// <summary>
+        /// hidLotteryId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hidLotteryId;
+        
+        /// <summary>
         /// hidDrawingId control.
         /// </summary>
         /// <remarks>
