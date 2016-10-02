@@ -80,7 +80,7 @@ namespace Project.Lottery.DAL
 
         #endregion
 
-        #region ||=======  GET COLLECTION | ALL  =======|| REQUIRED FOR DATA BINDING LIST
+        #region ||=======  GET COLLECTION | ALL  =======|| GETS THE DRAWING RESULT FILTERED BY SELECTED LOTTERY 
         public static LotteryDetailCollection GetCollection(int id)
         {
             LotteryDetailCollection tmpCollection = null;
@@ -91,8 +91,8 @@ namespace Project.Lottery.DAL
                 {
 
                     myCommand.CommandType = CommandType.StoredProcedure;
-                    myCommand.Parameters.AddWithValue("@QueryId", QuerySelectType.GetCollectionName_ByLotteryId);
-                    myCommand.Parameters.AddWithValue("@LotteryDrawingId", id);
+                    myCommand.Parameters.AddWithValue("@QueryId", QuerySelectType.GetCollectionDrawing_ByLotteryId);
+                    myCommand.Parameters.AddWithValue("@LotteryId", id);
 
                     myConnection.Open();
                     using (SqlDataReader myReader = myCommand.ExecuteReader())

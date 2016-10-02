@@ -40,7 +40,8 @@ a {
   /*min-width: 640px;*/
 }
 .Container_ContentBody {
-  width: 80%;
+  background: rgba(10, 9, 9, 0.3);
+  width: 100%;
   height: inherit;
   min-width: inherit;
 }
@@ -238,14 +239,17 @@ a {
   transition: all .5s;
 }
 .Container_ContentBody_Form {
-  width: 33%;
-  min-width: 200px;
+  max-width: 27%;
+  width: 320px;
   height: 100%;
   position: relative;
-  float: left;
-  display: block;
+  display: inline-block;
+  vertical-align: top;
   padding-left: 2.5em;
   padding-top: 1.3em;
+}
+.Container_ContentBody_Form .editCol {
+  min-width: 200px;
 }
 .Container_ContentBody_Form label,
 .Container_ContentBody_Form input {
@@ -286,14 +290,16 @@ a {
 }
 .Container_ContentBody_ListView {
   border-left: 3px solid #000;
-  width: 67%;
+  width: 70%;
   min-height: inherit;
-  float: right;
+  display: inline-block;
   padding: 12px 8px;
 }
 .Container_ContentBody_ListView table {
-  width: 100%;
-  min-width: 800px;
+  width: 112%;
+  margin-left: 2%;
+  text-align: center;
+  min-width: 700px;
   border-collapse: collapse;
 }
 .Container_ContentBody_ListView table th,

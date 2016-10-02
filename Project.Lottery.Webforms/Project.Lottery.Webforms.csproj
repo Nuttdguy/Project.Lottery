@@ -66,6 +66,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin\DrawingDetailManage.aspx" />
     <Content Include="Admin\DrawingManage.aspx" />
     <Content Include="Admin\GameManage.aspx" />
     <Content Include="App_Themes\Main\Images\gopher5Logo.png" />
@@ -104,6 +105,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\DrawingDetailManage.aspx.cs">
+      <DependentUpon>DrawingDetailManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\DrawingDetailManage.aspx.designer.cs">
+      <DependentUpon>DrawingDetailManage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\DrawingManage.aspx.cs">
       <DependentUpon>DrawingManage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

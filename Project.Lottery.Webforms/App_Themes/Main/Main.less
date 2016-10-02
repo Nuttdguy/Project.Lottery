@@ -55,7 +55,9 @@ a {
 
 .Container_ContentBody {
     //border: 1px solid yellow;
-    width: 80%;
+    background: rgba(10, 9, 9, 0.30);
+    width: 100%;
+
     height: inherit;
     min-width: inherit;
 }
@@ -327,16 +329,20 @@ a {
     //border: 1px solid green;
     //background: rgba(255, 0, 0, 0.73);
 
-    width: 33%;
-    min-width: 200px;
+    max-width: 27%;
+    width: 320px;
     height: 100%;
 
     position: relative;
-    float: left;
-    display: block;
-    
+    display: inline-block;
+
+    vertical-align: top;
     padding-left: 2.5em;
     padding-top: 1.3em;
+
+    .editCol {
+        min-width: 200px;
+    }
 
 
     label, input {
@@ -392,14 +398,17 @@ a {
 
 .Container_ContentBody_ListView {
     border-left: 3px solid #000;
-    width: 67%;
+    width: 70%;
     min-height: inherit;
-    float: right;
+
+    display: inline-block;
     padding: 12px 8px;
 
     table {
-        width: 100%;
-        min-width: 800px;
+        width: 112%;
+        margin-left: 2%;
+        text-align: center;
+        min-width: 700px;
         border-collapse: collapse;
 
         th, td {

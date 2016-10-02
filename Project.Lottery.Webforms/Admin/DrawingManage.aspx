@@ -11,11 +11,13 @@
 	<%--  ||  BEGIN-INSET-3  ||==  { CONTENT-PLACEHOLDER-BODY } ==||  --%>
 	<div class="Container_ContentBody cf"> 
 		<asp:HiddenField ID="hidLotteryId" runat="server" />
+		<asp:HiddenField ID="hidDrawingId" runat="server" />
 
 		<%--  ||  BEGIN-INSET-4  ||==  { GAME-CONTROL } ==||  --%>
 		<div class="Container_ContentBody_Form cf">
 
-			<asp:Panel ID="MessageArea" runat="server" >TEMP ERROR MESSAGE AREA </asp:Panel>
+			<%--<asp:Panel ID="MessageArea" runat="server" >TEMP ERROR MESSAGE AREA </asp:Panel>--%>
+			<asp:HiddenField ID="hidResultMessageArea" runat="server" ></asp:HiddenField>
 
 			<%-- ||  BEGIN  ||====  FORM PANEL FOR ADDING NEW LOTTERY GAME  ====||--%>
 			<div id="Form_Generic" >
@@ -23,7 +25,7 @@
 
 					<div>
 						<label>Drawing ID</label>
-						<asp:TextBox runat="server" ID="txtDrawingId" />
+						<asp:TextBox runat="server" Enabled="false" ID="txtDrawingId" TextMode="Number" />
 					</div>
 
 					<div>
@@ -38,11 +40,11 @@
 
 					<div>
 						<label>Drawing Date</label>
-						<asp:TextBox runat="server" ID="txtDrawingDate" TextMode="Date" />
+						<asp:TextBox runat="server" ID="txtDrawingDate" />
 					</div>
 
 					<div class="Button Button_Save">
-						<asp:Button runat="server" ID="SaveItemButton" Text="Add New Game"  />
+						<asp:Button runat="server" ID="SaveItemButton" Text="Add New Game"  OnClick="SaveItemButton_Click" />
 					</div>
 
 				</asp:Panel>
@@ -50,7 +52,7 @@
 
 		</div> 	<%--||  END  ||==  { GAME-CONTROL } ==||  --%>
 
-		<%--<td><%# DataBinder.Eval(Container.DataItem, "DrawDate", "{0:M/d/yyyy}") %></td>--%>
+
 
 		<%--  ||  BEGIN-INSET-4  ||==  { GAME-LIST-VIEW } ==||  --%>
 		<div class="Container_ContentBody_ListView">
@@ -61,7 +63,7 @@
 				<HeaderTemplate>
 					<table>
 						<tr>
-							<th>&nbsp;</th>
+							<th class="editCol">&nbsp;</th>
 							<th>Drawing ID</th>
 							<th>Jackpot</th>
 							<th>Drawing Date</th>
@@ -70,9 +72,10 @@
 
 				<ItemTemplate>
 					<tr>
-						<td>
+						<td class="editCol">
 							<asp:Button runat="server" ID="Edit" CommandName="Edit" Text="Edit" OnCommand="Game_Command" />
 							<asp:Button runat="server" ID="Delete" CommandName="Delete" Text="Delete"  OnCommand="Game_Command"/>
+							<asp:Button runat="server" ID="View" CommandName="View" Text="View"  OnCommand="Game_Command"/>
 						</td>
 						<td><%# Eval("LotteryDrawingId") %></td>
 						<td><%# DataBinder.Eval(Container.DataItem, "Jackpot", "$ {0:C}") %></td>
@@ -82,9 +85,10 @@
 
 				<AlternatingItemTemplate>
 					<tr>
-						<td>
+						<td class="editCol">
 							<asp:Button runat="server" ID="Edit" CommandName="Edit" Text="Edit" OnCommand="Game_Command" />
 							<asp:Button runat="server" ID="Delete" CommandName="Delete" Text="Delete"  OnCommand="Game_Command"/>
+							<asp:Button runat="server" ID="View" CommandName="View" Text="View"  OnCommand="Game_Command"/>
 						</td>
 						<td><%# Eval("LotteryDrawingId") %></td>
 						<td><%# DataBinder.Eval(Container.DataItem, "Jackpot", "$ {0:c}") %></td>

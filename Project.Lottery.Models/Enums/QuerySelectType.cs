@@ -42,12 +42,13 @@ namespace Project.Lottery.Models
         #region ||=======  GENERAL COLLECTION QUERIES  =======||
 
         GetCollectionName_ByLotteryId = 600,
+        GetCollectionDrawing_ByLotteryId = 610,
         #endregion
 
         #region ||=======  COLLECTION QUERIES | BY ID'S =======||
 
-        GetDrawingCollection_DrawingAll = 750,
-        GetDrawingCollection_ByLotteryId = 760,
+        GetDrawingResultCollection_DrawingAll = 750,
+        GetDrawingResultCollection_ByLotteryId = 760,
         #endregion
 
         #endregion
