@@ -68,6 +68,7 @@
   <ItemGroup>
     <Content Include="Admin\DrawingDetailManage.aspx" />
     <Content Include="Admin\DrawingManage.aspx" />
+    <Content Include="Admin\GameAvailableManage.aspx" />
     <Content Include="Admin\GameManage.aspx" />
     <Content Include="Admin\WinningNumberManage.aspx" />
     <Content Include="App_Themes\Main\Images\gopher5Logo.png" />
@@ -119,6 +120,13 @@
     </Compile>
     <Compile Include="Admin\DrawingManage.aspx.designer.cs">
       <DependentUpon>DrawingManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\GameAvailableManage.aspx.cs">
+      <DependentUpon>GameAvailableManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\GameAvailableManage.aspx.designer.cs">
+      <DependentUpon>GameAvailableManage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\GameManage.aspx.cs">
       <DependentUpon>GameManage.aspx</DependentUpon>

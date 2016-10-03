@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using Project.Lottery.Models.Collections;
 using Project.Lottery.Models.Delegates;
 using Project.Lottery.Models.Extensions;
+using Project.Lottery.Models.Enums;
 using Project.Lottery.Models;
 using Project.Lottery.BLL;
 
@@ -70,8 +71,15 @@ namespace Project.Lottery.Webforms.Admin
             ClearTextValue();
             rptListView.DataSource = tmpCollect;
             rptListView.DataBind();
+        }
 
+        public void BindListView(int id, int idType)
+        {
+            LotteryDetailCollection tmpCollect = WinningNumberBLL.GetCollection(id, idType);
 
+            ClearTextValue();
+            rptListView.DataSource = tmpCollect;
+            rptListView.DataBind();
         }
 
         void UCDropDownEvent(object sender, EventArgs e)
@@ -206,5 +214,13 @@ namespace Project.Lottery.Webforms.Admin
 
         #endregion
 
+        protected void viewByDrawingId_Click(object sender, EventArgs e)
+        {
+            int drawId = txtDrawingId.Text.ToInt();
+            int idType = (int)IdType.LotteryDrawingId;
+            BindListView(drawId, idType);
+        }
+
+        //=========   ADD VALIDATION / CHECK DRAWING-ID AND LOTTERY-GAME EXIST  =======\\
     }
 }

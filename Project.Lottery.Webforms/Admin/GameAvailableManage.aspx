@@ -1,24 +1,18 @@
-﻿<%@ Page Title="Winning Number Manage" Theme="Main" Language="C#" MasterPageFile="~/MasterPages/BaseSkin.Master" AutoEventWireup="true" CodeBehind="WinningNumberManage.aspx.cs" Inherits="Project.Lottery.Webforms.Admin.WinningNumberManage" %>
-
+﻿<%@ Page Title="Game Available Manage" Theme="Main" Language="C#" MasterPageFile="~/MasterPages/BaseSkin.Master" AutoEventWireup="true" CodeBehind="GameAvailableManage.aspx.cs" Inherits="Project.Lottery.Webforms.Admin.GameAvailableManage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 
-
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-		<%--  ||  BEGIN-INSET-3  ||==  { CONTENT-PLACEHOLDER-BODY } ==||  --%>
+			<%--  ||  BEGIN-INSET-3  ||==  { CONTENT-PLACEHOLDER-BODY } ==||  --%>
 	<div class="Container_ContentBody cf"> 
 		<asp:HiddenField ID="hidLotteryId" runat="server" />
-		<asp:HiddenField ID="hidDrawingId" runat="server" />
-		<asp:HiddenField ID="hidWinningNumberId" runat="server" />
+
 
 		<%--  ||  BEGIN-INSET-4  ||==  { WINNING-NUMBER-CONTROL } ==||  --%>
 		<div class="Container_ContentBody_Form cf">
 
-			<%--<asp:Panel ID="MessageArea" runat="server" >TEMP ERROR MESSAGE AREA </asp:Panel>--%>
-			<asp:HiddenField ID="hidResultMessageArea" runat="server" ></asp:HiddenField>
-			
 
 			<%-- ||  BEGIN  ||====  FORM PANEL FOR SAVE AND UPDATE  ====||--%>
 
@@ -28,12 +22,6 @@
 					<div>
 						<label>Winning Number ID</label>
 						<asp:TextBox runat="server" ID="txtWinningNumberId" TextMode="Number" />
-					</div>
-
-					<div>
-						<label>Drawing ID</label>
-						<asp:TextBox runat="server" ID="txtDrawingId" />
-						<asp:Button runat="server" ID="viewByDrawingId" OnClick="viewByDrawingId_Click" Text="View By ID" />
 					</div>
 
 					<div>
@@ -47,7 +35,7 @@
 					</div>
 
 					<div class="Button Button_Save">
-						<asp:Button runat="server" ID="SaveItemButton" Text="Add New Game"  OnClick="SaveItemButton_Click" />
+						<asp:Button runat="server" ID="SaveItemButton" Text="Add State" />
 					</div>
 
 				</asp:Panel>
@@ -69,7 +57,7 @@
 					<table>
 						<tr>
 							<th class="editCol">&nbsp;</th>
-							<th>Winning # ID</th>
+							<th>State ID</th>
 							<th>Drawing ID</th>
 							<th>Ball #</th>
 							<th>Ball Type</th>
@@ -83,11 +71,7 @@
 							<asp:Button runat="server" ID="Edit" CommandName="Edit" Text="Edit" OnCommand="Game_Command" />
 							<asp:Button runat="server" ID="Delete" CommandName="Delete" Text="Delete"  OnCommand="Game_Command"/>
 						</td>
-						<td><%# Eval("WinningNumberId") %></td>
-						<td><%# Eval("LotteryDrawingId") %></td>
-						<td><%# Eval("BallNumber") %></td>
-						<td><%# Eval("BallTypeId") %></td>
-						<td><%# Eval("BallTypeDescription")  %></td>
+
 					</tr>
 				</ItemTemplate>
 
@@ -97,11 +81,7 @@
 							<asp:Button runat="server" ID="Edit" CommandName="Edit" Text="Edit" OnCommand="Game_Command" />
 							<asp:Button runat="server" ID="Delete" CommandName="Delete" Text="Delete"  OnCommand="Game_Command"/>
 						</td>
-						<td><%# Eval("WinningNumberId") %></td>
-						<td><%# Eval("LotteryDrawingId") %></td>
-						<td><%# Eval("BallNumber") %></td>
-						<td><%# Eval("BallTypeId") %></td>
-						<td><%# Eval("BallTypeDescription") %></td>
+
 					</tr>
 				</AlternatingItemTemplate>
 

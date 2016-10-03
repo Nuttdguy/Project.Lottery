@@ -43,6 +43,7 @@ namespace Project.Lottery.Models
 
         GetCollectionName_ByLotteryId = 600,
         GetCollectionDrawing_ByLotteryId = 610,
+        GetCollectionDrawing_ByLotteryDrawingId = 620,
         #endregion
 
         #region ||=======  COLLECTION QUERIES | BY ID'S =======||

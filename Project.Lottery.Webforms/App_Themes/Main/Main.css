@@ -184,8 +184,10 @@ a {
   position: absolute;
   left: 140px;
   top: 45%;
+  min-width: 680px;
   display: inline-block;
   vertical-align: middle;
+  /*text-align: center;*/
   font-size: 3.5em;
   font-variant: small-caps;
   color: red;
@@ -285,7 +287,7 @@ a {
   display: inline-block;
   vertical-align: top;
   padding-left: 2.5em;
-  padding-top: 2.5em;
+  padding-top: 2.25em;
 }
 .Container_ContentBody_Form .editCol {
   min-width: 200px;
@@ -314,12 +316,13 @@ a {
   scrollbar-arrow-color: transparent;
 }
 .Container_ContentBody_Form input[type="Submit"] {
-  position: absolute;
-  top: 65vh;
-  right: 40px;
+  position: relative;
+  margin: 16px 0;
+  /*top: 65vh;
+        right: 40px;*/
   padding: 8px;
-  min-width: 240px;
-  height: 50px;
+  min-width: 140px;
+  height: 44px;
   max-width: 50%;
   background-color: transparent;
   border: 3px solid red;

@@ -10,7 +10,7 @@
 namespace Project.Lottery.Webforms.Admin {
     
     
-    public partial class WinningNumberManage {
+    public partial class GameAvailableManage {
         
         /// <summary>
         /// hidLotteryId control.
@@ -20,33 +20,6 @@ namespace Project.Lottery.Webforms.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hidLotteryId;
-        
-        /// <summary>
-        /// hidDrawingId control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hidDrawingId;
-        
-        /// <summary>
-        /// hidWinningNumberId control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hidWinningNumberId;
-        
-        /// <summary>
-        /// hidResultMessageArea control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hidResultMessageArea;
         
         /// <summary>
         /// panelForm control.
@@ -65,24 +38,6 @@ namespace Project.Lottery.Webforms.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtWinningNumberId;
-        
-        /// <summary>
-        /// txtDrawingId control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDrawingId;
-        
-        /// <summary>
-        /// viewByDrawingId control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button viewByDrawingId;
         
         /// <summary>
         /// txtBallNumber control.

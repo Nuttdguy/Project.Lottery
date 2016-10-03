@@ -1,5 +1,6 @@
 ﻿using Project.Lottery.Models;
 using Project.Lottery.Models.Collections;
+using Project.Lottery.Models.Enums;
 using System.Data.SqlClient;
 using System.Data;
 
@@ -115,6 +116,54 @@ namespace Project.Lottery.DAL
         }
 
         #endregion
+
+        #region ||=======  GET COLLECTION | ID, ID-TYPE  =======|| GETS THE DRAWING RESULT FILTERED BY SELECTED LOTTERY 
+        public static LotteryDetailCollection GetCollection(int id, int idType)
+        {
+            LotteryDetailCollection tmpCollection = null;
+            string idTypeToUse = "";
+            string prefix = "@";
+            QuerySelectType query = QuerySelectType.GetCollectionDrawing_ByLotteryId;
+
+
+            if (idType == (int)IdType.LotteryDrawingId)
+            {
+                idTypeToUse = prefix + IdType.LotteryDrawingId.ToString();
+                query = QuerySelectType.GetCollectionDrawing_ByLotteryDrawingId;
+            }
+            else 
+                idTypeToUse = prefix + IdType.LotteryId.ToString();
+
+            using (SqlConnection myConnection = new SqlConnection(AppConfiguration.ConnectionString))
+            {
+                using (SqlCommand myCommand = new SqlCommand("usp_GetWinningNumber", myConnection))
+                {
+
+                    myCommand.CommandType = CommandType.StoredProcedure;
+                    myCommand.Parameters.AddWithValue("@QueryId", query);
+                    myCommand.Parameters.AddWithValue(idTypeToUse, id);
+
+                    myConnection.Open();
+                    using (SqlDataReader myReader = myCommand.ExecuteReader())
+                    {
+                        if (myReader.HasRows)
+                        {
+                            tmpCollection = new LotteryDetailCollection();
+                            while (myReader.Read())
+                            {
+                                tmpCollection.Add(FillDataRecord(myReader));
+                            }
+                        }
+                        myReader.Close();
+                    }
+                    myConnection.Close();
+                }
+            }
+            return tmpCollection;
+        }
+
+        #endregion
+
         #endregion
 
 

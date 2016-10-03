@@ -49,9 +49,11 @@
     <Compile Include="Enums\BallQuantityEnum.cs" />
     <Compile Include="Enums\BallTypeEnum.cs" />
     <Compile Include="Enums\CostToPlayEnum.cs" />
+    <Compile Include="Enums\IdType.cs" />
     <Compile Include="Enums\LeftNavPageOptionEnum.cs" />
     <Compile Include="Enums\QueryExecuteType.cs" />
     <Compile Include="Enums\QuerySelectType.cs" />
+    <Compile Include="Enums\UrlEnum.cs" />
     <Compile Include="Exceptions\CustomExceptions.cs" />
     <Compile Include="Extensions\Extension.cs" />
     <Compile Include="GameOdd.cs" />
@@ -61,6 +63,7 @@
     <Compile Include="Interfaces\ICost.cs" />
     <Compile Include="Interfaces\IGameOdd.cs" />
     <Compile Include="Interfaces\IInstruction.cs" />
+    <Compile Include="Interfaces\ILocation.cs" />
     <Compile Include="Interfaces\ILotteryDrawing.cs" />
     <Compile Include="Interfaces\IWinningNumber.cs" />
     <Compile Include="LotteryDetail.cs" />

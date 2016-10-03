@@ -7,7 +7,7 @@ using Project.Lottery.Models.Interfaces;
 
 namespace Project.Lottery.Models
 {
-    public class LotteryDetail : IInstruction, IGameOdd, ICost, ILotteryDrawing, IWinningNumber, IBallType
+    public class LotteryDetail : ILocation, IInstruction, IGameOdd, ICost, ILotteryDrawing, IWinningNumber, IBallType
     {
 
         public int LotteryId { get; set; }
@@ -15,6 +15,9 @@ namespace Project.Lottery.Models
         public bool HasSpecialBall { get; set; }
         public bool HasRegularBall { get; set; }
         public int NumberOfBalls { get; set; }
+
+        public int LocationId { get; set; }
+        public string State { get; set; }
 
         public int InstructionId { get; set; }
         public string Description { get; set; }

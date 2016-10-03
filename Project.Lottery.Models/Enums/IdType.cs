@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace Project.Lottery.Models.Enums
 {
-    public enum LeftNavPageOptionEnum
+    public enum IdType
     {
         None,
-        GameManage,
-        LotteryDrawingManage,
-        WinningNumberManage,
-        GamesAvailableManage
+        LotteryId,
+        LotteryDrawingId,
+        WinningNumberId,
+        BallTypeId,
+        InstructionId,
+        CostId
     }
 }
