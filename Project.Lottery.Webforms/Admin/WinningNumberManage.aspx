@@ -25,7 +25,7 @@
 
 					<div>
 						<label>Winning Number ID</label>
-						<asp:TextBox runat="server" Enabled="false" ID="txtWinningNumberId" TextMode="Number" />
+						<asp:TextBox runat="server" ID="txtWinningNumberId" TextMode="Number" />
 					</div>
 
 					<div>
@@ -40,7 +40,7 @@
 
 					<div>
 						<label>Ball Type</label>
-						<asp:TextBox runat="server" ID="txtBallType" />
+						<asp:DropDownList runat="server" ID="drpBallType" DataTextField="BallTypeDescription" DataValueField="BallTypeId" />
 					</div>
 
 					<div class="Button Button_Save">
@@ -68,6 +68,7 @@
 							<th>Drawing ID</th>
 							<th>Ball #</th>
 							<th>Ball Type</th>
+							<th>Ball Description</th>
 						</tr>
 				</HeaderTemplate>
 
@@ -81,6 +82,7 @@
 						<td><%# Eval("LotteryDrawingId") %></td>
 						<td><%# Eval("BallNumber") %></td>
 						<td><%# Eval("BallTypeId") %></td>
+						<td><%# Eval("BallTypeDescription")  %></td>
 					</tr>
 				</ItemTemplate>
 
@@ -94,6 +96,7 @@
 						<td><%# Eval("LotteryDrawingId") %></td>
 						<td><%# Eval("BallNumber") %></td>
 						<td><%# Eval("BallTypeId") %></td>
+						<td><%# Eval("BallTypeDescription") %></td>
 					</tr>
 				</AlternatingItemTemplate>
 

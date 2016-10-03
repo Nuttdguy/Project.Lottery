@@ -9,8 +9,8 @@ namespace Project.Lottery.Models.Helpers
     public static class PageTitleCaptionHelper
     {
 
-        private const string _PageTitle = "Add Game";
-        private const string _PageTitleResult = "Add Game Result";
+        private const string _PageTitle = "Game Manage ";
+        private const string _PageTitleResult = "Drawing Manage";
 
         public static string GetPageTitle
         {

@@ -23,7 +23,7 @@ namespace Project.Lottery.DAL
                 {
                     myCommand.CommandType = CommandType.StoredProcedure;
                     myCommand.Parameters.AddWithValue("@QueryId", QuerySelectType.GetItem);
-                    myCommand.Parameters.AddWithValue("@LotteryDrawingId", id);
+                    myCommand.Parameters.AddWithValue("@WinningNumberId", id);
 
                     myConnection.Open();
                     using (SqlDataReader myReader = myCommand.ExecuteReader())
@@ -127,7 +127,7 @@ namespace Project.Lottery.DAL
 
             QueryExecuteType queryId = QueryExecuteType.InsertItem;
 
-            if (lottoItem.LotteryDrawingId > 0)
+            if (lottoItem.LotteryDrawingId > 0 && lottoItem.WinningNumberId > 0)
                 queryId = QueryExecuteType.UpdateItem;
 
             using (SqlConnection myConnection = new SqlConnection(AppConfiguration.ConnectionString))
@@ -137,17 +137,17 @@ namespace Project.Lottery.DAL
                     myCommand.CommandType = CommandType.StoredProcedure;
                     myCommand.Parameters.AddWithValue("@QueryId", queryId);
 
+                    if (lottoItem.WinningNumberId != 0)
+                        myCommand.Parameters.AddWithValue("@WinningNumberId", lottoItem.WinningNumberId);
+
                     if (lottoItem.LotteryDrawingId != 0)
                         myCommand.Parameters.AddWithValue("@LotteryDrawingId", lottoItem.LotteryDrawingId);
 
-                    if (lottoItem.LotteryId != 0)
-                        myCommand.Parameters.AddWithValue("@LotteryId", lottoItem.LotteryId);
+                    if (lottoItem.BallTypeId != 0)
+                        myCommand.Parameters.AddWithValue("@BallTypeId", lottoItem.BallTypeId);
 
-                    if (!string.IsNullOrEmpty(lottoItem.Jackpot))
-                        myCommand.Parameters.AddWithValue("@Jackpot", lottoItem.Jackpot);
-
-                    if (lottoItem.DrawDate != null)
-                        myCommand.Parameters.AddWithValue("@DrawDate", lottoItem.DrawDate);
+                    if (lottoItem.BallNumber != 0)
+                        myCommand.Parameters.AddWithValue("@BallNumber", lottoItem.BallNumber);
 
 
                     myCommand.Parameters.Add(HelperDAL.GetReturnParameterInt("ReturnValue"));
@@ -181,7 +181,7 @@ namespace Project.Lottery.DAL
                 {
                     myCommand.CommandType = CommandType.StoredProcedure;
                     myCommand.Parameters.AddWithValue("@QueryId", QueryExecuteType.DeleteItem);
-                    myCommand.Parameters.AddWithValue("@LotteryDrawingId", id);
+                    myCommand.Parameters.AddWithValue("@WinningNumberId", id);
 
                     myCommand.Parameters.Add(HelperDAL.GetReturnParameterInt("ReturnValue"));
 
@@ -216,6 +216,9 @@ namespace Project.Lottery.DAL
 
             if (!myReader.IsDBNull(myReader.GetOrdinal("BallNumber")))
                 tmpItem.BallNumber = myReader.GetInt32(myReader.GetOrdinal("BallNumber"));
+
+            if (!myReader.IsDBNull(myReader.GetOrdinal("BallTypeDescription")))
+                tmpItem.BallTypeDescription = myReader.GetString(myReader.GetOrdinal("BallTypeDescription"));
 
             return tmpItem;
 

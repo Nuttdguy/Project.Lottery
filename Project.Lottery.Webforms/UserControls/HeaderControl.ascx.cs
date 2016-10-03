@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Project.Lottery.Models.Helpers;
 
 namespace Project.Lottery.Webforms.UserControls
 {
@@ -11,7 +12,13 @@ namespace Project.Lottery.Webforms.UserControls
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            LoadBannerImage();
+        }
 
+        public void LoadBannerImage()
+        {
+            HeaderImage.ImageUrl = ImageUrl._Powerball;
+            HeaderTitle.Text = PageTitleCaptionHelper.GetPageTitle;
         }
     }
 }

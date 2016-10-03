@@ -4,10 +4,9 @@
 	<%--  ||  BEGIN-INSET-2  ||==  { HEADER } ==||  --%>
 	<div class="Container_Header cf"> 
 
-
 		<div class="Header_Banner" >
-			<asp:Label runat="server" ID="HeaderTitle" >TEMP PLACEHOLDER FOR SELECTED PAGE</asp:Label>
-			<asp:Image runat="server" ID="HeaderImage" />
+			<asp:Image runat="server"  CssClass="logo" ID="HeaderImage" />
+			<asp:Label runat="server" ID="HeaderTitle" ></asp:Label>
 		</div>
 
 

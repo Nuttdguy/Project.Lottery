@@ -21,6 +21,7 @@ body {
 }
 
 a {
+    color: coral;
     text-decoration: none;
 }
 
@@ -36,7 +37,7 @@ a {
     position: relative;
     top: 0;
     left: 0;
-    z-index: 10;
+    z-index: 0;
     //background-color: rgba(10, 9, 9, 0.30);
 
     -moz-transition: 1s all;
@@ -54,8 +55,6 @@ a {
 }
 
 .Container_ContentBody {
-    //border: 1px solid yellow;
-    background: rgba(10, 9, 9, 0.30);
     width: 100vw;
 
     height: inherit;
@@ -64,11 +63,15 @@ a {
 
 .Container_Footer {
     border: 1px solid purple;
+    background-color: #000;
+
     position: fixed;
     bottom: 0;
+
     width: 100%;
     height: 48px;
 }
+
 
 
 //=============================================================||
@@ -83,16 +86,20 @@ a {
 
 .Container_LeftNav {
     border-right: 1px solid #000;
-    //background-color: beige;
+    background-color: rgba(10, 9, 9, 0.70);
 
-    box-shadow:  rgba(10, 9, 9, 0.30) 1px 3px 3px;
+    box-shadow:  rgba(10, 9, 9, 0.30) 4px 6px 6px;
     z-index: 10;
 
     min-height: 100vh;
-    width: 20%;
+    min-width: 230px;
+
+    width: 240px;
     position: fixed;
-    left: -20%;
+    left: -240px;
     top: 0;
+    z-index: 100;
+
     -moz-transition: 1s all;
     -o-transition: 1s all;
     -webkit-transition: 1s all;
@@ -109,19 +116,32 @@ a {
     }
 
     li {
-        //border: 1px solid red;
+        border-top: 3px solid red;
+        border-bottom: 3px solid red;
         list-style: none;
-        min-height: 34px;
+        height: 80px;
 
-        padding-top: 16px;
-        padding-bottom: 16px;
+        text-align: center;
+        word-break: break-word;
+        line-height: 3em;
 
+        padding: 1em 0;
+        box-shadow: 1px 3px 3px rgba(10, 9, 9, 0.30);
         transition: 1s all;
     }
 
+    li:nth-child(3),
+    li:nth-child(2),
+    li:nth-child(1) {
+        border-bottom: none;
+    }
+
+
     a {
+        color: #fff;
         padding-left: 21px;
         font-size: 18px;
+        text-shadow: 3px 5px 5px rgba(10, 9, 9, 0.30);
     }
 
     li:hover, li:visited {
@@ -148,7 +168,9 @@ a {
 }
 
 #Container_ExpandControlLabel:hover {
-    background-color: rgba(10, 9, 9, 0.30);
+    width: 2%;
+    background-color: coral;
+    box-shadow: 3px 5px 5px rgba(10, 9, 9, 0.30);
 
     -moz-transition: 1s all;
     -o-transition: 1s all;
@@ -164,10 +186,9 @@ a {
     visibility: hidden;
 }
 
-
 #Container_ExpandControl:checked ~ #Container_ExpandControlLabel {
-    background-color: rgba(10, 9, 9, 0.30);
-    left: 20%;
+    //background-color:  coral;
+    left: 0;
     z-index: 20;
     -moz-transition: 1s all;
     -o-transition: 1s all;
@@ -176,7 +197,7 @@ a {
 }
 
 #Container_ExpandControl:checked ~ #Container_Page {
-    left: 20%;
+    left: 227px;
     z-index: 10;
     -moz-transition: 1s all;
     -o-transition: 1s all;
@@ -184,7 +205,7 @@ a {
     transition: 1s all;
 
     .Container_LeftNav {
-        left: 0%;
+        left: -12px;
         z-index: 20;
         -moz-transition: 1s all;
         -o-transition: 1s all;
@@ -200,7 +221,7 @@ a {
 
 .Container_Header {
     position: relative;
-    background-color: rgba(10, 9, 9, 0.30);
+    background-color: rgba(10, 9, 9, 0.10);
     box-shadow: 2px 3px 3px rgba(10, 9, 9, 0.30) inset;
     width: 100%;
     height: 144px;
@@ -214,6 +235,33 @@ a {
         width: inherit;
         background: url('Images/lottery-banner.jpg') center;
     }
+
+    .logo {
+        position: absolute;
+        top: -5%;
+        text-align: left;
+        max-width: 440px;
+        z-index: 10;
+    }
+
+    span {
+        position: absolute;
+        left: 140px;
+        top: 45%;
+        display: inline-block;
+        vertical-align: middle;
+
+        font-size: 3.5em;
+        font-variant: small-caps;
+        color: red;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        border: 5px solid red;
+        box-shadow: 3px 5px 5px rgba(10, 9, 9, 0.30);
+        text-shadow: 3px 5px 5px rgba(10, 9, 9, 0.30);
+
+        padding: 0 32px 0 32px;
+    }
+
 }
 
 
@@ -326,8 +374,6 @@ a {
 //=============================================================||
 
 .Container_ContentBody_Form {
-    //border: 1px solid green;
-    //background: rgba(255, 0, 0, 0.73);
 
     max-width: 27%;
     width: 320px;
@@ -338,20 +384,20 @@ a {
 
     vertical-align: top;
     padding-left: 2.5em;
-    padding-top: 1.3em;
+    padding-top: 2.5em;
 
     .editCol {
         min-width: 200px;
     }
 
 
-    label, input {
+    label, input, select {
         display: block;
         font-size: 18px;
         margin: .5em 0 .5em;
     }
 
-    label ~ input {
+    label ~ input, select {
         height: 27px;
         width: 80%;
         max-width: 220px;
@@ -375,18 +421,22 @@ a {
         right: 40px;
 
         padding: 8px;
-        min-width: 144px;
+        min-width: 240px;
+        height: 50px;
         max-width: 50%;
 
         background-color: transparent;
-        border: 4px solid #000;
+        border: 3px solid red;
+
+        font-size: 18px;
+        text-transform: uppercase;
+
         transition: 1s all;
     }
 
     input[type="Submit"]:hover {
-        background-color: red;
-        border: 4px solid rgba(255, 0, 0, 0.73);
-        transition: 1s all;
+        border: 6px solid red;
+        transition: .5s all;
     }
 
 }
@@ -400,7 +450,9 @@ a {
     border-left: 3px solid #000;
     width: 70vw;
     height: 100%;
+
     min-height: inherit;
+
     overflow-y: auto;
     overflow-x: hidden;
     
@@ -411,6 +463,7 @@ a {
 
     table {
         width: 100%;
+
         margin-left: 2%;
         text-align: center;
         border-collapse: collapse;

@@ -13,15 +13,6 @@ namespace Project.Lottery.Webforms.UserControls {
     public partial class HeaderControl {
         
         /// <summary>
-        /// HeaderTitle control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label HeaderTitle;
-        
-        /// <summary>
         /// HeaderImage control.
         /// </summary>
         /// <remarks>
@@ -29,5 +20,14 @@ namespace Project.Lottery.Webforms.UserControls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image HeaderImage;
+        
+        /// <summary>
+        /// HeaderTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label HeaderTitle;
     }
 }
