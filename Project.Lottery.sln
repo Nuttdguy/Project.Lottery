@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.Lottery.DAL", "Proj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.Lottery.BLL", "Project.Lottery.BLL\Project.Lottery.BLL.csproj", "{FEFFDF6F-24F5-4BAE-95AE-423740AE1414}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.Lottery.Services", "Project.Lottery.Services\Project.Lottery.Services.csproj", "{51FA6650-3C2C-436D-842B-9C4080FDFF57}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{FEFFDF6F-24F5-4BAE-95AE-423740AE1414}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FEFFDF6F-24F5-4BAE-95AE-423740AE1414}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FEFFDF6F-24F5-4BAE-95AE-423740AE1414}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51FA6650-3C2C-436D-842B-9C4080FDFF57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51FA6650-3C2C-436D-842B-9C4080FDFF57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51FA6650-3C2C-436D-842B-9C4080FDFF57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51FA6650-3C2C-436D-842B-9C4080FDFF57}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
