@@ -41,13 +41,13 @@ namespace Project.Lottery.BLL
         }
         #endregion
 
-        //#region ||=======  NOT USED  =======||
-        //public static LotteryDetailCollection GetCollection(int id, int idType)
-        //{
-        //    LotteryDetailCollection tmpCollect = LocationDAL.GetCollection(id, idType);
-        //    return tmpCollect;
-        //}
-        //#endregion
+        #region ||=======  GET COLLECTION | LOCATION BY SELECTED-LOTTERY-ID | PARAM LOTTERY-ID  =======||
+        public static LotteryDetailCollection GetCollection(int id, int idType)
+        {
+            LotteryDetailCollection tmpCollect = LocationDAL.GetCollection(id, idType);
+            return tmpCollect;
+        }
+        #endregion
 
         #endregion
 

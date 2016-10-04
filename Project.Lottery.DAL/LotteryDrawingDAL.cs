@@ -11,7 +11,7 @@ namespace Project.Lottery.DAL
 
         #region SECTION 1 ||=======  GET ITEM  =======||
 
-        #region ||=======  GET LOTTERY-ITEM | PARAM ~ LOTTERY-ID  =======||
+        #region ||=======  GET | SINGLE-ITEM | BY LOTTERY-ITEM | PARAM, LOTTERY-ID  =======||
         public static LotteryDetail GetItem(int id)
         {
             LotteryDetail tmpObj = null;
@@ -46,7 +46,7 @@ namespace Project.Lottery.DAL
 
         #region SECTION 2 ||=======  GET COLLECTION  =======||
 
-        #region ||=======  GET COLLECTION | ALL  =======||
+        #region ||=======  GET COLLECTION | LOTTERY-DRAWING | ALL  =======||
         public static LotteryDetailCollection GetCollection()
         {
             LotteryDetailCollection tmpCollection = null;
@@ -80,7 +80,7 @@ namespace Project.Lottery.DAL
 
         #endregion
 
-        #region ||=======  GET COLLECTION | ALL  =======|| GETS THE DRAWING RESULT FILTERED BY SELECTED LOTTERY 
+        #region ||=======  GET COLLECTION | LOTTERY-DRAWING BY LOTTERY-ID | PARAM LOTTERY-ID  =======||
         public static LotteryDetailCollection GetCollection(int id)
         {
             LotteryDetailCollection tmpCollection = null;
@@ -119,7 +119,7 @@ namespace Project.Lottery.DAL
 
         #region SECTION 3 ||=======  SAVE/UPDATE ITEM  =======||
 
-        #region ||=======  SAVE/UPDATE LOTTERY-ITEM | PARAM ~ NONE, LOTTERY-ID [OP]  =======||
+        #region ||=======  SAVE/UPDATE ITEM | LOTTERY-DRAWING-ITEM | PARAM LOTTERY-DRAWING-OBJECT  =======||
         public static int SaveItem(LotteryDetail lottoItem)
         {
             int recordId = 0;
@@ -169,7 +169,7 @@ namespace Project.Lottery.DAL
 
         #region SECTION 4 ||=======  DELETE ITEM  =======||
 
-        #region ||=======  DELETE LOTTERY-ITEM | PARAM ~ LOTTERY-ID  =======||
+        #region ||=======  DELETE | LOTTERY-DRAWING-ITEM | PARAM LOTTERY-DRAWING-ID  =======||
         public static int DeleteItem(int id)
         {
             int deletedRecord = 0;

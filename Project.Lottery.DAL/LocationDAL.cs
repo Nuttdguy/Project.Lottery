@@ -11,8 +11,7 @@ namespace Project.Lottery.DAL
 
         #region SECTION 1 ||=======  GET ITEM  =======||
 
-
-        #region ||=======  GET LOCATION-ITEM | PARAM ~ DRAWING-ID  =======||
+        #region ||=======  GET | SINGLE-ITEM | LOCATION BY LOCATION-ID | PARAM LOCATION-ID  =======||
         public static LotteryDetail GetItem(int id)
         {
             LotteryDetail tmpObj = null;
@@ -47,7 +46,7 @@ namespace Project.Lottery.DAL
 
         #region SECTION 2 ||=======  GET COLLECTION  =======||
 
-        #region ||=======  GET COLLECTION | ALL  =======||
+        #region ||=======  GET COLLECTION | LOCATION | ALL  =======||
         public static LotteryDetailCollection GetCollection()
         {
             LotteryDetailCollection tmpCollection = null;
@@ -81,7 +80,7 @@ namespace Project.Lottery.DAL
 
         #endregion
 
-        #region ||=======  GET COLLECTION | ALL  =======|| GETS THE DRAWING RESULT FILTERED BY SELECTED LOTTERY 
+        #region ||=======  GET COLLECTION | LOCATION BY LOTTERY-ID | PARAM LOTTERY-NAME-ID  =======||
         public static LotteryDetailCollection GetCollection(int id)
         {
             LotteryDetailCollection tmpCollection = null;
@@ -116,7 +115,7 @@ namespace Project.Lottery.DAL
 
         #endregion
 
-        #region ||=======  GET COLLECTION | ID, ID-TYPE  =======|| GETS THE DRAWING RESULT FILTERED BY SELECTED LOTTERY 
+        #region ||=======  GET COLLECTION | LOCATION BY SELECTED-LOTTERY-ID | PARAM LOTTERY-ID  =======||
         public static LotteryDetailCollection GetCollection(int id, int idType)
         {
             LotteryDetailCollection tmpCollection = null;
@@ -171,7 +170,8 @@ namespace Project.Lottery.DAL
 
         #region SECTION 3 ||=======  SAVE/UPDATE ITEM  =======||
 
-        #region ||=======  SAVE/UPDATE LOTTERY-ITEM | PARAM ~ NONE, LOTTERY-ID [OP]  =======||
+        //==||  INTERNAL LOGIC NEEDS TO BE MOVED TO BLL-LAYER  ||==\\
+        #region ||=======  SAVE/UPDATE ITEM(S) | LOCATION & ASSOCIATED GAME NAME | PARAM OBJECT  =======||
         public static int SaveItem(LotteryDetail lottoItem)
         {
             int recordId = 0;
@@ -237,7 +237,8 @@ namespace Project.Lottery.DAL
 
         #region SECTION 4 ||=======  DELETE ITEM  =======||
 
-        #region ||=======  DELETE WINNING-NUMBER-ITEM | PARAM ~ DRAWING-ID  =======||
+        //==||  INTERNAL LOGIC NEEDS TO BE MOVED TO BLL-LAYER  ||==\\
+        #region ||=======  DELETE ITEM(S) | LOCATION & ASSOCIATED GAME NAME | PARAM LOCATION-ID, LOTTERY-ID [OP] =======||
         public static int DeleteItem(int locId, int lottoId)
         {
             int deletedRecord = 0;

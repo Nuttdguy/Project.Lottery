@@ -13,7 +13,7 @@ namespace Project.Lottery.DAL
 
         #region SECTION 1 ||=======  GET ITEM  =======||
 
-        #region ||=======  GET WINNING-NUMBER-ITEM | PARAM ~ DRAWING-ID  =======||
+        #region ||=======  GET | SINGLE-ITEM | BY WINNING-NUMBER | PARAM WINNING-NUMBER-ID  =======||
         public static LotteryDetail GetItem(int id)
         {
             LotteryDetail tmpObj = null;
@@ -48,7 +48,7 @@ namespace Project.Lottery.DAL
 
         #region SECTION 2 ||=======  GET COLLECTION  =======||
 
-        #region ||=======  GET COLLECTION | ALL  =======||
+        #region ||=======  GET COLLECTION | WINNING-NUMBERS | ALL  =======||
         public static LotteryDetailCollection GetCollection()
         {
             LotteryDetailCollection tmpCollection = null;
@@ -82,7 +82,7 @@ namespace Project.Lottery.DAL
 
         #endregion
 
-        #region ||=======  GET COLLECTION | ALL  =======|| GETS THE DRAWING RESULT FILTERED BY SELECTED LOTTERY 
+        #region ||=======  GET COLLECTION | WINNING-NUMBERS | PARAM LOTTERY-NAME-ID  =======||
         public static LotteryDetailCollection GetCollection(int id)
         {
             LotteryDetailCollection tmpCollection = null;
@@ -117,7 +117,7 @@ namespace Project.Lottery.DAL
 
         #endregion
 
-        #region ||=======  GET COLLECTION | ID, ID-TYPE  =======|| GETS THE DRAWING RESULT FILTERED BY SELECTED LOTTERY 
+        #region ||=======  GET COLLECTION | WINNING-NUMBERS BY DRAWING-ID | PARAM DRAW-ID, ID-TYPE =======||
         public static LotteryDetailCollection GetCollection(int id, int idType)
         {
             LotteryDetailCollection tmpCollection = null;
@@ -169,7 +169,7 @@ namespace Project.Lottery.DAL
 
         #region SECTION 3 ||=======  SAVE/UPDATE ITEM  =======||
 
-        #region ||=======  SAVE/UPDATE LOTTERY-ITEM | PARAM ~ NONE, LOTTERY-ID [OP]  =======||
+        #region ||=======  SAVE/UPDATE SINGLE ITEM | WINNING-NUMBER | PARAM WINNING-NUMBER-OBJECT  =======||
         public static int SaveItem(LotteryDetail lottoItem)
         {
             int recordId = 0;
@@ -219,7 +219,7 @@ namespace Project.Lottery.DAL
 
         #region SECTION 4 ||=======  DELETE ITEM  =======||
 
-        #region ||=======  DELETE WINNING-NUMBER-ITEM | PARAM ~ DRAWING-ID  =======||
+        #region ||=======  DELETE ITEM COLLECTION | WINNING-NUMBER-ITEM(S) BY DRAWING-ID | PARAM, DRAWING-ID  =======||
         public static int DeleteItem(int id)
         {
             int deletedRecord = 0;
