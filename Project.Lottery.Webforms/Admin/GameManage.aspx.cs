@@ -22,6 +22,8 @@ namespace Project.Lottery.Webforms.Admin
 
 
         #region SECTION 1 ||=======  BIND EVENTS  =======||
+
+        #region ||=======  BIND SELECTED INFO FROM LIST-VIEW  =======||
         public void BindUpdateInfo(int id)
         {
 
@@ -56,8 +58,10 @@ namespace Project.Lottery.Webforms.Admin
             hidLotteryId.Value = id.ToString();
 
         }
+        #endregion
 
-        public void BindListView(int id)
+        #region ||=======  REQUEST DATA; BIND RESULT IN LIST-VIEW  =======||
+        public void BindListView()
         {
             LotteryDetailCollection tmpCollect = LotteryDetailBLL.GetCollection();
 
@@ -65,16 +69,19 @@ namespace Project.Lottery.Webforms.Admin
             rptListView.DataBind();
 
         }
+        #endregion
 
-        void UCDropDownEvent(object sender, EventArgs e)
+        #region ||=======  UTILIZE DELEGATE; CAPTURE SELECTED VALUE FROM GAME-NAME DROPDOWN  =======||
+        private void UCDropDownEvent(object sender, EventArgs e)
         {
             DropDownList ddl = (DropDownList)sender;
             int id = ddl.SelectedValue.ToInt();
             BindUpdateInfo(id);
-            BindListView(id);
+            BindListView();
         }
+        #endregion
 
-
+        #region ||=======  BIND EDIT/DELETE BUTTON; ASSOCIATE DESIRED ID TO EACH  =======||
         protected void rptListView_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
             if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
@@ -88,29 +95,15 @@ namespace Project.Lottery.Webforms.Admin
                 delete.CommandArgument = tmpItem.LotteryId.ToString();
             }
         }
-
-
-
         #endregion
 
-
+        #endregion
 
 
 
         #region SECTION 2 ||=======  PROCESS  =======||
 
-        #region ||=======  DELETE CLICK-BTN
-        protected void DeleteItem(int id)
-        {
-            int deletedRecord = LotteryDetailBLL.DeleteItem(id);
-            ReloadPage();
-
-        }
-
-
-        #endregion
-
-        #region ||=======  RELOAD PAGE
+        #region ||=======  RELOAD PAGE; REDIRECT TO SELF  =======||
         protected void ReloadPage()
         {
             Response.Redirect("GameManage.aspx");
@@ -118,21 +111,25 @@ namespace Project.Lottery.Webforms.Admin
 
         #endregion
 
-        #region ||=======
-
 
         #endregion
-
-
-        #endregion
-
-
 
 
 
         #region SECTION 3 ||=======  EVENTS  =======||
 
-        #region ||=======  SAVE CLICK-BTN
+        #region ||=======  CLICK-BTN | DELETE  =======||
+        protected void DeleteItem(int id)
+        {
+            int deletedRecord = LotteryDetailBLL.DeleteItem(id);
+            ReloadPage();
+
+        }
+
+        #endregion
+
+
+        #region ||=======  CLICK-BTN | SAVE BUTTON  =======||
         protected void SaveItemButton_Click(object sender, EventArgs e)
         {
             LotteryDetail tmpItem = new LotteryDetail();
@@ -158,7 +155,8 @@ namespace Project.Lottery.Webforms.Admin
 
         #endregion
 
-        #region ||=======  EDIT/DELETE GAME COMMAND BUTTON  =======||
+
+        #region ||=======  REPEATER CLICK-BTN | EDIT OR DELETE GAME-COMMAND  =======||
         protected void Game_Command(object sender, CommandEventArgs e)
         {
             switch(e.CommandName)
@@ -171,7 +169,6 @@ namespace Project.Lottery.Webforms.Admin
                     break;
             }
         }
-
 
         #endregion
 

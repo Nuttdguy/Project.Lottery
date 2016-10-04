@@ -175,9 +175,6 @@ namespace Project.Lottery.DAL
         public static int SaveItem(LotteryDetail lottoItem)
         {
             int recordId = 0;
-            //string sqlVarLocId = "";
-            //string sqlVarLottoId = "";
-            //string prefix = "@";
             string spToUse = null;
             int locId = lottoItem.LocationId;
             int lottoId = lottoItem.LotteryId;

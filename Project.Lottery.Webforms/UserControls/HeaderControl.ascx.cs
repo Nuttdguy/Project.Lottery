@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Project.Lottery.Models.Helpers;
+using Project.Lottery.Models.Extensions;
+using Project.Lottery.Models.Delegates;
 using Project.Lottery.Models.Enums;
 
 
@@ -14,11 +16,14 @@ namespace Project.Lottery.Webforms.UserControls
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            LoadBannerImage();
+            UCDropDownEventDelegate.selectedEvent += new UCDropDownEventDelegate.OnSelectedChangeEvent(UCDropDownEvent);
+            if (!IsPostBack)
+                LoadPageTitle();
         }
 
         #region SECTION 1 ||========  PROPERTIES  =======||
 
+        #region ||=======  STATIC PROPERTIES | IMAGE-URLS, PAGE-TITLE-CAPTION  =======||
         private string _Powerball = "~/App_Themes/Main/images/powerballLogo.png";
         private string _MegaMillions = "~/App_Themes/Main/Images/megaMillionsLogo.png";
         private string _Gopher5 = "~/App_Themes/Main/images/gopher5Logo.png";
@@ -29,7 +34,10 @@ namespace Project.Lottery.Webforms.UserControls
         private string _PageTitle_WinningNumberManage = "Winning Number Manage ";
         private string _PageTitle_GameAvailableManage = "Game Available Manage";
 
+        #endregion
 
+
+        #region ||=======  GET METHOD | RETRIEVE URL, SEPARATE INTO ARRAY  ======||
         public static string[] BaseUrl
         {
             get
@@ -39,12 +47,14 @@ namespace Project.Lottery.Webforms.UserControls
                 return baseUrl;
             }
         }
+        #endregion
 
         #endregion
 
+        #region SECTION 2 ||=======  SET HEADER ASSETS =======||
 
-
-        public void LoadBannerImage()
+        #region ||=======  SET PAGE-TITLE-CAPTION  =======||
+        public void LoadPageTitle()
         {
 
             string[] url = BaseUrl;
@@ -53,31 +63,72 @@ namespace Project.Lottery.Webforms.UserControls
 
             if (cUrl == UrlEnum.GameManage + ext)
             {
-                HeaderImage.ImageUrl = _Powerball;
                 HeaderTitle.Text = _PageTitle_GameManage;
             }
             else if (cUrl == UrlEnum.DrawingManage + ext)
             {
-                HeaderImage.ImageUrl = _MegaMillions;
                 HeaderTitle.Text = _PageTitle_DrawingManage;
             }
             else if (cUrl == UrlEnum.WinningNumberManage + ext)
             {
-                HeaderImage.ImageUrl = _NorthstarCash;
                 HeaderTitle.Text = _PageTitle_WinningNumberManage;
             }
             else if (cUrl == UrlEnum.GameAvailableManage + ext)
             {
-                HeaderImage.ImageUrl = _Gopher5;
                 HeaderTitle.Text = _PageTitle_GameAvailableManage;
             }
             else
             {
-                HeaderImage.ImageUrl = HeaderImage.ImageUrl = _Powerball;
-                HeaderTitle.Text = "";
+                HeaderImage.ImageUrl = _Powerball;
             }
 
         }
+
+        #endregion
+
+
+        #region ||=======  SET PAGE-TITLE-IMAGE  =======||
+        public void LoadTitleImage(int id )
+        {
+            switch (id)
+            {
+                case 1:
+                    HeaderImage.ImageUrl = _Powerball;
+                    break;
+                case 2:
+                    HeaderImage.ImageUrl = _MegaMillions;
+                    break;
+                case 3:
+                    HeaderImage.ImageUrl = _Gopher5;
+                    break;
+                case 4:
+                    HeaderImage.ImageUrl = _NorthstarCash;
+                    break;
+                default:
+                    HeaderImage.ImageUrl = _Powerball;
+                    break;
+            }
+        }
+
+        #endregion
+
+        #endregion
+
+        #region SECTION 3 ||=======  EVENTS  =======||
+
+        #region ||=======  DROP-DOWN EVENT | INVOKES METHODS, LOADS HEADER ASSETS  =======||
+        void UCDropDownEvent(object sender, EventArgs e)
+        {
+            DropDownList ddl = (DropDownList)sender;
+            int id = ddl.SelectedValue.ToInt();
+
+            LoadTitleImage(id);
+            LoadPageTitle();
+
+        }
+        #endregion
+
+        #endregion
 
     }
 }

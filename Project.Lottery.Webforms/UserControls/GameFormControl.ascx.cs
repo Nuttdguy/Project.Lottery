@@ -19,6 +19,7 @@ namespace Project.Lottery.Webforms.UserControls
             UCDropDownEventDelegate.selectedEvent += new UCDropDownEventDelegate.OnSelectedChangeEvent(UCDropDownEvent);
         }
 
+        #region SECTION 1 ||=======  BIND EVENTS  =======||
 
         public void BindUpdateInfo(int id)
         {
