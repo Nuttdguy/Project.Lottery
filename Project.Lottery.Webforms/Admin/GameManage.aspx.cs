@@ -111,7 +111,6 @@ namespace Project.Lottery.Webforms.Admin
 
         #endregion
 
-
         #endregion
 
 
@@ -127,7 +126,6 @@ namespace Project.Lottery.Webforms.Admin
         }
 
         #endregion
-
 
         #region ||=======  CLICK-BTN | SAVE BUTTON  =======||
         protected void SaveItemButton_Click(object sender, EventArgs e)
@@ -154,7 +152,6 @@ namespace Project.Lottery.Webforms.Admin
         }
 
         #endregion
-
 
         #region ||=======  REPEATER CLICK-BTN | EDIT OR DELETE GAME-COMMAND  =======||
         protected void Game_Command(object sender, CommandEventArgs e)

@@ -11,7 +11,7 @@ namespace Project.Lottery.BLL
 
         #region SECTION 1 ||=======  GET ITEM  =======||
 
-        #region ||=======  GET WINNNG-NUMBER-ITEM | PARAM ~ DRAWING-ID  =======||
+        #region ||=======  GET | SINGLE-ITEM | LOCATION BY LOCATION-ID | PARAM LOCATION-ID  =======||
         public static LotteryDetail GetItem(int id)
         {
             LotteryDetail tmpObj = LocationDAL.GetItem(id);
@@ -25,7 +25,7 @@ namespace Project.Lottery.BLL
 
         #region SECTION 2 ||=======  GET COLLECTION  =======||
 
-        #region ||=======  GET COLLECTION | ALL  =======||
+        #region ||=======  GET COLLECTION | LOCATION | ALL  =======||
         public static LotteryDetailCollection GetCollection()
         {
             LotteryDetailCollection tmpCollect = LocationDAL.GetCollection();
@@ -33,28 +33,28 @@ namespace Project.Lottery.BLL
         }
         #endregion
 
-        #region ||=======  GET COLLECTION | PARAM DRAWING-ID  =======||
-        public static LotteryDetailCollection GetCollection(int id)
+        #region ||=======  GET COLLECTION | LOCATION BY LOTTERY-ID | PARAM LOTTERY-NAME-ID  =======||
+        public static LotteryDetailCollection GetCollection(int lottoId)
         {
-            LotteryDetailCollection tmpCollect = LocationDAL.GetCollection(id);
+            LotteryDetailCollection tmpCollect = LocationDAL.GetCollection(lottoId);
             return tmpCollect;
         }
         #endregion
 
-        #region ||=======  GET COLLECTION | PARAM ID, ID-TYPE =======||
-        public static LotteryDetailCollection GetCollection(int id, int idType)
-        {
-            LotteryDetailCollection tmpCollect = LocationDAL.GetCollection(id, idType);
-            return tmpCollect;
-        }
-        #endregion
+        //#region ||=======  NOT USED  =======||
+        //public static LotteryDetailCollection GetCollection(int id, int idType)
+        //{
+        //    LotteryDetailCollection tmpCollect = LocationDAL.GetCollection(id, idType);
+        //    return tmpCollect;
+        //}
+        //#endregion
 
         #endregion
 
 
         #region SECTION 3 ||=======  SAVE/UPDATE ITEM  =======||
 
-        #region ||=======  SAVE/UPDATE WINNING-NUMBER-ITEM | PARAM ~ NONE, DRAWING-ID [OP]  =======||
+        #region ||=======  SAVE/UPDATE ITEM(S) | LOCATION & ASSOCIATED GAME NAME | PARAM OBJECT  =======||
         public static int SaveItem(LotteryDetail lottoItem)
         {
             int recordId = LocationDAL.SaveItem(lottoItem);
@@ -67,7 +67,7 @@ namespace Project.Lottery.BLL
 
         #region SECTION 4 ||=======  DELETE ITEM  =======||
 
-        #region ||=======  DELETE WINNING-NUMBER-ITEM | PARAM ~ DRAWING-ID  =======||
+        #region ||=======  DELETE ITEM(S) | LOCATION & ASSOCIATED GAME NAME | PARAM LOCATION-ID, LOTTERY-ID [OP] =======||
         public static int DeleteItem(int locId, int lottoId)
         {
             int deletedRecord = LocationDAL.DeleteItem(locId, lottoId);

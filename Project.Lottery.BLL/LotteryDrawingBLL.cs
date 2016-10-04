@@ -10,10 +10,10 @@ namespace Project.Lottery.BLL
 
         #region SECTION 1 ||=======  GET ITEM  =======||
 
-        #region ||=======  GET LOTTERY-ITEM | PARAM ~ LOTTERY-ID  =======||
-        public static LotteryDetail GetItem(int id)
+        #region ||=======  GET | SINGLE-ITEM | BY LOTTERY-ITEM | PARAM, LOTTERY-ID  =======||
+        public static LotteryDetail GetItem(int lottoId)
         {
-            LotteryDetail tmpObj = LotteryDrawingDAL.GetItem(id);
+            LotteryDetail tmpObj = LotteryDrawingDAL.GetItem(lottoId);
             return tmpObj;
 
         }
@@ -24,7 +24,7 @@ namespace Project.Lottery.BLL
 
         #region SECTION 2 ||=======  GET COLLECTION  =======||
 
-        #region ||=======  GET COLLECTION | ALL  =======||
+        #region ||=======  GET COLLECTION | LOTTERY-DRAWING | ALL  =======||
         public static LotteryDetailCollection GetCollection()
         {
             LotteryDetailCollection tmpCollect = LotteryDrawingDAL.GetCollection();
@@ -32,7 +32,7 @@ namespace Project.Lottery.BLL
         }
         #endregion
 
-        #region ||=======  GET COLLECTION | PARAM LOTTERY-ID  =======||
+        #region ||=======  GET COLLECTION | LOTTERY-DRAWING BY LOTTERY-ID | PARAM LOTTERY-ID  =======||
         public static LotteryDetailCollection GetCollection(int id)
         {
             LotteryDetailCollection tmpCollect = LotteryDrawingDAL.GetCollection(id);
@@ -45,7 +45,7 @@ namespace Project.Lottery.BLL
 
         #region SECTION 3 ||=======  SAVE/UPDATE ITEM  =======||
 
-        #region ||=======  SAVE/UPDATE LOTTERY-ITEM | PARAM ~ NONE, LOTTERY-ID [OP]  =======||
+        #region ||=======  SAVE/UPDATE ITEM | LOTTERY-DRAWING-ITEM | PARAM LOTTERY-DRAWING-OBJECT  =======||
         public static int SaveItem(LotteryDetail lottoItem)
         {
             int recordId = LotteryDrawingDAL.SaveItem(lottoItem);
@@ -58,10 +58,10 @@ namespace Project.Lottery.BLL
 
         #region SECTION 4 ||=======  DELETE ITEM  =======||
 
-        #region ||=======  DELETE LOTTERY-ITEM | PARAM ~ LOTTERY-ID  =======||
-        public static int DeleteItem(int id)
+        #region ||=======  DELETE | LOTTERY-DRAWING-ITEM | PARAM LOTTERY-DRAWING-ID  =======||
+        public static int DeleteItem(int lottoDrawId)
         {
-            int deletedRecord = LotteryDrawingDAL.DeleteItem(id);
+            int deletedRecord = LotteryDrawingDAL.DeleteItem(lottoDrawId);
             return deletedRecord;
         }
         #endregion

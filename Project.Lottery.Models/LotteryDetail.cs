@@ -7,6 +7,7 @@ using Project.Lottery.Models.Interfaces;
 
 namespace Project.Lottery.Models
 {
+    //==|| EXPERIMENT > UTILIZE INTERFACES INSTEAD OF CLASSES == ALSO POSSIBLE, UTILIZE ABSTRACT CLASSES ||==\\
     public class LotteryDetail : ILocation, IInstruction, IGameOdd, ICost, ILotteryDrawing, IWinningNumber, IBallType
     {
 
