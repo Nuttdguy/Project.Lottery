@@ -47,6 +47,7 @@
     <Compile Include="GameOddDAL.cs" />
     <Compile Include="HelperDAL.cs" />
     <Compile Include="InstructionDAL.cs" />
+    <Compile Include="LocationDAL.cs" />
     <Compile Include="LotteryDetailDAL.cs" />
     <Compile Include="LotteryDrawingDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -11,7 +11,8 @@ namespace Project.Lottery.Models
         None = 1,
         InsertItem = 10,
         UpdateItem = 20,
-        DeleteItem = 30
+        DeleteItem = 30,
+        DeleteAll_ByLocationId = 40
 
     }
 }

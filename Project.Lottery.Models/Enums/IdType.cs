@@ -14,6 +14,7 @@ namespace Project.Lottery.Models.Enums
         WinningNumberId,
         BallTypeId,
         InstructionId,
-        CostId
+        CostId,
+        LocationId
     }
 }

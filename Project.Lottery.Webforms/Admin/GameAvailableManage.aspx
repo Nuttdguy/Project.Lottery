@@ -20,22 +20,23 @@
 				<asp:Panel runat="server" ID="panelForm" >
 
 					<div>
-						<label>Winning Number ID</label>
-						<asp:TextBox runat="server" ID="txtWinningNumberId" TextMode="Number" />
+						<label>Location ID</label>
+						<asp:TextBox runat="server" Enabled="false" ID="txtLocationId" TextMode="Number" />
+					</div>
+
+
+					<div>
+						<label>State</label>
+						<asp:TextBox runat="server" ID="txtState" />
 					</div>
 
 					<div>
-						<label>Ball #</label>
-						<asp:TextBox runat="server" ID="txtBallNumber" />
-					</div>
-
-					<div>
-						<label>Ball Type</label>
-						<asp:DropDownList runat="server" ID="drpBallType" DataTextField="BallTypeDescription" DataValueField="BallTypeId" />
+						<label>New State to Game</label>
+						<asp:DropDownList Enabled="false" runat="server" ID="drpLotteryGames" DataTextField="LotteryName" DataValueField="LotteryId" />
 					</div>
 
 					<div class="Button Button_Save">
-						<asp:Button runat="server" ID="SaveItemButton" Text="Add State" />
+						<asp:Button runat="server" ID="SaveItemButton" Text="Add State"  OnClick="SaveItemButton_Click" />
 					</div>
 
 				</asp:Panel>
@@ -57,11 +58,8 @@
 					<table>
 						<tr>
 							<th class="editCol">&nbsp;</th>
-							<th>State ID</th>
-							<th>Drawing ID</th>
-							<th>Ball #</th>
-							<th>Ball Type</th>
-							<th>Ball Description</th>
+							<th>Location ID</th>
+							<th>State</th>
 						</tr>
 				</HeaderTemplate>
 
@@ -71,7 +69,8 @@
 							<asp:Button runat="server" ID="Edit" CommandName="Edit" Text="Edit" OnCommand="Game_Command" />
 							<asp:Button runat="server" ID="Delete" CommandName="Delete" Text="Delete"  OnCommand="Game_Command"/>
 						</td>
-
+						<td><%# Eval("LocationId") %></td>
+						<td><%# Eval("State") %></td>
 					</tr>
 				</ItemTemplate>
 
@@ -81,7 +80,8 @@
 							<asp:Button runat="server" ID="Edit" CommandName="Edit" Text="Edit" OnCommand="Game_Command" />
 							<asp:Button runat="server" ID="Delete" CommandName="Delete" Text="Delete"  OnCommand="Game_Command"/>
 						</td>
-
+						<td><%# Eval("LocationId") %></td>
+						<td><%# Eval("State") %></td>
 					</tr>
 				</AlternatingItemTemplate>
 

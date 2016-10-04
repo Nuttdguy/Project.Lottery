@@ -14,100 +14,105 @@ namespace Project.Lottery.Webforms.Admin
         protected void Page_Load(object sender, EventArgs e)
         {
             UCDropDownEventDelegate.selectedEvent += new UCDropDownEventDelegate.OnSelectedChangeEvent(UCDropDownEvent);
-            if (!IsPostBack)
-            {
-                //BindBallType();
-            }
+
         }
 
 
         #region SECTION 1 ||=======  BIND EVENTS  =======||
         public void BindUpdateInfo(int id)
         {
+            //===  GET THE SELECTED LOCATION RECORD; BIND TO TEXT BOX FIELD  ===\\
+            if (id > 0 && string.IsNullOrEmpty(txtState.Text))
+            {
+                LotteryDetail tmpItem = LocationBLL.GetItem(id);
 
-            //if (id != 0)
-            //{
-            //    LotteryDetail tmpItem = WinningNumberBLL.GetItem(id);
+                txtLocationId.Text = tmpItem.LocationId.ToString();
+                txtState.Text = tmpItem.State.ToString();
 
-            //    txtWinningNumberId.Text = tmpItem.WinningNumberId.ToString();
+                hidLotteryId.Value = tmpItem.LotteryId.ToString();
+            }
+            if (!string.IsNullOrEmpty(txtState.Text))
+                drpLotteryGames.Enabled = true;
 
-            //    txtDrawingId.Text = tmpItem.LotteryDrawingId.ToString();
-            //    txtBallNumber.Text = tmpItem.BallNumber.ToString();
-            //    drpBallType.SelectedValue = tmpItem.BallTypeId.ToString();
-
-
-            //    hidLotteryId.Value = tmpItem.LotteryId.ToString();
-            //    hidDrawingId.Value = tmpItem.LotteryDrawingId.ToString();
-            //    hidWinningNumberId.Value = tmpItem.WinningNumberId.ToString();
-
-            //    SaveItemButton.Text = "Update Drawing";
-            //}
-            //else if (id == 0)
-            //{
-            //    ClearTextValue();
-            //    SaveItemButton.Text = "Add Winning #";
-            //}
-
+            SetButtonTextValue();
 
         }
 
-        public void BindBallType()
+        public void BindLotteryNames()
         {
-            //BallTypeCollection tmpCollect = BallTypeBLL.GetCollection();
-            //tmpCollect.Insert(0, new BallType { BallTypeDescription = "(Select Ball Type)", BallTypeId = 0 });
+            LotteryDetailCollection tmpItem = LotteryDetailBLL.GetCollection();
+            drpLotteryGames.SelectedValue = hidLotteryId.Value;
 
-            //drpBallType.DataSource = tmpCollect;
-            //drpBallType.DataBind();
+            tmpItem.Insert(0, new LotteryDetail { LotteryName = "(Select Game)", LotteryId = 0 });
+
+            drpLotteryGames.DataSource = tmpItem;
+            drpLotteryGames.DataBind();
+
         }
+
 
         public void BindListView(int id)
         {
-            //LotteryDetailCollection tmpCollect = WinningNumberBLL.GetCollection(id);
+            LotteryDetailCollection tmpCollect = null;
+            ClearTextValue();
 
-            //ClearTextValue();
-            //rptListView.DataSource = tmpCollect;
-            //rptListView.DataBind();
+            if (id > 0)
+            {
+                tmpCollect = LocationBLL.GetCollection(id);
+                if (tmpCollect == null)
+                    drpLotteryGames.Enabled = true;
+                else
+                    drpLotteryGames.Enabled = false;
+            }
+            else
+            {
+                tmpCollect = LocationBLL.GetCollection();
+                if (!string.IsNullOrEmpty(txtState.Text))
+                    drpLotteryGames.Enabled = true;
+                else
+                    drpLotteryGames.Enabled = false;
+            }
+
+            hidLotteryId.Value = id.ToString();
+            rptListView.DataSource = tmpCollect;
+            rptListView.DataBind();
         }
 
-        public void BindListView(int id, int idType)
-        {
-            //LotteryDetailCollection tmpCollect = WinningNumberBLL.GetCollection(id, idType);
-
-            //ClearTextValue();
-            //rptListView.DataSource = tmpCollect;
-            //rptListView.DataBind();
-        }
 
         void UCDropDownEvent(object sender, EventArgs e)
         {
-            //DropDownList ddl = (DropDownList)sender;
-            //int id = ddl.SelectedValue.ToInt();
+            DropDownList ddl = (DropDownList)sender;
+            int id = ddl.SelectedValue.ToInt();
 
-            //if (id <= 0)
-            //    SaveItemButton.Text = "Add Winning #";
+            hidLotteryId.Value = id.ToString();
 
-            //hidLotteryId.Value = id.ToString();
-            //BindListView(id);
+            BindLotteryNames();
+            BindListView(id);
+            SetButtonTextValue();
+
+            if (id > 0)
+            {
+                drpLotteryGames.SelectedValue = hidLotteryId.Value;
+                ClearTextValue();
+            }
         }
 
 
         protected void rptListView_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
-            //if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
-            //{
-            //    LotteryDetail tmpItem = (LotteryDetail)e.Item.DataItem;
+            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+            {
+                LotteryDetail tmpItem = (LotteryDetail)e.Item.DataItem;
 
-            //    Button edit = (Button)e.Item.FindControl("Edit");
-            //    Button delete = (Button)e.Item.FindControl("Delete");
+                Button edit = (Button)e.Item.FindControl("Edit");
+                Button delete = (Button)e.Item.FindControl("Delete");
 
-            //    edit.CommandArgument = tmpItem.WinningNumberId.ToString();
-            //    delete.CommandArgument = tmpItem.WinningNumberId.ToString();
-            //}
+                edit.CommandArgument = tmpItem.LocationId.ToString();
+                delete.CommandArgument = tmpItem.LocationId.ToString();
+            }
         }
 
-
         #endregion
-
 
 
 
@@ -115,9 +120,9 @@ namespace Project.Lottery.Webforms.Admin
         #region SECTION 2 ||=======  PROCESS  =======||
 
         #region ||=======  DELETE CLICK-BTN
-        protected void DeleteItem(int id)
+        protected void DeleteItem(int locId, int lottoId)
         {
-            //int deletedRecord = WinningNumberBLL.DeleteItem(id);
+            int deletedRecord = LocationBLL.DeleteItem(locId, lottoId);
         }
 
 
@@ -126,8 +131,8 @@ namespace Project.Lottery.Webforms.Admin
         #region ||=======  RELOAD PAGE
         protected void ReloadPage()
         {
-            //Response.Redirect("WinningNumberManage.aspx");
-            //DisplayResultMessage();
+            Response.Redirect("GameAvailableManage.aspx");
+            DisplayResultMessage();
         }
 
         #endregion
@@ -135,11 +140,25 @@ namespace Project.Lottery.Webforms.Admin
         #region ||=======  CLEAR TEXTBOX FIELDS  ========||
         public void ClearTextValue()
         {
-            //txtBallNumber.Text = string.Empty;
-            //txtDrawingId.Text = string.Empty;
-            //txtWinningNumberId.Text = string.Empty;
-            //drpBallType.SelectedValue = "0";
+            txtLocationId.Text = string.Empty;
+            txtState.Text = string.Empty;
+
         }
+
+        #region ||=======  SET BUTTON TEXT VALUE
+        protected void SetButtonTextValue()
+        {
+            if (string.IsNullOrEmpty(txtState.Text))
+            {
+                ClearTextValue();
+                SaveItemButton.Text = "Add State";
+            }
+            else
+                SaveItemButton.Text = "Update State";
+       
+        }
+
+        #endregion
 
 
         #endregion
@@ -165,27 +184,29 @@ namespace Project.Lottery.Webforms.Admin
         #region ||=======  SAVE CLICK-BTN
         protected void SaveItemButton_Click(object sender, EventArgs e)
         {
-            //LotteryDetail tmpItem = new LotteryDetail();
+            LotteryDetail tmpItem = new LotteryDetail();
 
-            //tmpItem.WinningNumberId = txtWinningNumberId.Text.ToInt();
+            tmpItem.LocationId = txtLocationId.Text.ToInt();
+            tmpItem.State = txtState.Text;
 
-            //tmpItem.LotteryDrawingId = txtDrawingId.Text.ToInt();
-            //tmpItem.BallNumber = txtBallNumber.Text.ToInt();
-            //tmpItem.BallTypeId = drpBallType.SelectedValue.ToInt();
+            if (drpLotteryGames.SelectedValue != "0")
+                tmpItem.LotteryId = drpLotteryGames.SelectedValue.ToInt();
+            else
+                tmpItem.LotteryId = hidLotteryId.Value.ToInt();
 
-            //int recordId = WinningNumberBLL.SaveItem(tmpItem);
 
-            //if (recordId > 0)
-            //{
-            //    ClearTextValue();
-            //    SaveItemButton.Text = "Add Winning #";
-            //}
+            int recordId = LocationBLL.SaveItem(tmpItem);
 
-            //hidLotteryId.Value = tmpItem.LotteryId.ToString();
-            //hidDrawingId.Value = tmpItem.LotteryDrawingId.ToString();
-            //hidWinningNumberId.Value = tmpItem.WinningNumberId.ToString();
+            hidLotteryId.Value = tmpItem.LotteryId.ToString();
 
-            //ClearTextValue();
+            if (recordId > 0)
+            {
+                ClearTextValue();
+                drpLotteryGames.Enabled = false;
+                drpLotteryGames.SelectedValue = "0";
+            }
+            else
+                ClearTextValue();
         }
 
         #endregion
@@ -193,16 +214,17 @@ namespace Project.Lottery.Webforms.Admin
         #region ||=======  EDIT/DELETE GAME COMMAND BUTTON  =======||
         protected void Game_Command(object sender, CommandEventArgs e)
         {
-            //switch (e.CommandName)
-            //{
-            //    case "Edit":
-            //        BindUpdateInfo(e.CommandArgument.ToString().ToInt());
-            //        break;
-            //    case "Delete":
-            //        DeleteItem(e.CommandArgument.ToString().ToInt());
-            //        ReloadPage();
-            //        break;
-            //}
+            switch (e.CommandName)
+            {
+                case "Edit":
+                    ClearTextValue();
+                    BindUpdateInfo(e.CommandArgument.ToString().ToInt());
+                    break;
+                case "Delete":
+                    DeleteItem(e.CommandArgument.ToString().ToInt(), hidLotteryId.Value.ToInt() );
+                    ReloadPage();
+                    break;
+            }
         }
 
 

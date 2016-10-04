@@ -31,31 +31,31 @@ namespace Project.Lottery.Webforms.Admin {
         protected global::System.Web.UI.WebControls.Panel panelForm;
         
         /// <summary>
-        /// txtWinningNumberId control.
+        /// txtLocationId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtWinningNumberId;
+        protected global::System.Web.UI.WebControls.TextBox txtLocationId;
         
         /// <summary>
-        /// txtBallNumber control.
+        /// txtState control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBallNumber;
+        protected global::System.Web.UI.WebControls.TextBox txtState;
         
         /// <summary>
-        /// drpBallType control.
+        /// drpLotteryGames control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList drpBallType;
+        protected global::System.Web.UI.WebControls.DropDownList drpLotteryGames;
         
         /// <summary>
         /// SaveItemButton control.

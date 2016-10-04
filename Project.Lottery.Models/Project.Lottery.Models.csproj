@@ -53,6 +53,7 @@
     <Compile Include="Enums\LeftNavPageOptionEnum.cs" />
     <Compile Include="Enums\QueryExecuteType.cs" />
     <Compile Include="Enums\QuerySelectType.cs" />
+    <Compile Include="Enums\StoredProcedureNameEnum.cs" />
     <Compile Include="Enums\UrlEnum.cs" />
     <Compile Include="Exceptions\CustomExceptions.cs" />
     <Compile Include="Extensions\Extension.cs" />
