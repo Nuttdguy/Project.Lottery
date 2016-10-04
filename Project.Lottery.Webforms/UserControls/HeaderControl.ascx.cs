@@ -105,7 +105,7 @@ namespace Project.Lottery.Webforms.UserControls
                     HeaderImage.ImageUrl = _NorthstarCash;
                     break;
                 default:
-                    HeaderImage.ImageUrl = _Powerball;
+                    HeaderImage.ImageUrl = null;
                     break;
             }
         }

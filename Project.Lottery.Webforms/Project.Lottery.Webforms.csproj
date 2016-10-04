@@ -99,8 +99,6 @@
     <Content Include="Global.asax" />
     <Content Include="Index.aspx" />
     <Content Include="UserControls\ContentBodyNavControl.ascx" />
-    <Content Include="UserControls\GameFormControl.ascx" />
-    <Content Include="UserControls\GameListViewControl.ascx" />
     <Content Include="UserControls\HeaderControl.ascx" />
     <Content Include="UserControls\LeftNavigationControl.ascx" />
     <Content Include="Web.config" />
@@ -158,20 +156,6 @@
     </Compile>
     <Compile Include="UserControls\ContentBodyNavControl.ascx.designer.cs">
       <DependentUpon>ContentBodyNavControl.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\GameFormControl.ascx.cs">
-      <DependentUpon>GameFormControl.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="UserControls\GameFormControl.ascx.designer.cs">
-      <DependentUpon>GameFormControl.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\GameListViewControl.ascx.cs">
-      <DependentUpon>GameListViewControl.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="UserControls\GameListViewControl.ascx.designer.cs">
-      <DependentUpon>GameListViewControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="UserControls\HeaderControl.ascx.cs">
       <DependentUpon>HeaderControl.ascx</DependentUpon>

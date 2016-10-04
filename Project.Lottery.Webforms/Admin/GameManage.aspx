@@ -1,7 +1,5 @@
 ﻿<%@ Page Title="Lottery | Game Manage" Theme="Main" Language="C#" MasterPageFile="~/MasterPages/BaseSkin.Master" AutoEventWireup="true" CodeBehind="GameManage.aspx.cs" Inherits="Project.Lottery.Webforms.Admin.GameManage" %>
 
-<%@ Register TagPrefix="CustomControl" TagName="GameFormControl" Src="~/UserControls/GameFormControl.ascx" %>
-<%@ Register TagPrefix="CustomControl" TagName="GameListViewControl" Src="~/UserControls/GameListViewControl.ascx" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
