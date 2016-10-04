@@ -19,6 +19,8 @@ namespace Project.Lottery.Webforms.Admin
 
 
         #region SECTION 1 ||=======  BIND EVENTS  =======||
+
+        #region ||=======  BIND SELECTED INFO FROM LIST-VIEW TO TEXT-BOX-FIELDS  =======||
         public void BindUpdateInfo(int id)
         {
             //===  GET THE SELECTED LOCATION RECORD; BIND TO TEXT BOX FIELD  ===\\
@@ -37,7 +39,9 @@ namespace Project.Lottery.Webforms.Admin
             SetButtonTextValue();
 
         }
+        #endregion
 
+        #region ||=======  REQUEST DATA | BIND RESULT TO LOTTERY-GAME DROP DOWN  =======||
         public void BindLotteryNames()
         {
             LotteryDetailCollection tmpItem = LotteryDetailBLL.GetCollection();
@@ -49,14 +53,15 @@ namespace Project.Lottery.Webforms.Admin
             drpLotteryGames.DataBind();
 
         }
+        #endregion
 
-
+        #region ||=======  REQUEST DATA | BIND RESULT IN LIST-VIEW BY EITHER SELECTED GAME OR NOT | PARAM LOTTERY-ID, NONE(OP) ======||
         public void BindListView(int id)
         {
             LotteryDetailCollection tmpCollect = null;
             ClearTextValue();
 
-            if (id > 0)
+            if (id > 0) //==||  GET W/ LOTTERY-GAME FILTER  ||==\\
             {
                 tmpCollect = LocationBLL.GetCollection(id);
                 if (tmpCollect == null)
@@ -64,7 +69,7 @@ namespace Project.Lottery.Webforms.Admin
                 else
                     drpLotteryGames.Enabled = false;
             }
-            else
+            else //==||  GET W/O LOTTERY-GAME FILTER  ||==\\
             {
                 tmpCollect = LocationBLL.GetCollection();
                 if (!string.IsNullOrEmpty(txtState.Text))
@@ -115,37 +120,25 @@ namespace Project.Lottery.Webforms.Admin
         #endregion
 
 
-
-
         #region SECTION 2 ||=======  PROCESS  =======||
 
-        #region ||=======  DELETE CLICK-BTN
-        protected void DeleteItem(int locId, int lottoId)
-        {
-            int deletedRecord = LocationBLL.DeleteItem(locId, lottoId);
-        }
-
-
-        #endregion
-
-        #region ||=======  RELOAD PAGE
+        #region ||=======  RELOAD PAGE | REDIRECT TO SELF  =======||
         protected void ReloadPage()
         {
             Response.Redirect("GameAvailableManage.aspx");
-            DisplayResultMessage();
         }
 
         #endregion
 
-        #region ||=======  CLEAR TEXTBOX FIELDS  ========||
+        #region ||=======  CLEAR | TEXTBOX FIELDS  ========||
         public void ClearTextValue()
         {
             txtLocationId.Text = string.Empty;
             txtState.Text = string.Empty;
-
         }
+        #endregion
 
-        #region ||=======  SET BUTTON TEXT VALUE
+        #region ||=======  SET BUTTON TEXT VALUE  =======||
         protected void SetButtonTextValue()
         {
             if (string.IsNullOrEmpty(txtState.Text))
@@ -157,31 +150,21 @@ namespace Project.Lottery.Webforms.Admin
                 SaveItemButton.Text = "Update State";
        
         }
-
         #endregion
 
-
         #endregion
-
-        #region ||=======  DISPLAY RESULT MESSAGE
-        protected void DisplayResultMessage()
-        {
-            //hidResultMessageArea.Value = "Operation was a success!";
-            //hidResultMessageArea.Visible = true;
-        }
-
-        #endregion
-
-
-        #endregion
-
-
-
 
 
         #region SECTION 3 ||=======  EVENTS  =======||
 
-        #region ||=======  SAVE CLICK-BTN
+        #region ||=======  CLICK-BTN | DELETE OBJECT | PARAM LOCATION-ID, LOTTERY-ID  =======||
+        protected void DeleteItem(int locId, int lottoId)
+        {
+            int deletedRecord = LocationBLL.DeleteItem(locId, lottoId);
+        }
+        #endregion
+
+        #region ||=======  CLICK-BTN | SAVE OBJECT | SEND OBJECT TO SAVE | SET HIDDEN FIELD, SELECTED DORP-DOWN VALUE, CLEAR FIELDS  =======|| 
         protected void SaveItemButton_Click(object sender, EventArgs e)
         {
             LotteryDetail tmpItem = new LotteryDetail();
@@ -211,7 +194,7 @@ namespace Project.Lottery.Webforms.Admin
 
         #endregion
 
-        #region ||=======  EDIT/DELETE GAME COMMAND BUTTON  =======||
+        #region ||=======  REPEATER CLICK-BTN | EDIT OR DELETE GAME-COMMAND  =======||
         protected void Game_Command(object sender, CommandEventArgs e)
         {
             switch (e.CommandName)
@@ -227,16 +210,10 @@ namespace Project.Lottery.Webforms.Admin
             }
         }
 
-
         #endregion
 
         #endregion
 
-        protected void viewByDrawingId_Click(object sender, EventArgs e)
-        {
-            //int drawId = txtDrawingId.Text.ToInt();
-            //int idType = (int)IdType.LotteryDrawingId;
-            //BindListView(drawId, idType);
-        }
+        #endregion
     }
 }

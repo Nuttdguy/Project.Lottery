@@ -26,9 +26,10 @@ namespace Project.Lottery.Webforms.Admin
 
 
         #region SECTION 1 ||=======  BIND EVENTS  =======||
+
+        #region ||=======  BIND SELECTED INFO FROM LIST-VIEW TO TEXT-BOX-FIELDS =======||
         public void BindUpdateInfo(int id)
         {
-
             if (id != 0)
             {
                 LotteryDetail tmpItem = WinningNumberBLL.GetItem(id);
@@ -52,9 +53,10 @@ namespace Project.Lottery.Webforms.Admin
                 SaveItemButton.Text = "Add Winning #";
             }
 
-
         }
+        #endregion
 
+        #region ||=======  REQUEST DATA | BIND RESULT TO DROP-DOWN  =======||
         public void BindBallType()
         {
             BallTypeCollection tmpCollect = BallTypeBLL.GetCollection();
@@ -63,25 +65,31 @@ namespace Project.Lottery.Webforms.Admin
             drpBallType.DataSource = tmpCollect;
             drpBallType.DataBind();
         }
+        #endregion
 
-        public void BindListView(int id)
+        #region ||=======  REQUEST DATA | BIND RESULT IN LIST-VIEW BY SELECTED-GAME | PARAM LOTTERY-ID  =======||
+        public void BindListView(int lottoId)
         {
-            LotteryDetailCollection tmpCollect = WinningNumberBLL.GetCollection(id);
+            LotteryDetailCollection tmpCollect = WinningNumberBLL.GetCollection(lottoId);
 
             ClearTextValue();
             rptListView.DataSource = tmpCollect;
             rptListView.DataBind();
         }
+        #endregion
 
-        public void BindListView(int id, int idType)
+        #region ||=======  REQUEST DATA | BIND RESULT IN LIST-VIEW BY DRAW-ID | PARAM DRAW-ID, TYPE-OF-ID  =======||
+        public void BindListView(int drawId, int idType)
         {
-            LotteryDetailCollection tmpCollect = WinningNumberBLL.GetCollection(id, idType);
+            LotteryDetailCollection tmpCollect = WinningNumberBLL.GetCollection(drawId, idType);
 
             ClearTextValue();
             rptListView.DataSource = tmpCollect;
             rptListView.DataBind();
         }
+        #endregion
 
+        #region ||=======  UTILIZE DELEGATE | CAPTURE SELECTED VALUE FROM GAME-NAME DROPDOWN | SET HIDDEN FIELD  =======||
         void UCDropDownEvent(object sender, EventArgs e)
         {
             DropDownList ddl = (DropDownList)sender;
@@ -93,8 +101,9 @@ namespace Project.Lottery.Webforms.Admin
             hidLotteryId.Value = id.ToString();
             BindListView(id);
         }
+        #endregion
 
-
+        #region ||=======  BIND EDIT/DELETE BUTTON | ASSOCIATE DESIRED ID TO EACH OCCURANCE  =======||
         protected void rptListView_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
             if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
@@ -108,35 +117,22 @@ namespace Project.Lottery.Webforms.Admin
                 delete.CommandArgument = tmpItem.WinningNumberId.ToString();
             }
         }
-
-
         #endregion
 
-
-
+        #endregion
 
 
         #region SECTION 2 ||=======  PROCESS  =======||
 
-        #region ||=======  DELETE CLICK-BTN
-        protected void DeleteItem(int id)
-        {
-            int deletedRecord = WinningNumberBLL.DeleteItem(id);
-        }
-
-
-        #endregion
-
-        #region ||=======  RELOAD PAGE
+        #region ||=======  RELOAD PAGE | REDIRECT TO SELF  =======||
         protected void ReloadPage()
         {
             Response.Redirect("WinningNumberManage.aspx");
-            DisplayResultMessage();
         }
 
         #endregion
 
-        #region ||=======  CLEAR TEXTBOX FIELDS  ========||
+        #region ||=======  CLEAR | TEXT FIELDS, SET DROP-DOWN-SELECTED  ========||
         public void ClearTextValue()
         {
             txtBallNumber.Text = string.Empty;
@@ -148,7 +144,7 @@ namespace Project.Lottery.Webforms.Admin
 
         #endregion
 
-        #region ||=======  DISPLAY RESULT MESSAGE
+        #region ||=======  RESULT MESSAGE | DISPLAY HIDDEN FIELD - MESSAGE  =======||
         protected void DisplayResultMessage()
         {
             hidResultMessageArea.Value = "Operation was a success!";
@@ -157,16 +153,19 @@ namespace Project.Lottery.Webforms.Admin
 
         #endregion
 
-
         #endregion
-
-
-
 
 
         #region SECTION 3 ||=======  EVENTS  =======||
 
-        #region ||=======  SAVE CLICK-BTN
+        #region ||=======  CLICK-BTN | DELETE OBJECT | PARAM WINNING-NUMBER-ID =======||
+        protected void DeleteItem(int winNumId)
+        {
+            int deletedRecord = WinningNumberBLL.DeleteItem(winNumId);
+        }
+        #endregion
+
+        #region ||=======  CLICK-BTN | SAVE OBJECT | SEND OBJECT TO SAVE | SET HIDDEN FIELD VALUES  =======||
         protected void SaveItemButton_Click(object sender, EventArgs e)
         {
             LotteryDetail tmpItem = new LotteryDetail();
@@ -194,7 +193,7 @@ namespace Project.Lottery.Webforms.Admin
 
         #endregion
 
-        #region ||=======  EDIT/DELETE GAME COMMAND BUTTON  =======||
+        #region ||=======  REPEATER CLICK-BTN | EDIT OR DELETE GAME-COMMAND  =======||
         protected void Game_Command(object sender, CommandEventArgs e)
         {
             switch (e.CommandName)
@@ -209,18 +208,22 @@ namespace Project.Lottery.Webforms.Admin
             }
         }
 
-
         #endregion
 
-        #endregion
-
+        #region ||=======  CLICK-BTN | NARROW LIST VIEW BY DRAW-ID | SEND REQUEST TO BIND-LIST-VIEW METHOD  =======||
         protected void viewByDrawingId_Click(object sender, EventArgs e)
         {
             int drawId = txtDrawingId.Text.ToInt();
+            //=======  SET THE TYPE OF ID-PARAMETER THAT WILL BE UTILIZED FOR RETRIEVING DATA  ======\\
             int idType = (int)IdType.LotteryDrawingId;
+
             BindListView(drawId, idType);
         }
 
-        //=========   ADD VALIDATION / CHECK DRAWING-ID AND LOTTERY-GAME EXIST  =======\\
+        #endregion
+
+        #endregion
+
+
     }
 }
