@@ -9,4 +9,7 @@ namespace Project.Lottery.Services.DataContracts
     [CollectionDataContract(Name = "LotteryDetailDTOCollection")]
     public class LotteryDetailDTOCollection : Collection<LotteryDetailDTO> { };
 
+    [CollectionDataContract(Name = "BallTypeCollection")]
+    public class BallTypeDTOCollection : Collection<BallTypeDTO> { };
+
 }

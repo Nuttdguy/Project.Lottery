@@ -12,6 +12,7 @@ namespace Project.Lottery.Services
         protected void Application_Start(object sender, EventArgs e)
         {
             RouteTable.Routes.Add(new ServiceRoute("Game", new WebScriptServiceHostFactory(), typeof(LotteryDetailService)));
+            RouteTable.Routes.Add(new ServiceRoute("Ball", new WebScriptServiceHostFactory(), typeof(BallTypeService)));
         }
 
         protected void Session_Start(object sender, EventArgs e)

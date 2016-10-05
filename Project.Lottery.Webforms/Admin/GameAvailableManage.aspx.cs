@@ -34,7 +34,7 @@ namespace Project.Lottery.Webforms.Admin
                 //===  GET THE SELECTED LOCATION RECORD; BIND TO TEXT BOX FIELD  ===\\
                 if (id > 0 && string.IsNullOrEmpty(txtState.Text))
                 {
-                    LotteryDetailDTO jsonItem = new LotteryDetailDTO();
+                    JsonSerialize jsonItem = new JsonSerialize();
                     string json = webClient.DownloadString(_baseGameAvailableUrl + id.ToString());
                     LotteryDetailDTO tmpItem = jsonItem.SerializeItem<LotteryDetailDTO>(json);
 
@@ -57,7 +57,7 @@ namespace Project.Lottery.Webforms.Admin
         {
             using (WebClient webClient = new WebClient())
             {
-                LotteryDetailDTO jsonCollect = new LotteryDetailDTO();
+                JsonSerialize jsonCollect = new JsonSerialize();
                 string json = webClient.DownloadString(_baseGameDetailUrl + "List/");
                 List<LotteryDetailDTO> tmpItem = jsonCollect.SerializeCollection<LotteryDetailDTO>(json);
 
@@ -78,7 +78,7 @@ namespace Project.Lottery.Webforms.Admin
             using (WebClient webClient = new WebClient())
             {
 
-                LotteryDetailDTO tmp = new LotteryDetailDTO();
+                JsonSerialize tmp = new JsonSerialize();
                 List<LotteryDetailDTO> tmpCollect = null;
 
 
@@ -109,32 +109,10 @@ namespace Project.Lottery.Webforms.Admin
 
             }
 
-            //    LotteryDetailCollection tmpCollect = null;
-            //ClearTextValue();
-
-            //if (id > 0) //==||  GET W/ LOTTERY-GAME FILTER  ||==\\
-            //{
-            //    tmpCollect = LocationBLL.GetCollection(id);
-            //    if (tmpCollect == null)
-            //        drpLotteryGames.Enabled = true;
-            //    else
-            //        drpLotteryGames.Enabled = false;
-            //}
-            //else //==||  GET W/O LOTTERY-GAME FILTER  ||==\\
-            //{
-            //    tmpCollect = LocationBLL.GetCollection();
-            //    if (!string.IsNullOrEmpty(txtState.Text))
-            //        drpLotteryGames.Enabled = true;
-            //    else
-            //        drpLotteryGames.Enabled = false;
-            //}
-
-            //hidLotteryId.Value = id.ToString();
-            //rptListView.DataSource = tmpCollect;
-            //rptListView.DataBind();
         }
+        #endregion
 
-
+        #region ||=======  UTILIZE DELEGATE | CAPTURE SELECTED VALUE FROM GAME-NAME DROPDOWN | SET HIDDEN FIELD  =======||
         void UCDropDownEvent(object sender, EventArgs e)
         {
             DropDownList ddl = (DropDownList)sender;
@@ -152,8 +130,9 @@ namespace Project.Lottery.Webforms.Admin
                 ClearTextValue();
             }
         }
+        #endregion
 
-
+        #region ||=======  BIND EDIT/DELETE BUTTON | ASSOCIATE DESIRED ID TO EACH OCCURANCE  =======||
         protected void rptListView_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
             if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)

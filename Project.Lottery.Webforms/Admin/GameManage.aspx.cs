@@ -1,14 +1,16 @@
 ﻿using System;
+using System.Net;
+using System.Net.Http;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
-using Project.Lottery.Models.Collections;
+using Project.Lottery.Webforms.Models;
 using Project.Lottery.Models.Delegates;
 using Project.Lottery.Models.Extensions;
+
+using Project.Lottery.Models.Enums;
 using Project.Lottery.Models;
 using Project.Lottery.BLL;
+
 
 namespace Project.Lottery.Webforms.Admin
 {
@@ -20,53 +22,65 @@ namespace Project.Lottery.Webforms.Admin
             UCDropDownEventDelegate.selectedEvent += new UCDropDownEventDelegate.OnSelectedChangeEvent(UCDropDownEvent);
         }
 
+        private string _baseGameServiceUrl = "http://localhost:64999/Game/";
 
         #region SECTION 1 ||=======  BIND EVENTS  =======||
 
         #region ||=======  BIND SELECTED INFO FROM LIST-VIEW  =======||
         public void BindUpdateInfo(int id)
         {
-
-            if (id != 0)
+            using (WebClient webClient = new WebClient())
             {
-                LotteryDetail tmpItem = LotteryDetailBLL.GetItem(id);
+                if (id != 0)
+                {
+                    JsonSerialize tmp = new JsonSerialize();
+                    string json = webClient.DownloadString(_baseGameServiceUrl + "Detail/" + id.ToString());
+                    LotteryDetailDTO tmpItem = tmp.SerializeItem<LotteryDetailDTO>(json);
 
-                txtLotteryName.Text = tmpItem.LotteryName;
+                    txtLotteryName.Text = tmpItem.LotteryName;
 
-                if (tmpItem.HasSpecialBall)
-                    chkHasSpecialBall.Checked = true;
-                else
-                    chkHasSpecialBall.Checked = false;
+                    if (tmpItem.HasSpecialBall)
+                        chkHasSpecialBall.Checked = true;
+                    else
+                        chkHasSpecialBall.Checked = false;
 
-                if (tmpItem.HasRegularBall)
-                    chkHasRegularBall.Checked = true;
-                else
+                    if (tmpItem.HasRegularBall)
+                        chkHasRegularBall.Checked = true;
+                    else
+                        chkHasRegularBall.Checked = false;
+
+                    txtNumberOfBalls.Text = tmpItem.NumberOfBalls.ToString();
+                    SaveItemButton.Text = "Update Game";
+                }
+                else if (id == 0)
+                {
+                    txtLotteryName.Text = string.Empty;
+                    txtNumberOfBalls.Text = string.Empty;
                     chkHasRegularBall.Checked = false;
+                    chkHasSpecialBall.Checked = false;
+                    SaveItemButton.Text = "Add New Game";
+                }
 
-                txtNumberOfBalls.Text = tmpItem.NumberOfBalls.ToString();
-                SaveItemButton.Text = "Update Game";
-            }
-            else if (id == 0)
-            {
-                txtLotteryName.Text = string.Empty;
-                txtNumberOfBalls.Text = string.Empty;
-                chkHasRegularBall.Checked = false;
-                chkHasSpecialBall.Checked = false;
-                SaveItemButton.Text = "Add New Game";
+                hidLotteryId.Value = id.ToString();
+
             }
 
-            hidLotteryId.Value = id.ToString();
 
         }
         #endregion
 
-        #region ||=======  REQUEST DATA; BIND RESULT IN LIST-VIEW  =======||
+        #region ||=======  REQUEST DATA | BIND RESULT IN LIST-VIEW  =======||
         public void BindListView()
         {
-            LotteryDetailCollection tmpCollect = LotteryDetailBLL.GetCollection();
+            using (WebClient webClient = new WebClient())
+            {
+                JsonSerialize tmp = new JsonSerialize();
+                string json = webClient.DownloadString(_baseGameServiceUrl + "Detail/List/");
+                List<LotteryDetailDTO> tmpCollect = tmp.SerializeCollection<LotteryDetailDTO>(json);
 
-            rptListView.DataSource = tmpCollect;
-            rptListView.DataBind();
+                rptListView.DataSource = tmpCollect;
+                rptListView.DataBind();
+            }
 
         }
         #endregion
@@ -86,7 +100,7 @@ namespace Project.Lottery.Webforms.Admin
         {
             if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
             {
-                LotteryDetail tmpItem = (LotteryDetail)e.Item.DataItem;
+                LotteryDetailDTO tmpItem = (LotteryDetailDTO)e.Item.DataItem;
 
                 Button edit = (Button)e.Item.FindControl("Edit");
                 Button delete = (Button)e.Item.FindControl("Delete");

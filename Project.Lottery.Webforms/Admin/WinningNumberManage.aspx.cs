@@ -6,6 +6,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Project.Lottery.Webforms.Models;
+
 using Project.Lottery.Models.Collections;
 using Project.Lottery.Models.Delegates;
 using Project.Lottery.Models.Extensions;
@@ -26,6 +28,8 @@ namespace Project.Lottery.Webforms.Admin
             }
         }
 
+        private string _baseWinningNumberUrl = "http://localhost:64999/Game/WinningNumber/";
+        private string _baseBallTypeUrl = "http://localhost:64999/Ball/";
 
         #region SECTION 1 ||=======  BIND EVENTS  =======||
 
@@ -33,27 +37,35 @@ namespace Project.Lottery.Webforms.Admin
         public void BindUpdateInfo(int id)
         {
 
-            if (id != 0)
+            using (WebClient webClient = new WebClient())
             {
-                LotteryDetail tmpItem = WinningNumberBLL.GetItem(id);
 
-                txtWinningNumberId.Text = tmpItem.WinningNumberId.ToString();
+                if (id != 0)
+                {
+                    JsonSerialize tmp = new JsonSerialize();
+                    string json = webClient.DownloadString(_baseWinningNumberUrl + id.ToString());
+                    LotteryDetailDTO tmpItem = tmp.SerializeItem<LotteryDetailDTO>(json);
 
-                txtDrawingId.Text = tmpItem.LotteryDrawingId.ToString();
-                txtBallNumber.Text = tmpItem.BallNumber.ToString();
-                drpBallType.SelectedValue = tmpItem.BallTypeId.ToString();
+                    txtWinningNumberId.Text = tmpItem.WinningNumberId.ToString();
+
+                    txtDrawingId.Text = tmpItem.LotteryDrawingId.ToString();
+                    txtBallNumber.Text = tmpItem.BallNumber.ToString();
+                    drpBallType.SelectedValue = tmpItem.BallTypeId.ToString();
 
 
-                hidLotteryId.Value = tmpItem.LotteryId.ToString();
-                hidDrawingId.Value = tmpItem.LotteryDrawingId.ToString();
-                hidWinningNumberId.Value = tmpItem.WinningNumberId.ToString();
+                    hidLotteryId.Value = tmpItem.LotteryId.ToString();
+                    hidDrawingId.Value = tmpItem.LotteryDrawingId.ToString();
+                    hidWinningNumberId.Value = tmpItem.WinningNumberId.ToString();
 
-                SaveItemButton.Text = "Update Drawing";
-            }
-            else if (id == 0)
-            {
-                ClearTextValue();
-                SaveItemButton.Text = "Add Winning #";
+                    SaveItemButton.Text = "Update Drawing";
+
+                }
+                else if (id == 0)
+                {
+                    ClearTextValue();
+                    SaveItemButton.Text = "Add Winning #";
+                }
+
             }
 
         }
@@ -62,33 +74,52 @@ namespace Project.Lottery.Webforms.Admin
         #region ||=======  REQUEST DATA | BIND RESULT TO DROP-DOWN  =======||
         public void BindBallType()
         {
-            BallTypeCollection tmpCollect = BallTypeBLL.GetCollection();
-            tmpCollect.Insert(0, new BallType { BallTypeDescription = "(Select Ball Type)", BallTypeId = 0 });
+            using (WebClient webClient = new WebClient())
+            {
+                JsonSerialize tmp = new JsonSerialize();
+                string json = webClient.DownloadString(_baseBallTypeUrl + "BallType/");
+                List<BallTypeDTO> tmpCollect = tmp.SerializeCollection<BallTypeDTO>(json);
 
-            drpBallType.DataSource = tmpCollect;
-            drpBallType.DataBind();
+                tmpCollect.Insert(0, new BallTypeDTO { BallTypeDescription = "(Select Ball Type)", BallTypeId = 0 });
+                drpBallType.DataSource = tmpCollect;
+                drpBallType.DataBind();
+            }
+
         }
         #endregion
 
         #region ||=======  REQUEST DATA | BIND RESULT IN LIST-VIEW BY SELECTED-GAME | PARAM LOTTERY-ID  =======||
         public void BindListView(int lottoId)
         {
-            LotteryDetailCollection tmpCollect = WinningNumberBLL.GetCollection(lottoId);
+            using (WebClient webClient = new WebClient())
+            {
+                JsonSerialize tmp = new JsonSerialize();
+                string json = webClient.DownloadString(_baseWinningNumberUrl + "List/" + lottoId.ToString());
+                List<LotteryDetailDTO> tmpCollect = tmp.SerializeCollection<LotteryDetailDTO>(json);
 
-            ClearTextValue();
-            rptListView.DataSource = tmpCollect;
-            rptListView.DataBind();
+                ClearTextValue();
+                rptListView.DataSource = tmpCollect;
+                rptListView.DataBind();
+
+            }
+
         }
         #endregion
 
         #region ||=======  REQUEST DATA | BIND RESULT IN LIST-VIEW BY DRAW-ID | PARAM DRAW-ID, TYPE-OF-ID  =======||
         public void BindListView(int drawId, int idType)
         {
-            LotteryDetailCollection tmpCollect = WinningNumberBLL.GetCollection(drawId, idType);
+            using (WebClient webClient = new WebClient())
+            {
+                JsonSerialize tmp = new JsonSerialize();
+                string json = webClient.DownloadString(_baseWinningNumberUrl + "List/" + drawId.ToString() + "," + idType.ToString());
+                List<LotteryDetailDTO> tmpCollect = tmp.SerializeCollection<LotteryDetailDTO>(json);
 
-            ClearTextValue();
-            rptListView.DataSource = tmpCollect;
-            rptListView.DataBind();
+                ClearTextValue();
+                rptListView.DataSource = tmpCollect;
+                rptListView.DataBind();
+            }
+
         }
         #endregion
 
@@ -111,7 +142,7 @@ namespace Project.Lottery.Webforms.Admin
         {
             if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
             {
-                LotteryDetail tmpItem = (LotteryDetail)e.Item.DataItem;
+                LotteryDetailDTO tmpItem = (LotteryDetailDTO)e.Item.DataItem;
 
                 Button edit = (Button)e.Item.FindControl("Edit");
                 Button delete = (Button)e.Item.FindControl("Delete");

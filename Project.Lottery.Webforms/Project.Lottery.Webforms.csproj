@@ -151,6 +151,8 @@
     <Compile Include="MasterPages\BaseSkin.Master.designer.cs">
       <DependentUpon>BaseSkin.Master</DependentUpon>
     </Compile>
+    <Compile Include="Models\BallTypeDTO.cs" />
+    <Compile Include="Models\JsonSerialize.cs" />
     <Compile Include="Models\LotteryDetailDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserControls\ContentBodyNavControl.ascx.cs">

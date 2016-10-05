@@ -33,7 +33,7 @@ namespace Project.Lottery.Webforms.Admin
             {
                 if (id != 0) //==|| FORMAT VALUES BEFORE SET ||==\\
                 {
-                    LotteryDetailDTO jsonItem = new LotteryDetailDTO();
+                    JsonSerialize jsonItem = new JsonSerialize();
                     string json = webClient.DownloadString(_baseServiceUrl + id.ToString());
                     LotteryDetailDTO tmpItem = jsonItem.SerializeItem<LotteryDetailDTO>(json);
 
@@ -68,8 +68,8 @@ namespace Project.Lottery.Webforms.Admin
 
             using (WebClient webClient = new WebClient())
             {
- 
-                LotteryDetailDTO jsonItem = new LotteryDetailDTO();
+
+                JsonSerialize jsonItem = new JsonSerialize();
                 string json = webClient.DownloadString(_baseServiceUrl + "List/" + id.ToString());
                 List<LotteryDetailDTO> jsonList = jsonItem.SerializeCollection<LotteryDetailDTO>(json);
 

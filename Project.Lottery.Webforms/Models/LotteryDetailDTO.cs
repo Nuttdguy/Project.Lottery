@@ -42,26 +42,6 @@ namespace Project.Lottery.Webforms.Models
 
         #endregion
 
-        #region SECTION 2 ||======= JSON SERIALIZATION  =======||
-
-        public T SerializeItem<T>(string json)
-        {
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
-            T item = serializer.Deserialize<T>(json);
-
-            return item;
-        }
-
-        public List<T> SerializeCollection<T>(string json)
-        {
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
-            List<T> collection = serializer.Deserialize<List<T>>(json);
-
-            return collection;
-        }
-
-        #endregion
-
     }
 
 }
