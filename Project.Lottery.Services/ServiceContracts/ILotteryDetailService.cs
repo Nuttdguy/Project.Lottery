@@ -30,14 +30,14 @@ namespace Project.Lottery.Services.ServiceContracts
         #endregion
 
         #region ||=======  SAVE OPERATIONS  =======||
-        [Description("Save Item")]
+        [Description("Save/Update Lottery Detail Item")]
         [OperationContract]
         [WebInvoke(UriTemplate = "/Detail/", Method = "PUT", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
         int SaveDetailItem(LotteryDetailDTO lottoDTOObject);
         #endregion
 
         #region ||=======  DELETE OPERATIONS  =======||
-        [Description("Delete Item")]
+        [Description("Delete Lottery Detail Item")]
         [OperationContract]
         [WebInvoke(UriTemplate = "/Detail/{id}", Method = "DELETE", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
         int DeleteDetailItem(string id);
@@ -47,6 +47,8 @@ namespace Project.Lottery.Services.ServiceContracts
 
 
         #region SECTION 2 ||=======  GAME-DRAWING OPERATION CONTRACTS  =======||
+
+        #region ||=======  GET OPERATIONS  =======|| 
         [Description("Get Drawing Item Detail By ID")]
         [OperationContract]
         [WebGet(UriTemplate = "/Drawing/{id}", ResponseFormat = WebMessageFormat.Json)]
@@ -66,6 +68,23 @@ namespace Project.Lottery.Services.ServiceContracts
         //[OperationContract]
         //[WebGet(UriTemplate = "/Drawing/{id},{idType}", ResponseFormat = WebMessageFormat.Json)]
         //LotteryDetailDTOCollection GetDrawingCollectionByType(string id, string idType);
+
+        #endregion
+
+        #region ||=======  SAVE OPERATIONS  =======||
+        [Description("Save Drawing Item")]
+        [OperationContract]
+        [WebInvoke(UriTemplate = "/Drawing/", Method = "PUT", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        int SaveDrawingItem(LotteryDetailDTO drawObjectDTO);
+        #endregion
+
+        #region ||=======  DELETE OPERATIONS  =======||
+        [Description("Delete Drawing Item")]
+        [OperationContract]
+        [WebInvoke(UriTemplate = "/Drawing/{drawId}", Method = "DELETE", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        int DeleteDrawingItem(string drawId);
+        #endregion
+
         #endregion
 
 

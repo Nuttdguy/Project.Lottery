@@ -159,7 +159,13 @@ namespace Project.Lottery.Services.REST
         #endregion //==||  END-GROUP  ||==  SECTION-2-COLLECTIONS-ALL  ======\\
 
 
+
+
+
+
         #region SECTION 3 ||=======  SAVE ITEM  =======||
+
+        #region || LOTTERY-DETAIL OPERATION ||=======  SAVE/UPDATE SINGLE ITEM | LOTTERY-GAME NAME | PARAM OBJECT  =======||
         public int SaveDetailItem(LotteryDetailDTO lottoDTOObject)
         {
             int returnValue = LotteryDetailBLL.SaveItem(DTO_ToItem(lottoDTOObject));
@@ -168,14 +174,59 @@ namespace Project.Lottery.Services.REST
         }
         #endregion
 
+        #region || DRAWING OPERATION ||=======  SAVE/UPDATE ITEM | LOTTERY-DRAWING-ITEM | PARAM LOTTERY-DRAWING-OBJECT  =======||
+        public int SaveDrawingItem(LotteryDetailDTO drawObjectDTO)
+        {
+            int saveRecord = LotteryDrawingBLL.SaveItem(DTO_ToItem(drawObjectDTO));
+            return saveRecord;
+        }
+
+        #endregion //==||  END  ||==  LOCATION-MANAGE SAVE  ==||==\\
+
+        #region || WINNNG-NUMBER OPERATION 
+
+        #endregion //==||  END  ||==  LOCATION-MANAGE SAVE  ==||==\\
+
+        #region || LOCATION OPERATION 
+
+        #endregion //==||  END  ||==  LOCATION-MANAGE SAVE  ==||==\\
+
+        #endregion //==|| END-GROUP ||==  SECTION-3-SAVE-ALL  ======\\
+
+
+
+
+
         #region SECTION 4 ||=======  DELETE ITEM  =======||
+
+        #region || LOTTERY-DETAIL OPERATION ||=======  DELETE SINGLE ITEM | LOTTERY-GAME NAME BY LOTTERY-ID | PARAM LOTTERY-ID  =======||
         public int DeleteDetailItem(string id)
         {
             int returnValue = LotteryDetailBLL.DeleteItem(id.ToInt());
             return returnValue;
-
         }
         #endregion
+
+        #region || DRAWING OPERATION 
+        public int DeleteDrawingItem(string drawId)
+        {
+            int delRecord = LotteryDrawingBLL.DeleteItem(drawId.ToInt());
+            return delRecord;
+        }
+        #endregion //==||  END  ||==  LOCATION-MANAGE DELETE  ==||==\\
+
+        #region || WINNNG-NUMBER OPERATION 
+
+        #endregion //==||  END  ||==  LOCATION-MANAGE DELETE  ==||==\\
+
+        #region || LOCATION OPERATION 
+
+        #endregion //==||  END  ||==  LOCATION-MANAGE DELETE  ==||==\\
+
+        #endregion  //==|| END-GROUP ||==  SECTION-4-DELETE-ALL  ======\\
+
+
+
 
         #region SECTION 5 ||=======  HYDRATE OBJECTS  =======||
 
