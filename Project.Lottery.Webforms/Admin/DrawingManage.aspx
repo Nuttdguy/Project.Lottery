@@ -75,7 +75,6 @@
 						<td class="editCol">
 							<asp:Button runat="server" ID="Edit" CommandName="Edit" Text="Edit" OnCommand="Game_Command" />
 							<asp:Button runat="server" ID="Delete" CommandName="Delete" Text="Delete"  OnCommand="Game_Command"/>
-							<asp:Button runat="server" ID="View" CommandName="View" Text="View"  OnCommand="Game_Command"/>
 						</td>
 						<td><%# Eval("LotteryDrawingId") %></td>
 						<td><%# DataBinder.Eval(Container.DataItem, "Jackpot", "$ {0:C}") %></td>
@@ -88,7 +87,6 @@
 						<td class="editCol">
 							<asp:Button runat="server" ID="Edit" CommandName="Edit" Text="Edit" OnCommand="Game_Command" />
 							<asp:Button runat="server" ID="Delete" CommandName="Delete" Text="Delete"  OnCommand="Game_Command"/>
-							<asp:Button runat="server" ID="View" CommandName="View" Text="View"  OnCommand="Game_Command"/>
 						</td>
 						<td><%# Eval("LotteryDrawingId") %></td>
 						<td><%# DataBinder.Eval(Container.DataItem, "Jackpot", "$ {0:c}") %></td>

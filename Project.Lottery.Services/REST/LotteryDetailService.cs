@@ -13,35 +13,151 @@ namespace Project.Lottery.Services.REST
     [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
     public class LotteryDetailService : ILotteryDetailService
     {
+
         #region SECTION 1 ||=======  GET ITEM  =======||
-        public LotteryDetailDTO GetItem(string id)
+
+        #region || GAME-MANAGE OPERATION ||=======  GET SINGLE-ITEM | LOTTERY-GAMES BY ID | PARAM, LOTTERY-ID  =======||
+        public LotteryDetailDTO GetLotteryDetailItem(string id)
         {
             LotteryDetail item = LotteryDetailBLL.GetItem(id.ToInt());
             return item_ToDto(item);
         }
+        #endregion 
+
+        #region || DRAWING OPERATION ||=======  GET SINGLE-ITEM | DRAWING BY LOTTERY-ID | PARAM, LOTTERY-ID  =======||  
+        public LotteryDetailDTO GetDrawingItem(string id)
+        {
+            LotteryDetail tmpItem = LotteryDrawingBLL.GetItem(id.ToInt());
+            return item_ToDto(tmpItem);
+        }
         #endregion
 
+        #region || LOCATION OPERATION ||=======  GET SINGLE-ITEM | DRAWING BY LOTTERY-ID | PARAM, LOTTERY-NAME-ID  =======||  
+        public LotteryDetailDTO GetLocationItem(string id)
+        {
+            LotteryDetail tmpItem = LocationBLL.GetItem(id.ToInt());
+            return item_ToDto(tmpItem);
+        }
+        #endregion
+
+        #region || WINNING-NUMBER OPERATION ||=======  GET SINGLE-ITEM | DRAWING BY WINNING-ID | PARAM, WINNING-NUMBER-ID  =======||  
+        public LotteryDetailDTO GetWinningNumberItems(string id)
+        {
+            LotteryDetail tmpItem = WinningNumberBLL.GetItem(id.ToInt());
+            return item_ToDto(tmpItem);
+        }
+        #endregion 
+
+        #endregion //==||  END-GROUP  ||==  ITEM SECTION  ||==\\
 
         #region SECTION 2 ||=======  GET COLLECTION  =======||
-        public LotteryDetailDTOCollection GetCollection()
+
+        #region ||======= GAME-MANAGE OPERATIONS  =======||
+
+        #region || GAME-MANAGE OPERATION ||=======  GET COLLECTION | LOTTERY-GAMES BY ALL | PARAMS, NONE  =======||
+        public LotteryDetailDTOCollection GetLotteryDetailCollection()
         {
             LotteryDetailCollection tmpCollect = LotteryDetailBLL.GetCollection();
             return itemList_ToDto(tmpCollect);
         }
+        #endregion
 
-        public LotteryDetailDTOCollection GetCollectionById(string id)
+        #region || GAME-MANAGE OPERATION ||=======  GET COLLECTION | LOTTERY-GAMES BY LOTTERY-ID | PARAMS, LOTTERY-ID  =======||
+        public LotteryDetailDTOCollection GetLotteryDetailCollectionById(string id)
         {
             LotteryDetailCollection tmpCollect = LotteryDetailBLL.GetCollection(id.ToInt());
             return itemList_ToDto(tmpCollect);
         }
+        #endregion
 
-        //==||  FOR LOCATION USE
-        public LotteryDetailDTOCollection GetCollectionByType(string id, string type)
+        #region || GAME-MANAGE OPERATION ||=======  GET COLLECTION | LOTTERY-GAMES BY ALL | PARAMS, NONE  =======||
+        //public LotteryDetailDTOCollection GetLotteryDetailCollectionByType(string id, string type)
+        //{
+        //    LotteryDetailCollection tmpCollect = LocationBLL.GetCollection(id.ToInt(), id.ToInt());
+        //    return itemList_ToDto(tmpCollect);
+        //}
+        #endregion
+
+        #endregion //==||  END  ||==  GAME-MANAGE COLLECTION  ==||==\\
+
+        #region ||=======  DRAWING OPERATIONS  =======||
+
+        #region || DRAWING OPERATION ||=======  GET COLLECTION | DRAWINGS BY ALL | PARAMS, NONE  =======||
+        public LotteryDetailDTOCollection GetDrawingCollection()
+        {
+            LotteryDetailCollection tmpCollect = LotteryDrawingBLL.GetCollection();
+            return itemList_ToDto(tmpCollect);
+        }
+        #endregion
+
+        #region || DRAWING OPERATION ||=======  GET COLLECTION | DRAWINGS BY LOTTERY-ID | PARAMS, LOTTERY-ID  =======||
+        public LotteryDetailDTOCollection GetDrawingCollectionById(string id)
+        {
+            LotteryDetailCollection tmpCollect = LotteryDrawingBLL.GetCollection(id.ToInt());
+            return itemList_ToDto(tmpCollect);
+        }
+        #endregion //==||  END  ||== DRAWING COLLECTION SECTION ==||==\\
+
+        #endregion //==||  END  ||==  DRAWING-COLLECTION SECTION  ==\\
+
+        #region ||======= LOCATION OPERATIONS  =======||
+
+        #region || LOCATION-MANAGE OPERATION ||=======  GET COLLECTION | LLOCATION BY ALL | PARAMS, NONE  =======||
+        public LotteryDetailDTOCollection GetLocationCollection()
+        {
+            LotteryDetailCollection tmpCollect = LocationBLL.GetCollection();
+            return itemList_ToDto(tmpCollect);
+        }
+        #endregion
+
+        #region || LOCATION-MANAGE OPERATION ||=======  GET COLLECTION | LOCATION BY LOTTERY-ID | PARAMS, LOTTERY-NAME-ID  =======||
+        public LotteryDetailDTOCollection GetLocationCollectionById(string id)
+        {
+            LotteryDetailCollection tmpCollect = LocationBLL.GetCollection(id.ToInt());
+            return itemList_ToDto(tmpCollect);
+        }
+        #endregion
+
+        #region || LOCATION-MANAGE OPERATION ||=======  GET COLLECTION | LOCATION BY SELECTED-LOTTERY-ID | PARAMS, LOTTERY-ID  =======||
+        public LotteryDetailDTOCollection GetLocationCollectionByType(string id, string type)
         {
             LotteryDetailCollection tmpCollect = LocationBLL.GetCollection(id.ToInt(), id.ToInt());
             return itemList_ToDto(tmpCollect);
         }
         #endregion
+
+        #endregion //==||  END  ||==  LOCATION-MANAGE COLLECTION  ==||==\\
+
+        #region ||======= WINNING-NUMBER OPERATIONS  =======||
+
+        #region || WINNING-NUMBER-MANAGE OPERATION ||=======  GET COLLECTION | WINNING-NUMBER BY ALL | PARAMS, NONE  =======||
+        public LotteryDetailDTOCollection GetWinningNumberCollection()
+        {
+            LotteryDetailCollection tmpCollect = WinningNumberBLL.GetCollection();
+            return itemList_ToDto(tmpCollect);
+        }
+        #endregion
+
+        #region || WINNING-NUMBER-MANAGE OPERATION ||=======  GET COLLECTION | WINNING-NUMBER BY LOTTERY-ID | PARAMS, LOTTERY-NAME-ID  =======||
+        public LotteryDetailDTOCollection GetWinningNumberCollectionById(string id)
+        {
+            LotteryDetailCollection tmpCollect = WinningNumberBLL.GetCollection(id.ToInt());
+            return itemList_ToDto(tmpCollect);
+        }
+        #endregion
+
+        #region || WINNING-NUMBER-MANAGE OPERATION ||=======  GET COLLECTION | WINNING-NUMBER BY DRAW-ID | PARAMS, DRAW-ID, ID-TYPE =======||
+        public LotteryDetailDTOCollection GetWinningNumberCollectionByType(string id, string type)
+        {
+            LotteryDetailCollection tmpCollect = WinningNumberBLL.GetCollection(id.ToInt(), id.ToInt());
+            return itemList_ToDto(tmpCollect);
+        }
+        #endregion
+
+        #endregion //==||  END  ||==  LOCATION-MANAGE COLLECTION  ==||==\\
+
+        #endregion //==||  END-GROUP  ||==  SECTION-2-COLLECTIONS-ALL  ======\\
+
 
         #region SECTION 3 ||=======  SAVE ITEM  =======||
 
@@ -54,7 +170,6 @@ namespace Project.Lottery.Services.REST
         #region SECTION 5 ||=======  HYDRATE OBJECTS  =======||
 
         #region ||=======  LOTTERY-DETAIL-DTO || TO > LOTTERY-DETAIL-ITEM | INCOMING  =======||
-
         private LotteryDetail DTO_ToItem(LotteryDetailDTO dtoItem)
         {
             LotteryDetail tmpItem = new LotteryDetail();
@@ -85,7 +200,6 @@ namespace Project.Lottery.Services.REST
         #endregion
 
         #region ||=======  LOTTERY-DETAIL-ITEM || TO > LOTTERY-DETAIL-DTO | OUTGOING  =======||
-
         private LotteryDetailDTO item_ToDto(LotteryDetail itemIn)
         {
             LotteryDetailDTO tmpDto = new LotteryDetailDTO();
@@ -116,7 +230,6 @@ namespace Project.Lottery.Services.REST
         #endregion
 
         #region ||=======  LOTTERY-DETAIL-ITEM-COLLECTION || TO > LOTTERY-DETAIL-DTO | OUTGOING  =======||
-
         private LotteryDetailDTOCollection itemList_ToDto(LotteryDetailCollection itemsInList)
         {
             LotteryDetailDTOCollection tmpCollect = new LotteryDetailDTOCollection();
@@ -135,5 +248,6 @@ namespace Project.Lottery.Services.REST
         #endregion
 
         #endregion
+
     }
 }

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Net;
+using System.Net.Http;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -30,6 +32,7 @@ namespace Project.Lottery.Webforms.Admin
         #region ||=======  BIND SELECTED INFO FROM LIST-VIEW TO TEXT-BOX-FIELDS =======||
         public void BindUpdateInfo(int id)
         {
+
             if (id != 0)
             {
                 LotteryDetail tmpItem = WinningNumberBLL.GetItem(id);

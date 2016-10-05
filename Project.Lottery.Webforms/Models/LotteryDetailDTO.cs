@@ -43,6 +43,7 @@ namespace Project.Lottery.Webforms.Models
         #endregion
 
         #region SECTION 2 ||======= JSON SERIALIZATION  =======||
+
         public T SerializeItem<T>(string json)
         {
             JavaScriptSerializer serializer = new JavaScriptSerializer();

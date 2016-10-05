@@ -1,13 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.Net;
+using System.Net.Http;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Collections.Generic;
 using Project.Lottery.Models.Collections;
 using Project.Lottery.Models.Delegates;
 using Project.Lottery.Models.Extensions;
 using Project.Lottery.Models;
+using Project.Lottery.Webforms.Models;
 using Project.Lottery.BLL;
 
 
@@ -21,33 +22,42 @@ namespace Project.Lottery.Webforms.Admin
             UCDropDownEventDelegate.selectedEvent += new UCDropDownEventDelegate.OnSelectedChangeEvent(UCDropDownEvent);
         }
 
+        private string _baseServiceUrl = "http://localhost:64999/Game/Drawing/";
+
         #region SECTION 1 ||=======  BIND EVENTS  =======||
 
         #region ||=======  BIND SELECTED INFO FROM LIST-VIEW TO TEXT-BOX FIELDS  =======||
         public void BindUpdateInfo(int id)
         {
-            if (id != 0) //==|| FORMAT VALUES BEFORE SET ||==\\
+            using (WebClient webClient = new WebClient())
             {
-                LotteryDetail tmpItem = LotteryDrawingBLL.GetItem(id);
+                if (id != 0) //==|| FORMAT VALUES BEFORE SET ||==\\
+                {
+                    LotteryDetailDTO jsonItem = new LotteryDetailDTO();
+                    string json = webClient.DownloadString(_baseServiceUrl + id.ToString());
+                    LotteryDetailDTO tmpItem = jsonItem.SerializeItem<LotteryDetailDTO>(json);
 
-                txtDrawingId.Text = tmpItem.LotteryDrawingId.ToString();
-                double jp = tmpItem.Jackpot.ToInt(); ;
-                txtJackpot.Text = string.Format("{0:N0}", jp);
-                double cashVal = (tmpItem.Jackpot.ToInt() * .60);
-                txtCashOption.Text = string.Format("{0:N0}", cashVal);
-                string dd = tmpItem.DrawDate.ToShortDateString() ;
-                txtDrawingDate.Text = string.Format("{0:MM/dd/yyyy}", dd);
+                    txtDrawingId.Text = tmpItem.LotteryDrawingId.ToString();
+                    double jp = tmpItem.Jackpot.ToInt(); ;
+                    txtJackpot.Text = string.Format("{0:N0}", jp);
+                    double cashVal = (tmpItem.Jackpot.ToInt() * .60);
+                    txtCashOption.Text = string.Format("{0:N0}", cashVal);
+                    string dd = tmpItem.DrawDate.ToShortDateString();
+                    txtDrawingDate.Text = string.Format("{0:MM/dd/yyyy}", dd);
 
-                hidLotteryId.Value = tmpItem.LotteryId.ToString();
-                hidDrawingId.Value = tmpItem.LotteryDrawingId.ToString();
+                    hidLotteryId.Value = tmpItem.LotteryId.ToString();
+                    hidDrawingId.Value = tmpItem.LotteryDrawingId.ToString();
 
-                SaveItemButton.Text = "Update Drawing";
+                    SaveItemButton.Text = "Update Drawing";
+                }
+                else if (id == 0)
+                {
+                    ClearTextValue();
+                    SaveItemButton.Text = "Add New Drawing";
+                }
+
             }
-            else if (id == 0)
-            {
-                ClearTextValue();
-                SaveItemButton.Text = "Add New Drawing";
-            }
+
         }
 
         #endregion
@@ -55,11 +65,19 @@ namespace Project.Lottery.Webforms.Admin
         #region ||=======  REQUEST DATA | BIND RESULT TO LIST-VIEW | FILTER BY GAME | PARAM LOTTERY-ID  =======||
         public void BindListView(int id)
         {
-            LotteryDetailCollection tmpCollect = LotteryDrawingBLL.GetCollection(id);
 
-            ClearTextValue();
-            rptListView.DataSource = tmpCollect;
-            rptListView.DataBind();
+            using (WebClient webClient = new WebClient())
+            {
+ 
+                LotteryDetailDTO jsonItem = new LotteryDetailDTO();
+                string json = webClient.DownloadString(_baseServiceUrl + "List/" + id.ToString());
+                List<LotteryDetailDTO> jsonList = jsonItem.SerializeCollection<LotteryDetailDTO>(json);
+
+                ClearTextValue();
+                rptListView.DataSource = jsonList;
+                rptListView.DataBind();
+            }
+
         }
         #endregion
 
@@ -79,7 +97,7 @@ namespace Project.Lottery.Webforms.Admin
         {
             if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
             {
-                LotteryDetail tmpItem = (LotteryDetail)e.Item.DataItem;
+                LotteryDetailDTO tmpItem = (LotteryDetailDTO)e.Item.DataItem;
 
                 Button edit = (Button)e.Item.FindControl("Edit");
                 Button delete = (Button)e.Item.FindControl("Delete");
