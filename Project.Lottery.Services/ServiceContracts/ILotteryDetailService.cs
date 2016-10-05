@@ -9,6 +9,9 @@ namespace Project.Lottery.Services.ServiceContracts
     public interface ILotteryDetailService
     {
         #region SECTION 1 ||=======  LOTTERY-DETAIL / GAME-MANAGE OPERATION CONTRACTS  ======||
+
+        #region ||=======  GET OPERATIONS  =======||
+
         [Description("Get Lottery Detail Item By ID")]
         [OperationContract]
         [WebGet(UriTemplate = "/Detail/{id}", ResponseFormat = WebMessageFormat.Json)]
@@ -23,6 +26,22 @@ namespace Project.Lottery.Services.ServiceContracts
         [OperationContract]
         [WebGet(UriTemplate = "/Detail/List/{id}", ResponseFormat = WebMessageFormat.Json)]
         LotteryDetailDTOCollection GetLotteryDetailCollectionById(string id);
+
+        #endregion
+
+        #region ||=======  SAVE OPERATIONS  =======||
+        [Description("Save Item")]
+        [OperationContract]
+        [WebInvoke(UriTemplate = "/Detail/", Method = "PUT", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        int SaveDetailItem(LotteryDetailDTO lottoDTOObject);
+        #endregion
+
+        #region ||=======  DELETE OPERATIONS  =======||
+        [Description("Delete Item")]
+        [OperationContract]
+        [WebInvoke(UriTemplate = "/Detail/{id}", Method = "DELETE", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        int DeleteDetailItem(string id);
+        #endregion
 
         #endregion
 

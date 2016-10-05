@@ -136,7 +136,6 @@ namespace Project.Lottery.Webforms.Admin
         {
             int deletedRecord = LotteryDetailBLL.DeleteItem(id);
             ReloadPage();
-
         }
 
         #endregion
@@ -144,6 +143,7 @@ namespace Project.Lottery.Webforms.Admin
         #region ||=======  CLICK-BTN | SAVE BUTTON  =======||
         protected void SaveItemButton_Click(object sender, EventArgs e)
         {
+ 
             LotteryDetail tmpItem = new LotteryDetail();
 
             tmpItem.LotteryId = hidLotteryId.Value.ToInt();

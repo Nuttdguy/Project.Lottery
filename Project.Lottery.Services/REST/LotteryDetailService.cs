@@ -160,11 +160,21 @@ namespace Project.Lottery.Services.REST
 
 
         #region SECTION 3 ||=======  SAVE ITEM  =======||
+        public int SaveDetailItem(LotteryDetailDTO lottoDTOObject)
+        {
+            int returnValue = LotteryDetailBLL.SaveItem(DTO_ToItem(lottoDTOObject));
+            return returnValue;
 
+        }
         #endregion
 
         #region SECTION 4 ||=======  DELETE ITEM  =======||
+        public int DeleteDetailItem(string id)
+        {
+            int returnValue = LotteryDetailBLL.DeleteItem(id.ToInt());
+            return returnValue;
 
+        }
         #endregion
 
         #region SECTION 5 ||=======  HYDRATE OBJECTS  =======||
