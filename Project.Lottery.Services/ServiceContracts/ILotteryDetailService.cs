@@ -89,6 +89,8 @@ namespace Project.Lottery.Services.ServiceContracts
 
 
         #region SECTION 3 ||=======  WINNING-NUMBER OPERATION CONTRACTS  =======||
+
+        #region ||=======  GET OPERATIONS  =======||
         [Description("Get Winning Number Item By ID")]
         [OperationContract]
         [WebGet(UriTemplate = "/WinningNumber/{id}", ResponseFormat = WebMessageFormat.Json)]
@@ -108,6 +110,21 @@ namespace Project.Lottery.Services.ServiceContracts
         [OperationContract]
         [WebGet(UriTemplate = "/WinningNumber/List/{id},{idType}", ResponseFormat = WebMessageFormat.Json)]
         LotteryDetailDTOCollection GetWinningNumberCollectionByType(string id, string idType);
+        #endregion
+
+        #region ||=======  SAVE OPERATIONS  =======||
+        [Description("Save Winning Number Item")]
+        [OperationContract]
+        [WebInvoke(UriTemplate = "/WinningNumber/", Method = "PUT", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)]
+        int SaveWinningNumberItem(LotteryDetailDTO winNumberObjectDto);
+        #endregion
+
+        #region ||=======  DELETE OPERATIONS  =======||
+        [Description("Delete Winning Number Item")]
+        [OperationContract]
+        [WebInvoke(UriTemplate = "/WinningNumber/{winningId}", Method = "DELETE", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)]
+        int DeleteWinningNumberItem(string winningId);
+        #endregion
 
         #endregion
 

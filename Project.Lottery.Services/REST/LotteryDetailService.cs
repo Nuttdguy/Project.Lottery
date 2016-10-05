@@ -180,11 +180,14 @@ namespace Project.Lottery.Services.REST
             int saveRecord = LotteryDrawingBLL.SaveItem(DTO_ToItem(drawObjectDTO));
             return saveRecord;
         }
-
         #endregion //==||  END  ||==  LOCATION-MANAGE SAVE  ==||==\\
 
-        #region || WINNNG-NUMBER OPERATION 
-
+        #region || WINNNG-NUMBER OPERATION ||=======  SAVE/UPDATE SINGLE ITEM | WINNING-NUMBER | PARAM WINNING-NUMBER-OBJECT  =======||
+        public int SaveWinningNumberItem(LotteryDetailDTO winNumberObjectDto)
+        {
+            int saveRecord = WinningNumberBLL.SaveItem(DTO_ToItem(winNumberObjectDto));
+            return saveRecord;
+        }
         #endregion //==||  END  ||==  LOCATION-MANAGE SAVE  ==||==\\
 
         #region || LOCATION OPERATION 
@@ -215,8 +218,12 @@ namespace Project.Lottery.Services.REST
         }
         #endregion //==||  END  ||==  LOCATION-MANAGE DELETE  ==||==\\
 
-        #region || WINNNG-NUMBER OPERATION 
-
+        #region || WINNNG-NUMBER OPERATION ||=======  DELETE ITEM COLLECTION | WINNING-NUMBER-ITEM(S) BY DRAWING-ID | PARAM, DRAWING-ID  =======||
+        public int DeleteWinningNumberItem(string winningId)
+        {
+            int delRecord = WinningNumberBLL.DeleteItem(winningId.ToInt());
+            return delRecord;
+        }
         #endregion //==||  END  ||==  LOCATION-MANAGE DELETE  ==||==\\
 
         #region || LOCATION OPERATION 
