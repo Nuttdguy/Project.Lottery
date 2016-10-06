@@ -35,7 +35,7 @@ namespace Project.Lottery.Webforms.Admin
                 {
                     JsonSerialize tmp = new JsonSerialize();
                     string json = webClient.DownloadString(_baseGameServiceUrl + "Detail/" + id.ToString());
-                    LotteryDetailDTO tmpItem = tmp.SerializeItem<LotteryDetailDTO>(json);
+                    ClientLotteryDetailDTO tmpItem = tmp.SerializeItem<ClientLotteryDetailDTO>(json);
 
                     txtLotteryName.Text = tmpItem.LotteryName;
 
@@ -76,7 +76,7 @@ namespace Project.Lottery.Webforms.Admin
             {
                 JsonSerialize tmp = new JsonSerialize();
                 string json = webClient.DownloadString(_baseGameServiceUrl + "Detail/List/");
-                List<LotteryDetailDTO> tmpCollect = tmp.SerializeCollection<LotteryDetailDTO>(json);
+                List<ClientLotteryDetailDTO> tmpCollect = tmp.SerializeCollection<ClientLotteryDetailDTO>(json);
 
                 rptListView.DataSource = tmpCollect;
                 rptListView.DataBind();
@@ -100,7 +100,7 @@ namespace Project.Lottery.Webforms.Admin
         {
             if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
             {
-                LotteryDetailDTO tmpItem = (LotteryDetailDTO)e.Item.DataItem;
+                ClientLotteryDetailDTO tmpItem = (ClientLotteryDetailDTO)e.Item.DataItem;
 
                 Button edit = (Button)e.Item.FindControl("Edit");
                 Button delete = (Button)e.Item.FindControl("Delete");

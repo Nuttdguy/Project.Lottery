@@ -11,7 +11,7 @@ namespace Project.Lottery.Models
         public int LotteryDrawingId { get; set; }
         public LotteryDetail Lottery { get; set; } = new LotteryDetail();
         public string Jackpot { get; set; }
-        public DateTime DrawDates { get; set; }
+        public DateTime LotteryDrawingDate { get; set; }
 
 
     }

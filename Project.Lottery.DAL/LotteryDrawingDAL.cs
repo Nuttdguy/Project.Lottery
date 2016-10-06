@@ -145,8 +145,8 @@ namespace Project.Lottery.DAL
                     if (!string.IsNullOrEmpty(lottoItem.Jackpot))
                         myCommand.Parameters.AddWithValue("@Jackpot", lottoItem.Jackpot);
 
-                    if (lottoItem.DrawDates != null)
-                        myCommand.Parameters.AddWithValue("@DrawDate", lottoItem.DrawDates);
+                    if (lottoItem.LotteryDrawingDate != null)
+                        myCommand.Parameters.AddWithValue("@DrawDate", lottoItem.LotteryDrawingDate);
 
 
                     myCommand.Parameters.Add(HelperDAL.GetReturnParameterInt("ReturnValue"));
@@ -214,7 +214,7 @@ namespace Project.Lottery.DAL
                 tmpItem.Jackpot = myReader.GetString(myReader.GetOrdinal("Jackpot"));
 
             if (!myReader.IsDBNull(myReader.GetOrdinal("DrawDate")))
-                tmpItem.DrawDates = myReader.GetDateTime(myReader.GetOrdinal("DrawDate"));
+                tmpItem.LotteryDrawingDate = myReader.GetDateTime(myReader.GetOrdinal("DrawDate"));
 
             return tmpItem;
 

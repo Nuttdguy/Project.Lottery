@@ -7,7 +7,7 @@ using System.Web.Script.Serialization;
 namespace Project.Lottery.Webforms.Models
 {
 
-    public class LotteryDetailDTO 
+    public class ClientLotteryDetailDTO 
     {
         public int LotteryId { get; set; }
         public string LotteryName { get; set; }
@@ -26,7 +26,7 @@ namespace Project.Lottery.Webforms.Models
 
         public int LotteryDrawingId { get; set; }
         public string Jackpot { get; set; }
-        public DateTime DrawDates { get; set; }
+        public string DrawDates { get; set; }
         #endregion
 
         #region INTERFACE 3 ||=======  IWinningNumberDTO

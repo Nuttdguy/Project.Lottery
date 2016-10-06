@@ -10,6 +10,6 @@ namespace Project.Lottery.Services.DataContracts
     {
         int LotteryDrawingId { get; set; }
         string Jackpot { get; set; }
-        DateTime DrawDates { get; set; }
+        string DrawDates { get; set; }
     }
 }

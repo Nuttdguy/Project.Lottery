@@ -34,7 +34,8 @@ namespace Project.Lottery.Models
 
         public int LotteryDrawingId { get; set; }
         public string Jackpot { get; set; }
-        public DateTime DrawDates { get; set; }
+        public DateTime LotteryDrawingDate { get; set; }
+
 
         public int WinningNumberId { get; set; }
         public int BallNumber { get; set; }

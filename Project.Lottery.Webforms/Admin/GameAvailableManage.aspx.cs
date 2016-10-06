@@ -36,7 +36,7 @@ namespace Project.Lottery.Webforms.Admin
                 {
                     JsonSerialize jsonItem = new JsonSerialize();
                     string json = webClient.DownloadString(_baseGameAvailableUrl + id.ToString());
-                    LotteryDetailDTO tmpItem = jsonItem.SerializeItem<LotteryDetailDTO>(json);
+                    ClientLotteryDetailDTO tmpItem = jsonItem.SerializeItem<ClientLotteryDetailDTO>(json);
 
                     txtLocationId.Text = tmpItem.LocationId.ToString();
                     txtState.Text = tmpItem.State.ToString();
@@ -59,10 +59,10 @@ namespace Project.Lottery.Webforms.Admin
             {
                 JsonSerialize jsonCollect = new JsonSerialize();
                 string json = webClient.DownloadString(_baseGameDetailUrl + "List/");
-                List<LotteryDetailDTO> tmpItem = jsonCollect.SerializeCollection<LotteryDetailDTO>(json);
+                List<ClientLotteryDetailDTO> tmpItem = jsonCollect.SerializeCollection<ClientLotteryDetailDTO>(json);
 
                 drpLotteryGames.SelectedValue = hidLotteryId.Value;
-                tmpItem.Insert(0, new LotteryDetailDTO { LotteryName = "(Select Game)", LotteryId = 0 });
+                tmpItem.Insert(0, new ClientLotteryDetailDTO { LotteryName = "(Select Game)", LotteryId = 0 });
 
                 drpLotteryGames.DataSource = tmpItem;
                 drpLotteryGames.DataBind();
@@ -79,13 +79,13 @@ namespace Project.Lottery.Webforms.Admin
             {
 
                 JsonSerialize tmp = new JsonSerialize();
-                List<LotteryDetailDTO> tmpCollect = null;
+                List<ClientLotteryDetailDTO> tmpCollect = null;
 
 
                 if (id > 0) //==||  GET W/ LOTTERY-GAME FILTER  ||==\\
                 {
                     string json = webClient.DownloadString(_baseGameAvailableUrl + "List/" + id.ToString());
-                    tmpCollect = tmp.SerializeCollection<LotteryDetailDTO>(json);
+                    tmpCollect = tmp.SerializeCollection<ClientLotteryDetailDTO>(json);
 
                     if (tmpCollect == null)
                         drpLotteryGames.Enabled = true;
@@ -95,7 +95,7 @@ namespace Project.Lottery.Webforms.Admin
                 else //==||  GET W/O LOTTERY-GAME FILTER  ||==\\
                 {
                     string json = webClient.DownloadString(_baseGameAvailableUrl + "List/");
-                    tmpCollect = tmp.SerializeCollection<LotteryDetailDTO>(json);
+                    tmpCollect = tmp.SerializeCollection<ClientLotteryDetailDTO>(json);
 
                     if (!string.IsNullOrEmpty(txtState.Text))
                         drpLotteryGames.Enabled = true;
@@ -137,7 +137,7 @@ namespace Project.Lottery.Webforms.Admin
         {
             if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
             {
-                LotteryDetailDTO tmpItem = (LotteryDetailDTO)e.Item.DataItem;
+                ClientLotteryDetailDTO tmpItem = (ClientLotteryDetailDTO)e.Item.DataItem;
 
                 Button edit = (Button)e.Item.FindControl("Edit");
                 Button delete = (Button)e.Item.FindControl("Delete");

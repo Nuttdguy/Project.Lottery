@@ -21,7 +21,7 @@ namespace Project.Lottery.Webforms
             {
                 LotteryDrawingId = 48,
                 BallTypeId = 1,
-                BallNumber = 99
+                BallNumber = 19
             };
 
 
@@ -48,6 +48,6 @@ namespace Project.Lottery.Webforms
         public int BallTypeId { get; set; }
         public int BallNumber { get; set; }
 
-        public DateTime DrawDatexx { get; set; }
+        public string DrawDates { get; set; }
     }
 }

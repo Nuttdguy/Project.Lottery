@@ -10,6 +10,7 @@ using Project.Lottery.Models.Extensions;
 using Project.Lottery.Models;
 using Project.Lottery.Webforms.Models;
 using Project.Lottery.BLL;
+using Newtonsoft.Json;
 
 
 
@@ -35,16 +36,18 @@ namespace Project.Lottery.Webforms.Admin
                 {
                     JsonSerialize jsonItem = new JsonSerialize();
                     string json = webClient.DownloadString(_baseServiceUrl + id.ToString());
-                    LotteryDetailDTO tmpItem = jsonItem.SerializeItem<LotteryDetailDTO>(json);
+                    ClientLotteryDetailDTO tmpItem = jsonItem.SerializeItem<ClientLotteryDetailDTO>(json);
 
                     txtDrawingId.Text = tmpItem.LotteryDrawingId.ToString();
+
                     double jp = tmpItem.Jackpot.ToInt(); ;
                     txtJackpot.Text = string.Format("{0:N0}", jp);
+
                     double cashVal = (tmpItem.Jackpot.ToInt() * .60);
                     txtCashOption.Text = string.Format("{0:N0}", cashVal);
-                    txtDrawingDate.Text = tmpItem.DrawDates.ToShortDateString();
-                    //string dd = tmpItem.DrawDates.ToShortDateString();
-                    //txtDrawingDate.Text = string.Format("{0:MM/dd/yyyy}", dd);
+
+                    string dd = string.Format("{0:MM/dd/yyyy}", tmpItem.DrawDates);
+                    txtDrawingDate.Text = dd;
 
                     hidLotteryId.Value = tmpItem.LotteryId.ToString();
                     hidDrawingId.Value = tmpItem.LotteryDrawingId.ToString();
@@ -72,7 +75,7 @@ namespace Project.Lottery.Webforms.Admin
 
                 JsonSerialize jsonItem = new JsonSerialize();
                 string json = webClient.DownloadString(_baseServiceUrl + "List/" + id.ToString());
-                List<LotteryDetailDTO> jsonList = jsonItem.SerializeCollection<LotteryDetailDTO>(json);
+                List<ClientLotteryDetailDTO> jsonList = jsonItem.SerializeCollection<ClientLotteryDetailDTO>(json);
 
                 ClearTextValue();
                 rptListView.DataSource = jsonList;
@@ -98,7 +101,7 @@ namespace Project.Lottery.Webforms.Admin
         {
             if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
             {
-                LotteryDetailDTO tmpItem = (LotteryDetailDTO)e.Item.DataItem;
+                ClientLotteryDetailDTO tmpItem = (ClientLotteryDetailDTO)e.Item.DataItem;
 
                 Button edit = (Button)e.Item.FindControl("Edit");
                 Button delete = (Button)e.Item.FindControl("Delete");
@@ -158,7 +161,7 @@ namespace Project.Lottery.Webforms.Admin
             tmpItem.LotteryId = hidLotteryId.Value.ToInt();
             tmpItem.LotteryDrawingId = txtDrawingId.Text.ToInt();
             tmpItem.Jackpot = txtJackpot.Text;
-            tmpItem.DrawDates = txtDrawingDate.Text.ToDate();
+            tmpItem.LotteryDrawingDate = txtDrawingDate.Text.ToDate();
 
             int recordId = LotteryDrawingBLL.SaveItem(tmpItem);
 

@@ -248,6 +248,7 @@ namespace Project.Lottery.Services.REST
         #region ||=======  LOTTERY-DETAIL-DTO || TO > LOTTERY-DETAIL-ITEM | INCOMING  =======||
         private LotteryDetail DTO_ToItem(LotteryDetailDTO dtoItem)
         {
+
             LotteryDetail tmpItem = new LotteryDetail();
 
             tmpItem.LotteryId = dtoItem.LotteryId;
@@ -262,7 +263,8 @@ namespace Project.Lottery.Services.REST
 
             tmpItem.LotteryDrawingId = dtoItem.LotteryDrawingId;
             tmpItem.Jackpot = dtoItem.Jackpot;
-            tmpItem.DrawDates = dtoItem.DrawDates;
+
+            tmpItem.LotteryDrawingDate = dtoItem.DrawDates.ToDate();
 
             tmpItem.WinningNumberId = dtoItem.WinningNumberId;
             tmpItem.BallNumber = dtoItem.BallNumber;
@@ -271,6 +273,7 @@ namespace Project.Lottery.Services.REST
             tmpItem.BallTypeDescription = dtoItem.BallTypeDescription;
 
             return tmpItem;
+
 
         }
         #endregion
@@ -292,7 +295,8 @@ namespace Project.Lottery.Services.REST
 
             tmpDto.LotteryDrawingId = itemIn.LotteryDrawingId;
             tmpDto.Jackpot = itemIn.Jackpot;
-            tmpDto.DrawDates = itemIn.DrawDates;
+
+            tmpDto.DrawDates = itemIn.LotteryDrawingDate.ToShortDateString();
 
             tmpDto.WinningNumberId = itemIn.WinningNumberId;
             tmpDto.BallNumber = itemIn.BallNumber;
@@ -321,6 +325,7 @@ namespace Project.Lottery.Services.REST
             return tmpCollect;
 
         }
+
         #endregion
 
         #endregion

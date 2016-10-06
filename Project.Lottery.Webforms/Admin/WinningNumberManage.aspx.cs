@@ -11,6 +11,7 @@ using Project.Lottery.Webforms.Models;
 using Project.Lottery.Models.Delegates;
 using Project.Lottery.Models.Extensions;
 using Project.Lottery.Models.Enums;
+using Newtonsoft.Json;
 
 
 
@@ -43,7 +44,7 @@ namespace Project.Lottery.Webforms.Admin
                 {
                     JsonSerialize tmp = new JsonSerialize();
                     string json = webClient.DownloadString(_baseWinningNumberUrl + id.ToString());
-                    LotteryDetailDTO tmpItem = tmp.SerializeItem<LotteryDetailDTO>(json);
+                    ClientLotteryDetailDTO tmpItem = tmp.SerializeItem<ClientLotteryDetailDTO>(json);
 
                     txtWinningNumberId.Text = tmpItem.WinningNumberId.ToString();
 
@@ -94,7 +95,7 @@ namespace Project.Lottery.Webforms.Admin
             {
                 JsonSerialize tmp = new JsonSerialize();
                 string json = webClient.DownloadString(_baseWinningNumberUrl + "List/" + lottoId.ToString());
-                List<LotteryDetailDTO> tmpCollect = tmp.SerializeCollection<LotteryDetailDTO>(json);
+                List<ClientLotteryDetailDTO> tmpCollect = tmp.SerializeCollection<ClientLotteryDetailDTO>(json);
 
                 ClearTextValue();
                 rptListView.DataSource = tmpCollect;
@@ -114,7 +115,7 @@ namespace Project.Lottery.Webforms.Admin
             {
                 JsonSerialize tmp = new JsonSerialize();
                 string json = webClient.DownloadString(serviceUrl);
-                List<LotteryDetailDTO> tmpCollect = tmp.SerializeCollection<LotteryDetailDTO>(json);
+                List<ClientLotteryDetailDTO> tmpCollect = tmp.SerializeCollection<ClientLotteryDetailDTO>(json);
 
                 ClearTextValue();
                 rptListView.DataSource = tmpCollect;
@@ -143,7 +144,7 @@ namespace Project.Lottery.Webforms.Admin
         {
             if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
             {
-                LotteryDetailDTO tmpItem = (LotteryDetailDTO)e.Item.DataItem;
+                ClientLotteryDetailDTO tmpItem = (ClientLotteryDetailDTO)e.Item.DataItem;
 
                 Button edit = (Button)e.Item.FindControl("Edit");
                 Button delete = (Button)e.Item.FindControl("Delete");
@@ -213,20 +214,20 @@ namespace Project.Lottery.Webforms.Admin
         #region ||=======  CLICK-BTN | SAVE OBJECT | SEND OBJECT TO SAVE | SET HIDDEN FIELD VALUES  =======||
         protected void SaveItemButton_Click(object sender, EventArgs e)
         {
-            LotteryDetailDTO tmpItem = new LotteryDetailDTO();
-
+            ClientLotteryDetailDTO tmpItem = new ClientLotteryDetailDTO();
 
             if (tmpItem.WinningNumberId != 0)
                 tmpItem.WinningNumberId = txtWinningNumberId.Text.ToInt();
 
             tmpItem.LotteryDrawingId = txtDrawingId.Text.ToInt();
             tmpItem.BallNumber = txtBallNumber.Text.ToInt();
-            tmpItem.BallTypeId = drpBallType.SelectedValue.ToInt();
+            tmpItem.BallTypeId = drpBallType.SelectedValue.ToInt();      
+            
 
             using (HttpClient httpClient = new HttpClient())
             {
                 //==||  TESTED SERVICE, BLL, DAL ALL WORKING >> CONTENT-TYPE: APPLICATION/JSON IS CAUSING ERROR  ||==\\
-                using (HttpResponseMessage responseMessage = httpClient.PutAsJsonAsync( _baseWinningNumberUrl, tmpItem).Result)
+                using (HttpResponseMessage responseMessage = httpClient.PutAsJsonAsync(_baseWinningNumberUrl, tmpItem).Result)
                 {
                     if (responseMessage.IsSuccessStatusCode)
                     {
