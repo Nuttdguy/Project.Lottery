@@ -13,30 +13,39 @@ namespace Project.Lottery.Webforms {
     public partial class Index {
         
         /// <summary>
-        /// txtLocationId control.
+        /// txtWinningNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtLocationId;
+        protected global::System.Web.UI.WebControls.TextBox txtWinningNumber;
         
         /// <summary>
-        /// txtLotteryId control.
+        /// txtDrawingId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtLotteryId;
+        protected global::System.Web.UI.WebControls.TextBox txtDrawingId;
         
         /// <summary>
-        /// txtStateName control.
+        /// txtBallNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtStateName;
+        protected global::System.Web.UI.WebControls.TextBox txtBallNumber;
+        
+        /// <summary>
+        /// txtBallType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtBallType;
     }
 }

@@ -26,7 +26,7 @@ namespace Project.Lottery.Webforms.Models
 
         public int LotteryDrawingId { get; set; }
         public string Jackpot { get; set; }
-        public DateTime DrawDate { get; set; }
+        public DateTime DrawDates { get; set; }
         #endregion
 
         #region INTERFACE 3 ||=======  IWinningNumberDTO

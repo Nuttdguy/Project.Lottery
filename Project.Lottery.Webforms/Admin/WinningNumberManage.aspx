@@ -27,7 +27,7 @@
 
 					<div>
 						<label>Winning Number ID</label>
-						<asp:TextBox runat="server" ID="txtWinningNumberId" TextMode="Number" />
+						<asp:TextBox runat="server" Enabled="false" ID="txtWinningNumberId" TextMode="Number" />
 					</div>
 
 					<div>

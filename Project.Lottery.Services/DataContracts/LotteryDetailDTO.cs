@@ -39,7 +39,7 @@ namespace Project.Lottery.Services.DataContracts
         public string Jackpot { get; set; }
 
         [DataMember]
-        public DateTime DrawDate { get; set; }
+        public DateTime DrawDates { get; set; }
         #endregion
 
         #region INTERFACE 3 ||=======  IWinningNumberDTO

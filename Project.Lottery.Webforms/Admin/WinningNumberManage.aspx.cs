@@ -1,19 +1,18 @@
 ﻿using System;
+using System.Text;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Formatting;
+using System.Net.Http.Headers;
+using System.Web.Script.Serialization;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using Project.Lottery.Webforms.Models;
-
-using Project.Lottery.Models.Collections;
 using Project.Lottery.Models.Delegates;
 using Project.Lottery.Models.Extensions;
 using Project.Lottery.Models.Enums;
-using Project.Lottery.Models;
-using Project.Lottery.BLL;
+
+
 
 namespace Project.Lottery.Webforms.Admin
 {
@@ -109,10 +108,12 @@ namespace Project.Lottery.Webforms.Admin
         #region ||=======  REQUEST DATA | BIND RESULT IN LIST-VIEW BY DRAW-ID | PARAM DRAW-ID, TYPE-OF-ID  =======||
         public void BindListView(int drawId, int idType)
         {
+            string serviceUrl = _baseWinningNumberUrl + "List/" + drawId.ToString() + "," + idType.ToString();
+
             using (WebClient webClient = new WebClient())
             {
                 JsonSerialize tmp = new JsonSerialize();
-                string json = webClient.DownloadString(_baseWinningNumberUrl + "List/" + drawId.ToString() + "," + idType.ToString());
+                string json = webClient.DownloadString(serviceUrl);
                 List<LotteryDetailDTO> tmpCollect = tmp.SerializeCollection<LotteryDetailDTO>(json);
 
                 ClearTextValue();
@@ -195,28 +196,47 @@ namespace Project.Lottery.Webforms.Admin
         #region ||=======  CLICK-BTN | DELETE OBJECT | PARAM WINNING-NUMBER-ID =======||
         protected void DeleteItem(int winNumId)
         {
-            int deletedRecord = WinningNumberBLL.DeleteItem(winNumId);
+            string serviceUrl = _baseWinningNumberUrl + winNumId.ToString();
+
+            using (HttpClient httpClient = new HttpClient())
+            {
+                using (HttpResponseMessage responseMessage = httpClient.DeleteAsync(serviceUrl).Result)
+                {
+                    if (responseMessage.IsSuccessStatusCode)
+                        ReloadPage();
+                }
+            }
         }
         #endregion
+
 
         #region ||=======  CLICK-BTN | SAVE OBJECT | SEND OBJECT TO SAVE | SET HIDDEN FIELD VALUES  =======||
         protected void SaveItemButton_Click(object sender, EventArgs e)
         {
-            LotteryDetail tmpItem = new LotteryDetail();
+            LotteryDetailDTO tmpItem = new LotteryDetailDTO();
 
-            tmpItem.WinningNumberId = txtWinningNumberId.Text.ToInt();
+
+            if (tmpItem.WinningNumberId != 0)
+                tmpItem.WinningNumberId = txtWinningNumberId.Text.ToInt();
 
             tmpItem.LotteryDrawingId = txtDrawingId.Text.ToInt();
             tmpItem.BallNumber = txtBallNumber.Text.ToInt();
             tmpItem.BallTypeId = drpBallType.SelectedValue.ToInt();
 
-            int recordId = WinningNumberBLL.SaveItem(tmpItem);
-
-            if (recordId > 0)
+            using (HttpClient httpClient = new HttpClient())
             {
-                ClearTextValue();
-                SaveItemButton.Text = "Add Winning #";
+                //==||  TESTED SERVICE, BLL, DAL ALL WORKING >> CONTENT-TYPE: APPLICATION/JSON IS CAUSING ERROR  ||==\\
+                using (HttpResponseMessage responseMessage = httpClient.PutAsJsonAsync( _baseWinningNumberUrl, tmpItem).Result)
+                {
+                    if (responseMessage.IsSuccessStatusCode)
+                    {
+                        ReloadPage();
+                        ClearTextValue();
+                        SaveItemButton.Text = "Add Winning #";
+                    }
+                }
             }
+
 
             hidLotteryId.Value = tmpItem.LotteryId.ToString();
             hidDrawingId.Value = tmpItem.LotteryDrawingId.ToString();

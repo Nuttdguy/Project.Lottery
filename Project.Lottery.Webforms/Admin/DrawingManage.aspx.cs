@@ -42,8 +42,9 @@ namespace Project.Lottery.Webforms.Admin
                     txtJackpot.Text = string.Format("{0:N0}", jp);
                     double cashVal = (tmpItem.Jackpot.ToInt() * .60);
                     txtCashOption.Text = string.Format("{0:N0}", cashVal);
-                    string dd = tmpItem.DrawDate.ToShortDateString();
-                    txtDrawingDate.Text = string.Format("{0:MM/dd/yyyy}", dd);
+                    txtDrawingDate.Text = tmpItem.DrawDates.ToShortDateString();
+                    //string dd = tmpItem.DrawDates.ToShortDateString();
+                    //txtDrawingDate.Text = string.Format("{0:MM/dd/yyyy}", dd);
 
                     hidLotteryId.Value = tmpItem.LotteryId.ToString();
                     hidDrawingId.Value = tmpItem.LotteryDrawingId.ToString();
@@ -157,7 +158,7 @@ namespace Project.Lottery.Webforms.Admin
             tmpItem.LotteryId = hidLotteryId.Value.ToInt();
             tmpItem.LotteryDrawingId = txtDrawingId.Text.ToInt();
             tmpItem.Jackpot = txtJackpot.Text;
-            tmpItem.DrawDate = txtDrawingDate.Text.ToDate();
+            tmpItem.DrawDates = txtDrawingDate.Text.ToDate();
 
             int recordId = LotteryDrawingBLL.SaveItem(tmpItem);
 

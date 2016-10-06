@@ -108,14 +108,14 @@ namespace Project.Lottery.Services.ServiceContracts
 
         [Description("Get Winning Number Collection By Draw-ID and ID-Type")]
         [OperationContract]
-        [WebGet(UriTemplate = "/WinningNumber/List/{id},{idType}", ResponseFormat = WebMessageFormat.Json)]
-        LotteryDetailDTOCollection GetWinningNumberCollectionByType(string id, string idType);
+        [WebGet(UriTemplate = "/WinningNumber/List/{drawId},{idType}", ResponseFormat = WebMessageFormat.Json)]
+        LotteryDetailDTOCollection GetWinningNumberCollectionByType(string drawId, string idType);
         #endregion
 
         #region ||=======  SAVE OPERATIONS  =======||
         [Description("Save Winning Number Item")]
         [OperationContract]
-        [WebInvoke(UriTemplate = "/WinningNumber/", Method = "PUT", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)]
+        [WebInvoke(UriTemplate = "/WinningNumber/", Method = "PUT", RequestFormat = WebMessageFormat.Json)]
         int SaveWinningNumberItem(LotteryDetailDTO winNumberObjectDto);
         #endregion
 
@@ -156,7 +156,7 @@ namespace Project.Lottery.Services.ServiceContracts
         #region ||=======  SAVE OPERATIONS  =======||
         [Description("Save Location Item ")]
         [OperationContract]
-        [WebInvoke(UriTemplate = "/Location/", Method = "PUT", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)]
+        [WebInvoke(UriTemplate = "/Location/", Method = "PUT", RequestFormat = WebMessageFormat.Json)]
         int SaveLocationItem(LotteryDetailDTO locObjectDTO);
         #endregion
 

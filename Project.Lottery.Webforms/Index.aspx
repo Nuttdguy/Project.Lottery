@@ -13,7 +13,34 @@
 		
 		<div class="Container_ContentBody_Form"> 
 
-			<label>Location ID</label>
+
+			<label>Winning # ID</label>
+			<asp:TextBox runat="server" ID="txtWinningNumber" />
+			<br />
+			<br />
+
+			<label>Drawing ID</label>
+			<asp:TextBox runat="server" ID="txtDrawingId" />
+			<br />
+			<br />
+
+			<label>BallNumber</label>
+			<asp:TextBox runat="server" ID="txtBallNumber" />
+			<br />
+			<br />
+			
+			<label>Ball Type</label>
+			<asp:TextBox runat="server" ID="txtBallType" />
+			<br />
+			<br />
+
+
+			<asp:Button runat="server" Text="Win Number" OnClick="WinNumber_Click1"  />
+
+
+
+
+<%--			<label>Location ID</label>
 			<asp:TextBox runat="server" ID="txtLocationId" />
 			<br />
 			<br />
@@ -28,7 +55,7 @@
 			<br />
 			<br />
 
-			<asp:Button runat="server" Text="btnSubmit" OnClick="Unnamed_Click" />
+			<asp:Button runat="server" Text="btnSubmit" OnClick="Unnamed_Click" />--%>
 
 		</div>
 		<div class="Container_ContentBody_ListView"> FOR LIST VIEW CONTAINER</div>

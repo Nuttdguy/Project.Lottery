@@ -23,7 +23,7 @@ namespace Project.Lottery.Models.Extensions
             if (DateTime.TryParse(s, out dateTime))
                 return dateTime;
             else
-                return DateTime.MinValue;
+                return DateTime.Now;
             #endregion
         }
 

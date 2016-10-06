@@ -77,8 +77,10 @@
 							<asp:Button runat="server" ID="Delete" CommandName="Delete" Text="Delete"  OnCommand="Game_Command"/>
 						</td>
 						<td><%# Eval("LotteryDrawingId") %></td>
-						<td><%# DataBinder.Eval(Container.DataItem, "Jackpot", "$ {0:C}") %></td>
-						<td><%# DataBinder.Eval(Container.DataItem, "DrawDate", "{0:M/d/yyyy}" ) %></td>
+						<td><%# Eval("Jackpot") %></td>
+						<td><%# Eval("DrawDates") %></td>
+<%--						<td><%# DataBinder.Eval(Container.DataItem, "Jackpot", "$ {0:C}") %></td>
+						<td><%# DataBinder.Eval(Container.DataItem, "DrawDate", "{0:M/d/yyyy}" ) %></td>--%>
 					</tr>
 				</ItemTemplate>
 
@@ -89,8 +91,10 @@
 							<asp:Button runat="server" ID="Delete" CommandName="Delete" Text="Delete"  OnCommand="Game_Command"/>
 						</td>
 						<td><%# Eval("LotteryDrawingId") %></td>
-						<td><%# DataBinder.Eval(Container.DataItem, "Jackpot", "$ {0:c}") %></td>
-						<td><%# DataBinder.Eval(Container.DataItem, "DrawDate", "{0:M/d/yyyy}") %></td>
+						<td><%# Eval("Jackpot") %></td>
+						<td><%# Eval("DrawDates") %></td>
+<%--						<td><%# DataBinder.Eval(Container.DataItem, "Jackpot", "$ {0:c}") %></td>
+						<td><%# DataBinder.Eval(Container.DataItem, "DrawDate", "{0:M/d/yyyy}") %></td>--%>
 					</tr>
 				</AlternatingItemTemplate>
 

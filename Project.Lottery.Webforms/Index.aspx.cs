@@ -17,16 +17,29 @@ namespace Project.Lottery.Webforms
 
         }
 
-        protected void Unnamed_Click(object sender, EventArgs e)
-        {
+        //protected void Unnamed_Click(object sender, EventArgs e)
+        //{
 
+        //    LotteryDetail tmp = new LotteryDetail();
+
+        //    tmp.LotteryId = txtLotteryId.Text.ToInt();
+        //    tmp.LocationId = txtLocationId.Text.ToInt();
+        //    tmp.State = txtStateName.Text;
+
+        //    int recordId = LocationBLL.SaveItem(tmp);
+        //}
+
+        protected void WinNumber_Click1(object sender, EventArgs e)
+        {
             LotteryDetail tmp = new LotteryDetail();
 
-            tmp.LotteryId = txtLotteryId.Text.ToInt();
-            tmp.LocationId = txtLocationId.Text.ToInt();
-            tmp.State = txtStateName.Text;
+            tmp.WinningNumberId = txtWinningNumber.Text.ToInt();
+            tmp.LotteryDrawingId = txtDrawingId.Text.ToInt();
+            tmp.BallNumber = txtBallNumber.Text.ToInt();
+            tmp.BallTypeId = txtBallType.Text.ToInt();
 
-            int recordId = LocationBLL.SaveItem(tmp);
+            WinningNumberBLL.SaveItem(tmp);
+
         }
     }
 }

@@ -10,6 +10,6 @@ namespace Project.Lottery.Models.Interfaces
     {
         int LotteryDrawingId { get; set; }
         string Jackpot { get; set; }
-        DateTime DrawDate { get; set; }
+        DateTime DrawDates { get; set; }
     }
 }

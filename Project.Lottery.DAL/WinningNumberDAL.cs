@@ -126,13 +126,11 @@ namespace Project.Lottery.DAL
             QuerySelectType query = QuerySelectType.GetCollectionDrawing_ByLotteryId;
 
 
-            if (idType == (int)IdType.LotteryDrawingId)
+            if ((int)IdType.LotteryDrawingId == 2)
             {
                 idTypeToUse = prefix + IdType.LotteryDrawingId.ToString();
                 query = QuerySelectType.GetCollectionDrawing_ByLotteryDrawingId;
             }
-            else 
-                idTypeToUse = prefix + IdType.LotteryId.ToString();
 
             using (SqlConnection myConnection = new SqlConnection(AppConfiguration.ConnectionString))
             {
@@ -176,7 +174,10 @@ namespace Project.Lottery.DAL
 
             QueryExecuteType queryId = QueryExecuteType.InsertItem;
 
-            if (lottoItem.LotteryDrawingId > 0 && lottoItem.WinningNumberId > 0)
+            //if (lottoItem.LotteryDrawingId > 0 && lottoItem.WinningNumberId > 0)
+            //    queryId = QueryExecuteType.UpdateItem;
+
+            if (lottoItem.WinningNumberId > 0)
                 queryId = QueryExecuteType.UpdateItem;
 
             using (SqlConnection myConnection = new SqlConnection(AppConfiguration.ConnectionString))

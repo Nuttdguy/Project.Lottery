@@ -147,9 +147,9 @@ namespace Project.Lottery.Services.REST
         #endregion
 
         #region || WINNING-NUMBER-MANAGE OPERATION ||=======  GET COLLECTION | WINNING-NUMBER BY DRAW-ID | PARAMS, DRAW-ID, ID-TYPE =======||
-        public LotteryDetailDTOCollection GetWinningNumberCollectionByType(string id, string type)
+        public LotteryDetailDTOCollection GetWinningNumberCollectionByType(string drawId, string idType)
         {
-            LotteryDetailCollection tmpCollect = WinningNumberBLL.GetCollection(id.ToInt(), id.ToInt());
+            LotteryDetailCollection tmpCollect = WinningNumberBLL.GetCollection(drawId.ToInt(), idType.ToInt());
             return itemList_ToDto(tmpCollect);
         }
         #endregion
@@ -262,7 +262,7 @@ namespace Project.Lottery.Services.REST
 
             tmpItem.LotteryDrawingId = dtoItem.LotteryDrawingId;
             tmpItem.Jackpot = dtoItem.Jackpot;
-            tmpItem.DrawDate = dtoItem.DrawDate;
+            tmpItem.DrawDates = dtoItem.DrawDates;
 
             tmpItem.WinningNumberId = dtoItem.WinningNumberId;
             tmpItem.BallNumber = dtoItem.BallNumber;
@@ -292,7 +292,7 @@ namespace Project.Lottery.Services.REST
 
             tmpDto.LotteryDrawingId = itemIn.LotteryDrawingId;
             tmpDto.Jackpot = itemIn.Jackpot;
-            tmpDto.DrawDate = itemIn.DrawDate;
+            tmpDto.DrawDates = itemIn.DrawDates;
 
             tmpDto.WinningNumberId = itemIn.WinningNumberId;
             tmpDto.BallNumber = itemIn.BallNumber;
