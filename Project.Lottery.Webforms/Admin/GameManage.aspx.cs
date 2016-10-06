@@ -1,15 +1,12 @@
 ﻿using System;
+using System.Text;
 using System.Net;
 using System.Net.Http;
 using System.Collections.Generic;
 using System.Web.UI.WebControls;
 using Project.Lottery.Webforms.Models;
-using Project.Lottery.Models.Delegates;
-using Project.Lottery.Models.Extensions;
-
-using Project.Lottery.Models.Enums;
-using Project.Lottery.Models;
-using Project.Lottery.BLL;
+using Project.Lottery.Webforms.Delegates;
+using Project.Lottery.Webforms.Extensions;
 
 
 namespace Project.Lottery.Webforms.Admin
@@ -134,8 +131,18 @@ namespace Project.Lottery.Webforms.Admin
         #region ||=======  CLICK-BTN | DELETE  =======||
         protected void DeleteItem(int id)
         {
-            int deletedRecord = LotteryDetailBLL.DeleteItem(id);
-            ReloadPage();
+            string serviceUrl = _baseGameServiceUrl + "Detail/" + id.ToString();
+
+            using (HttpClient httpClient = new HttpClient())
+            {
+                using (HttpResponseMessage responseMessage = httpClient.DeleteAsync(serviceUrl).Result)
+                {
+                    if (responseMessage.IsSuccessStatusCode)
+                    {
+                        ReloadPage();
+                    }
+                }
+            }
         }
 
         #endregion
@@ -143,8 +150,8 @@ namespace Project.Lottery.Webforms.Admin
         #region ||=======  CLICK-BTN | SAVE BUTTON  =======||
         protected void SaveItemButton_Click(object sender, EventArgs e)
         {
- 
-            LotteryDetail tmpItem = new LotteryDetail();
+
+            ClientLotteryDetailDTO tmpItem = new ClientLotteryDetailDTO();
 
             tmpItem.LotteryId = hidLotteryId.Value.ToInt();
             tmpItem.LotteryName = txtLotteryName.Text;
@@ -152,17 +159,24 @@ namespace Project.Lottery.Webforms.Admin
             tmpItem.HasRegularBall = chkHasRegularBall.Checked;
             tmpItem.NumberOfBalls = txtNumberOfBalls.Text.ToInt();
 
-            int recordId = LotteryDetailBLL.SaveItem(tmpItem);
-            ReloadPage();
-            
-            if (recordId > 0)
+            string serviceUrl = _baseGameServiceUrl + "Detail/";
+
+            using (HttpClient httpClient = new HttpClient())
             {
-                txtLotteryName.Text = string.Empty;
-                txtNumberOfBalls.Text = string.Empty;
-                chkHasRegularBall.Checked = false;
-                chkHasSpecialBall.Checked = false;
-                SaveItemButton.Text = "Add New Game";
-            }
+                using (HttpResponseMessage responseMessage = httpClient.PutAsJsonAsync(serviceUrl, tmpItem).Result)
+                {
+                    if (responseMessage.IsSuccessStatusCode)
+                    {
+
+                        txtLotteryName.Text = string.Empty;
+                        txtNumberOfBalls.Text = string.Empty;
+                        chkHasRegularBall.Checked = false;
+                        chkHasSpecialBall.Checked = false;
+                        SaveItemButton.Text = "Add New Game";
+                        ReloadPage();
+                    }
+                }
+            }        
         }
 
         #endregion

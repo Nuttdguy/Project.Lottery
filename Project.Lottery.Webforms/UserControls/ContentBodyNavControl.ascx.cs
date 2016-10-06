@@ -1,13 +1,11 @@
 ﻿using System;
+using System.Net;
+using System.Net.Http;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using Project.Lottery.Models;
-using Project.Lottery.Models.Delegates;
-using Project.Lottery.Models.Collections;
-using Project.Lottery.BLL;
+using Project.Lottery.Webforms.Models;
+using Project.Lottery.Webforms.Delegates;
+using Project.Lottery.Webforms.Extensions;
+
 
 namespace Project.Lottery.Webforms.UserControls
 {
@@ -17,18 +15,24 @@ namespace Project.Lottery.Webforms.UserControls
         {
             if (!IsPostBack)
                 BindLotteryGameDropDownList();
-
         }
+
+        private string _baseGameServiceUrl = "http://localhost:64999/Game/Detail/List/";
 
         //====  FOR BINDING LOTTERY GAME NAME TO DROP DOWN BOX  ====||
         public void BindLotteryGameDropDownList()
         {
-            LotteryDetailCollection tmpCollect = LotteryDetailBLL.GetCollection();
+            using (WebClient webClient = new WebClient())
+            {
+                JsonSerialize tmp = new JsonSerialize();
+                string json = webClient.DownloadString(_baseGameServiceUrl);
+                List<ClientLotteryDetailDTO> tmpCollect = tmp.SerializeCollection<ClientLotteryDetailDTO>(json);
 
-            tmpCollect.Insert(0, new LotteryDetail { LotteryName = "(Select a Game)", LotteryId = 0 });
+                tmpCollect.Insert(0, new ClientLotteryDetailDTO { LotteryName = "(Select a Game)", LotteryId = 0 });
 
-            drp_LotteryGameName.DataSource = tmpCollect;
-            drp_LotteryGameName.DataBind();
+                drp_LotteryGameName.DataSource = tmpCollect;
+                drp_LotteryGameName.DataBind();
+            } 
 
         }
 

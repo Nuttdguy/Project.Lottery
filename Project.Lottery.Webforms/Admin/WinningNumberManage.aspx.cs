@@ -2,17 +2,12 @@
 using System.Text;
 using System.Net;
 using System.Net.Http;
-using System.Net.Http.Formatting;
-using System.Net.Http.Headers;
-using System.Web.Script.Serialization;
 using System.Collections.Generic;
 using System.Web.UI.WebControls;
 using Project.Lottery.Webforms.Models;
-using Project.Lottery.Models.Delegates;
-using Project.Lottery.Models.Extensions;
-using Project.Lottery.Models.Enums;
-using Newtonsoft.Json;
-
+using Project.Lottery.Webforms.Delegates;
+using Project.Lottery.Webforms.Extensions;
+using Project.Lottery.Webforms.Enums;
 
 
 namespace Project.Lottery.Webforms.Admin
@@ -210,7 +205,6 @@ namespace Project.Lottery.Webforms.Admin
         }
         #endregion
 
-
         #region ||=======  CLICK-BTN | SAVE OBJECT | SEND OBJECT TO SAVE | SET HIDDEN FIELD VALUES  =======||
         protected void SaveItemButton_Click(object sender, EventArgs e)
         {
@@ -226,7 +220,6 @@ namespace Project.Lottery.Webforms.Admin
 
             using (HttpClient httpClient = new HttpClient())
             {
-                //==||  TESTED SERVICE, BLL, DAL ALL WORKING >> CONTENT-TYPE: APPLICATION/JSON IS CAUSING ERROR  ||==\\
                 using (HttpResponseMessage responseMessage = httpClient.PutAsJsonAsync(_baseWinningNumberUrl, tmpItem).Result)
                 {
                     if (responseMessage.IsSuccessStatusCode)
@@ -269,6 +262,8 @@ namespace Project.Lottery.Webforms.Admin
         protected void viewByDrawingId_Click(object sender, EventArgs e)
         {
             int drawId = txtDrawingId.Text.ToInt();
+
+
             //=======  SET THE TYPE OF ID-PARAMETER THAT WILL BE UTILIZED FOR RETRIEVING DATA  ======\\
             int idType = (int)IdType.LotteryDrawingId;
 
