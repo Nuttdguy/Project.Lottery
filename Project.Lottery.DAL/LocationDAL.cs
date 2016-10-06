@@ -170,7 +170,7 @@ namespace Project.Lottery.DAL
 
         #region SECTION 3 ||=======  SAVE/UPDATE ITEM  =======||
 
-        //==||  INTERNAL LOGIC NEEDS TO BE MOVED TO BLL-LAYER  ||==\\
+        //==||  INTERNAL LOGIC NEEDS TO BE MOVED TO BLL-LAYER  && KEY CONSTRAINTS NEED TO BE CORRECTED  ||==\\
         #region ||=======  SAVE/UPDATE ITEM(S) | LOCATION & ASSOCIATED GAME NAME | PARAM OBJECT  =======||
         public static int SaveItem(LotteryDetail lottoItem)
         {
@@ -213,14 +213,16 @@ namespace Project.Lottery.DAL
                     if (lottoItem.LotteryId != 0)
                         myCommand.Parameters.AddWithValue("@LotteryId", lottoItem.LotteryId);
 
-                    if (!string.IsNullOrEmpty(lottoItem.State) && lottoId <= 0)
+                    if (lottoId == 0 || lottoId < 0  )
                         myCommand.Parameters.AddWithValue("@State", lottoItem.State);
 
 
                     myCommand.Parameters.Add(HelperDAL.GetReturnParameterInt("ReturnValue"));
 
                     myConnection.Open();
+
                     myCommand.ExecuteNonQuery();
+
 
                     recordId = (int)myCommand.Parameters["@ReturnValue"].Value;
                 }

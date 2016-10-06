@@ -190,8 +190,12 @@ namespace Project.Lottery.Services.REST
         }
         #endregion //==||  END  ||==  LOCATION-MANAGE SAVE  ==||==\\
 
-        #region || LOCATION OPERATION 
-
+        #region || LOCATION OPERATION ||=======  SAVE/UPDATE ITEM(S) | LOCATION & ASSOCIATED GAME NAME | PARAM OBJECT  =======||
+        public int SaveLocationItem(LotteryDetailDTO locObjectDTO)
+        {
+            int saveRecord = LocationBLL.SaveItem(DTO_ToItem(locObjectDTO));
+            return saveRecord;
+        }
         #endregion //==||  END  ||==  LOCATION-MANAGE SAVE  ==||==\\
 
         #endregion //==|| END-GROUP ||==  SECTION-3-SAVE-ALL  ======\\
@@ -210,7 +214,7 @@ namespace Project.Lottery.Services.REST
         }
         #endregion
 
-        #region || DRAWING OPERATION 
+        #region || DRAWING OPERATION ||=======  DELETE | LOTTERY-DRAWING-ITEM | PARAM LOTTERY-DRAWING-ID  =======||
         public int DeleteDrawingItem(string drawId)
         {
             int delRecord = LotteryDrawingBLL.DeleteItem(drawId.ToInt());
@@ -226,12 +230,16 @@ namespace Project.Lottery.Services.REST
         }
         #endregion //==||  END  ||==  LOCATION-MANAGE DELETE  ==||==\\
 
-        #region || LOCATION OPERATION 
+        #region || LOCATION/GAME AVAILABLE OPERATION ||=======  DELETE ITEM(S) | LOCATION & ASSOCIATED GAME NAME | PARAM LOCATION-ID, LOTTERY-ID [OP] =======||
+        public int DeleteLocationItem(string locId, string lottoId)
+        {
+            int delRecord = LocationBLL.DeleteItem(locId.ToInt(), lottoId.ToInt());
+            return delRecord;
+        }
 
         #endregion //==||  END  ||==  LOCATION-MANAGE DELETE  ==||==\\
 
         #endregion  //==|| END-GROUP ||==  SECTION-4-DELETE-ALL  ======\\
-
 
 
 
@@ -248,7 +256,7 @@ namespace Project.Lottery.Services.REST
             tmpItem.HasRegularBall = dtoItem.HasRegularBall;
             tmpItem.NumberOfBalls = dtoItem.NumberOfBalls;
 
-            //==||  INTERFACE PROPERTIES  ||==\\
+            ////==||  INTERFACE PROPERTIES  ||==\\
             tmpItem.LocationId = dtoItem.LocationId;
             tmpItem.State = dtoItem.State;
 

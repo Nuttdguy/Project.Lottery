@@ -130,6 +130,8 @@ namespace Project.Lottery.Services.ServiceContracts
 
 
         #region SECTION 4 ||=======  GAME-AVAILABLE / LOCATION OPERATION CONTRACTS  =======||
+
+        #region ||=======  GET OPERATIONS  =======||
         [Description("Get Location Item Detail By ID")]
         [OperationContract]
         [WebGet(UriTemplate = "/Location/{id}", ResponseFormat = WebMessageFormat.Json)]
@@ -149,6 +151,22 @@ namespace Project.Lottery.Services.ServiceContracts
         [OperationContract]
         [WebGet(UriTemplate = "/Location/List/{id},{idType}", ResponseFormat = WebMessageFormat.Json)]
         LotteryDetailDTOCollection GetLocationCollectionByType(string id, string idType);
+        #endregion
+
+        #region ||=======  SAVE OPERATIONS  =======||
+        [Description("Save Location Item ")]
+        [OperationContract]
+        [WebInvoke(UriTemplate = "/Location/", Method = "PUT", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)]
+        int SaveLocationItem(LotteryDetailDTO locObjectDTO);
+        #endregion
+
+        #region ||=======  DELETE OPERATIONS  =======||
+        [Description("Delete Location Item With LocationId and LotteryId")]
+        [OperationContract]
+        [WebInvoke(UriTemplate = "/Location/{locId},{lottoId}", Method = "DELETE", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)]
+        int DeleteLocationItem(string locId, string lottoId);
+        #endregion
+
         #endregion
 
 

@@ -11,7 +11,26 @@
 	<%--  ||  BEGIN-INSET-3  ||==  { CONTENT-PLACEHOLDER-BODY } ==||  --%>
 	<div class="Container_ContentBody cf"> 
 		
-		<div class="Container_ContentBody_Form"> FOR FORM CONTAINER</div>
+		<div class="Container_ContentBody_Form"> 
+
+			<label>Location ID</label>
+			<asp:TextBox runat="server" ID="txtLocationId" />
+			<br />
+			<br />
+
+			<label>Lottery ID</label>
+			<asp:TextBox runat="server" ID="txtLotteryId" />
+			<br />
+			<br />
+
+			<label>StateName</label>
+			<asp:TextBox runat="server" ID="txtStateName" />
+			<br />
+			<br />
+
+			<asp:Button runat="server" Text="btnSubmit" OnClick="Unnamed_Click" />
+
+		</div>
 		<div class="Container_ContentBody_ListView"> FOR LIST VIEW CONTAINER</div>
 
 	</div> <%--  ||  BEGIN-INSET-3  ||==  { CONTENT-PLACEHOLDER-BODY } ==||  --%>
