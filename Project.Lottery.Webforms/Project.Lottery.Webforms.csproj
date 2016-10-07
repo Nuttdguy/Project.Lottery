@@ -94,9 +94,17 @@
     <Content Include="App_Themes\Main\Images\megaMillionsLogo.png" />
     <Content Include="App_Themes\Main\Images\northstarLogo.png" />
     <Content Include="App_Themes\Main\Images\powerballLogo.png" />
+    <Content Include="App_Themes\Main\Welcome.css">
+      <DependentUpon>Welcome.less</DependentUpon>
+    </Content>
+    <Content Include="App_Themes\Main\Welcome.min.css">
+      <DependentUpon>Welcome.css</DependentUpon>
+    </Content>
+    <Content Include="Default.aspx" />
     <Content Include="packages.config" />
     <Content Include="MasterPages\BaseSkin.Master" />
     <Content Include="App_Themes\Main\Main.less" />
+    <Content Include="App_Themes\Main\Welcome.less" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -116,7 +124,6 @@
       <DependentUpon>Main.css</DependentUpon>
     </Content>
     <Content Include="Global.asax" />
-    <Content Include="Index.aspx" />
     <Content Include="Testing.aspx" />
     <Content Include="UserControls\ContentBodyNavControl.ascx" />
     <Content Include="UserControls\HeaderControl.ascx" />
@@ -152,19 +159,19 @@
     <Compile Include="Admin\WinningNumberManage.aspx.designer.cs">
       <DependentUpon>WinningNumberManage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Delegates\UCDropDownDelegate.cs" />
     <Compile Include="Enums\IdType.cs" />
     <Compile Include="Enums\UrlEnum.cs" />
     <Compile Include="Extensions\Extension.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Index.aspx.cs">
-      <DependentUpon>Index.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Index.aspx.designer.cs">
-      <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
     <Compile Include="MasterPages\BaseSkin.Master.cs">
       <DependentUpon>BaseSkin.Master</DependentUpon>

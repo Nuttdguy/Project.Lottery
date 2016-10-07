@@ -2,5 +2,9 @@
   {
     "outputFile": "App_Themes/Main/Main.css",
     "inputFile": "App_Themes/Main/Main.less"
+  },
+  {
+    "outputFile": "App_Themes/Main/Welcome.css",
+    "inputFile": "App_Themes/Main/Welcome.less"
   }
 ]
