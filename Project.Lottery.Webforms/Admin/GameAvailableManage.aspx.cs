@@ -1,15 +1,17 @@
 ﻿using System;
+using System.Web;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Net;
 using System.Net.Http;
 using System.Collections.Generic;
 using Project.Lottery.Webforms.Models;
-using Project.Lottery.Models.Collections;
-using Project.Lottery.Models.Delegates;
-using Project.Lottery.Models.Extensions;
-using Project.Lottery.Models.Enums;
-using Project.Lottery.Models;
-using Project.Lottery.BLL;
+using Project.Lottery.Webforms.Delegates;
+using Project.Lottery.Webforms.Extensions;
+using Project.Lottery.Webforms.Enums;
+
+
+
 
 namespace Project.Lottery.Webforms.Admin
 {
@@ -127,8 +129,8 @@ namespace Project.Lottery.Webforms.Admin
             if (id > 0)
             {
                 drpLotteryGames.SelectedValue = hidLotteryId.Value;
-                ClearTextValue();
             }
+            ClearTextValue();
         }
         #endregion
 
@@ -190,14 +192,27 @@ namespace Project.Lottery.Webforms.Admin
         #region ||=======  CLICK-BTN | DELETE OBJECT | PARAM LOCATION-ID, LOTTERY-ID  =======||
         protected void DeleteItem(int locId, int lottoId)
         {
-            int deletedRecord = LocationBLL.DeleteItem(locId, lottoId);
+            string serviceUrl = _baseGameAvailableUrl + locId.ToString() + "," + lottoId.ToString();
+
+            using (HttpClient httpClient = new HttpClient())
+            {
+                using (HttpResponseMessage responseMessage = httpClient.DeleteAsync(serviceUrl).Result)
+                {
+                    if (responseMessage.IsSuccessStatusCode)
+                    {
+                        ReloadPage();
+                    }
+                }
+            }
+
         }
         #endregion
 
         #region ||=======  CLICK-BTN | SAVE OBJECT | SEND OBJECT TO SAVE | SET HIDDEN FIELD, SELECTED DORP-DOWN VALUE, CLEAR FIELDS  =======|| 
         protected void SaveItemButton_Click(object sender, EventArgs e)
         {
-            LotteryDetail tmpItem = new LotteryDetail();
+
+            ClientLotteryDetailDTO tmpItem = new ClientLotteryDetailDTO();
 
             tmpItem.LocationId = txtLocationId.Text.ToInt();
             tmpItem.State = txtState.Text;
@@ -208,18 +223,23 @@ namespace Project.Lottery.Webforms.Admin
                 tmpItem.LotteryId = hidLotteryId.Value.ToInt();
 
 
-            int recordId = LocationBLL.SaveItem(tmpItem);
+            string serviceUrl = _baseGameAvailableUrl;
+            using (HttpClient httpClient = new HttpClient())
+            {
+                using (HttpResponseMessage responseMessage = httpClient.PutAsJsonAsync(serviceUrl, tmpItem).Result)
+                {
+                    if (responseMessage.IsSuccessStatusCode)
+                    {
+                        ClearTextValue();
+                        drpLotteryGames.Enabled = false;
+                        drpLotteryGames.SelectedValue = "0";
+                    }
+                    else
+                        ClearTextValue();
+                }
+            }
 
             hidLotteryId.Value = tmpItem.LotteryId.ToString();
-
-            if (recordId > 0)
-            {
-                ClearTextValue();
-                drpLotteryGames.Enabled = false;
-                drpLotteryGames.SelectedValue = "0";
-            }
-            else
-                ClearTextValue();
         }
 
         #endregion
@@ -235,7 +255,6 @@ namespace Project.Lottery.Webforms.Admin
                     break;
                 case "Delete":
                     DeleteItem(e.CommandArgument.ToString().ToInt(), hidLotteryId.Value.ToInt() );
-                    ReloadPage();
                     break;
             }
         }
