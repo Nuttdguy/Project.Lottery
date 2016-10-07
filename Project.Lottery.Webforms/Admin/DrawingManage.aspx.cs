@@ -4,13 +4,11 @@ using System.Net.Http;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Collections.Generic;
-using Project.Lottery.Models.Collections;
-using Project.Lottery.Models.Delegates;
-using Project.Lottery.Models.Extensions;
-using Project.Lottery.Models;
 using Project.Lottery.Webforms.Models;
-using Project.Lottery.BLL;
-using Newtonsoft.Json;
+using Project.Lottery.Webforms.Delegates;
+using Project.Lottery.Webforms.Extensions;
+using Project.Lottery.Webforms.Enums;
+
 
 
 
@@ -40,10 +38,10 @@ namespace Project.Lottery.Webforms.Admin
 
                     txtDrawingId.Text = tmpItem.LotteryDrawingId.ToString();
 
-                    double jp = tmpItem.Jackpot.ToInt(); ;
+                    double jp = tmpItem.Jackpot.Replace(",", "").ToInt();
                     txtJackpot.Text = string.Format("{0:N0}", jp);
 
-                    double cashVal = (tmpItem.Jackpot.ToInt() * .60);
+                    double cashVal = (tmpItem.Jackpot.Replace(",", "").ToInt() * .60);
                     txtCashOption.Text = string.Format("{0:N0}", cashVal);
 
                     string dd = string.Format("{0:MM/dd/yyyy}", tmpItem.DrawDates);
@@ -149,26 +147,44 @@ namespace Project.Lottery.Webforms.Admin
         #region ||=======  CLICK-BTN | DELETE OBJECT | PARAM LOTTERY-DRAWING-ID  =======||
         protected void DeleteItem(int id)
         {
-            int deletedRecord = LotteryDrawingBLL.DeleteItem(id);
+            string serviceUrl = _baseServiceUrl + id.ToString();
+
+            using (HttpClient httpClient = new HttpClient())
+            {
+                using (HttpResponseMessage responseMessage = httpClient.DeleteAsync(serviceUrl).Result)
+                {
+                    if (responseMessage.IsSuccessStatusCode)
+                    {
+                        ReloadPage();
+                    }
+                }
+            }
+
         }
+
+
         #endregion
 
         #region ||=======  CLICK-BTN | SAVE OBJECT | SEND OBJECT TO SAVE | SET HIDDEN TEXT FIELD VALUES  =======||
         protected void SaveItemButton_Click(object sender, EventArgs e)
         {
-            LotteryDetail tmpItem = new LotteryDetail();
+            ClientLotteryDetailDTO tmpItem = new ClientLotteryDetailDTO();
 
             tmpItem.LotteryId = hidLotteryId.Value.ToInt();
             tmpItem.LotteryDrawingId = txtDrawingId.Text.ToInt();
             tmpItem.Jackpot = txtJackpot.Text;
-            tmpItem.LotteryDrawingDate = txtDrawingDate.Text.ToDate();
+            tmpItem.DrawDates = txtDrawingDate.Text;
 
-            int recordId = LotteryDrawingBLL.SaveItem(tmpItem);
-
-            if (recordId > 0)
+            using (HttpClient httpClient = new HttpClient())
             {
-                ClearTextValue();
-                SaveItemButton.Text = "Add New Drawing";
+                using (HttpResponseMessage responseMessage = httpClient.PutAsJsonAsync(_baseServiceUrl, tmpItem).Result)
+                {
+                    if (responseMessage.IsSuccessStatusCode)
+                    {
+                        ClearTextValue();
+                        SaveItemButton.Text = "Add New Drawing";
+                    }
+                }
             }
 
             hidLotteryId.Value = tmpItem.LotteryId.ToString();

@@ -149,6 +149,7 @@ namespace Project.Lottery.Webforms.Admin
 
         #endregion
 
+        #endregion
 
         #region SECTION 2 ||=======  PROCESS  =======||
 
@@ -183,7 +184,6 @@ namespace Project.Lottery.Webforms.Admin
         #endregion
 
         #endregion
-
 
         #region SECTION 3 ||=======  EVENTS  =======||
 
@@ -244,6 +244,5 @@ namespace Project.Lottery.Webforms.Admin
 
         #endregion
 
-        #endregion
     }
 }

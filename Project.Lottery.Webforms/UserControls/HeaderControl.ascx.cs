@@ -4,10 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Project.Lottery.Models.Helpers;
-using Project.Lottery.Models.Extensions;
-using Project.Lottery.Models.Delegates;
-using Project.Lottery.Models.Enums;
+using Project.Lottery.Webforms.Extensions;
+using Project.Lottery.Webforms.Delegates;
+using Project.Lottery.Webforms.Enums;
 
 
 namespace Project.Lottery.Webforms.UserControls
@@ -35,7 +34,6 @@ namespace Project.Lottery.Webforms.UserControls
         private string _PageTitle_GameAvailableManage = "Game Available Manage";
 
         #endregion
-
 
         #region ||=======  GET METHOD | RETRIEVE URL, SEPARATE INTO ARRAY  ======||
         public static string[] BaseUrl

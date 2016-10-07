@@ -54,11 +54,9 @@
     <Compile Include="Enums\QueryExecuteType.cs" />
     <Compile Include="Enums\QuerySelectType.cs" />
     <Compile Include="Enums\StoredProcedureNameEnum.cs" />
-    <Compile Include="Enums\UrlEnum.cs" />
     <Compile Include="Exceptions\CustomExceptions.cs" />
     <Compile Include="Extensions\Extension.cs" />
     <Compile Include="GameOdd.cs" />
-    <Compile Include="Helpers\PageTitleCaptionHelper.cs" />
     <Compile Include="Instruction.cs" />
     <Compile Include="Interfaces\IBallType.cs" />
     <Compile Include="Interfaces\ICost.cs" />
@@ -70,7 +68,6 @@
     <Compile Include="LotteryDetail.cs" />
     <Compile Include="LotteryDrawing.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Helpers\ImageUrl.cs" />
     <Compile Include="Validation\BrokenRule.cs" />
     <Compile Include="Validation\BrokenRuleCollection.cs" />
     <Compile Include="WinningNumber.cs" />

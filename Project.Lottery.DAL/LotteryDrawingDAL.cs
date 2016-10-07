@@ -176,10 +176,21 @@ namespace Project.Lottery.DAL
 
             using (SqlConnection myConnection = new SqlConnection(AppConfiguration.ConnectionString))
             {
+                using (SqlCommand myCommand_1 = new SqlCommand("usp_ExecuteWinningNumber", myConnection))
+                {
+                    myCommand_1.CommandType = CommandType.StoredProcedure;
+                    myCommand_1.Parameters.AddWithValue("@QueryId", QueryExecuteType.DeleteItem_ByDrawingId);
+                    myCommand_1.Parameters.AddWithValue("@LotteryDrawingId", id);
+
+                    myConnection.Open();
+                    myCommand_1.ExecuteNonQuery();
+                }
+                myConnection.Close();
+
                 using (SqlCommand myCommand = new SqlCommand("usp_ExecuteLotteryDrawing", myConnection))
                 {
                     myCommand.CommandType = CommandType.StoredProcedure;
-                    myCommand.Parameters.AddWithValue("@QueryId", QueryExecuteType.DeleteItem);
+                    myCommand.Parameters.AddWithValue("@QueryId", QueryExecuteType.DeleteItem_ByDrawingId);
                     myCommand.Parameters.AddWithValue("@LotteryDrawingId", id);
 
                     myCommand.Parameters.Add(HelperDAL.GetReturnParameterInt("ReturnValue"));
