@@ -2,6 +2,9 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
+	<script src="../Scripts/Main.js" type="text/javascript" ></script>
+
 </asp:Content>
 
 
@@ -30,21 +33,21 @@
 
 					<div>
 						<label>Jackpot Amount</label>
-						<asp:TextBox runat="server" ID="txtJackpot" />
+						<asp:TextBox runat="server" ID="txtJackpot"  CssClass="txtJackpot"  />
 					</div>
 
 					<div>
 						<label>Cash Amount</label>
-						<asp:TextBox runat="server" ID="txtCashOption" />
+						<asp:TextBox runat="server" ID="txtCashOption"  />
 					</div>
 
 					<div>
 						<label>Drawing Date</label>
-						<asp:TextBox runat="server" ID="txtDrawingDate" />
+						<asp:TextBox runat="server" ID="txtDrawingDate" CssClass="txtDrawingDate" />
 					</div>
 
 					<div class="Button Button_Save">
-						<asp:Button runat="server" ID="SaveItemButton" Text="Add New Game"  OnClick="SaveItemButton_Click" />
+						<asp:Button runat="server" ID="SaveItemButton" Text="Add New Game"  OnClick="SaveItemButton_Click" OnClientClick="return ValidateForm()" />
 					</div>
 
 				</asp:Panel>
