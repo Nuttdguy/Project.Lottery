@@ -13,8 +13,8 @@ namespace Project.Lottery.Webforms.UserControls
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-                BindLotteryGameDropDownList();
+            //if (!IsPostBack)
+                //BindLotteryGameDropDownList();
         }
 
         private string _baseGameServiceUrl = "http://localhost:64999/Game/Detail/List/";
@@ -30,8 +30,8 @@ namespace Project.Lottery.Webforms.UserControls
 
                 tmpCollect.Insert(0, new ClientLotteryDetailDTO { LotteryName = "(Select a Game)", LotteryId = 0 });
 
-                drp_LotteryGameName.DataSource = tmpCollect;
-                drp_LotteryGameName.DataBind();
+                //drp_LotteryGameName.DataSource = tmpCollect;
+                //drp_LotteryGameName.DataBind();
             } 
 
         }

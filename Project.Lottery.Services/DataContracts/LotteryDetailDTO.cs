@@ -9,19 +9,19 @@ namespace Project.Lottery.Services.DataContracts
     public class LotteryDetailDTO : ILocationDTO, ILotteryDrawingDTO, IWinningNumberDTO, IBallTypeDTO
     {
         [DataMember]
-        public int LotteryId { get; set; }
+        public string LotteryId { get; set; }
 
         [DataMember]
         public string LotteryName { get; set; }
 
         [DataMember]
-        public bool HasSpecialBall { get; set; }
+        public string HasSpecialBall { get; set; }
 
         [DataMember]
-        public bool HasRegularBall { get; set; }
+        public string HasRegularBall { get; set; }
 
         [DataMember]
-        public int NumberOfBalls { get; set; }
+        public string NumberOfBalls { get; set; }
 
         #region INTERFACE 1 ||=======  ILocationDTO
         [DataMember]
@@ -33,7 +33,7 @@ namespace Project.Lottery.Services.DataContracts
 
         #region INTERFACE 2 ||=======  ILotteryDrawingDTO
         [DataMember]
-        public int LotteryDrawingId { get; set; }
+        public string LotteryDrawingId { get; set; }
 
         [DataMember]
         public string Jackpot { get; set; }
@@ -44,15 +44,15 @@ namespace Project.Lottery.Services.DataContracts
 
         #region INTERFACE 3 ||=======  IWinningNumberDTO
         [DataMember]
-        public int WinningNumberId { get; set; }
+        public string WinningNumberId { get; set; }
 
         [DataMember]
-        public int BallNumber { get; set; }
+        public string BallNumber { get; set; }
         #endregion
 
         #region INTERFACE 4 ||=======  IBallTypeDTO
         [DataMember]
-        public int BallTypeId { get; set; }
+        public string BallTypeId { get; set; }
 
         [DataMember]
         public string BallTypeDescription { get; set; }

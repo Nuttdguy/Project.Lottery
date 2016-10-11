@@ -20,6 +20,8 @@
 				<li><a href="../Admin/DrawingManage.aspx"> Lottery Drawing Manage </a></li>
 				<li><a href="../Admin/WinningNumberManage.aspx"> Winning Number Manage </a></li>
 				<li><a href="../Admin/GameAvailableManage.aspx"> Game Available Manage </a></li>
+				<li><a href="../Admin/GameManageClient.aspx">Game Manage Client </a></li>
+				<li><a href="../Admin/DrawingManageClient.aspx">Drawing Manage Client</a></li>
 			</ul>
 
 		</div>  <%--  ||  END  ||==  { PAGE-SELECTION} ==||  --%>

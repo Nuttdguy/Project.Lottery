@@ -11,6 +11,8 @@ namespace Project.Lottery.Webforms.Enums
         GameManage,
         DrawingManage,
         WinningNumberManage,
-        GameAvailableManage
+        GameAvailableManage,
+        GameManageClient,
+        DrawingManageClient
     }
 }

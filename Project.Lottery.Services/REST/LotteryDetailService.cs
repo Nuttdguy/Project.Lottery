@@ -52,6 +52,7 @@ namespace Project.Lottery.Services.REST
 
         #region SECTION 2 ||=======  GET COLLECTION  =======||
 
+
         #region ||======= GAME-MANAGE OPERATIONS  =======||
 
         #region || GAME-MANAGE OPERATION ||=======  GET COLLECTION | LOTTERY-GAMES BY ALL | PARAMS, NONE  =======||

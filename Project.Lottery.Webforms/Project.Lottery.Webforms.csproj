@@ -86,8 +86,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Admin\DrawingManage.aspx" />
+    <Content Include="Admin\DrawingManageClient.aspx" />
     <Content Include="Admin\GameAvailableManage.aspx" />
     <Content Include="Admin\GameManage.aspx" />
+    <Content Include="Admin\GameManageClient.aspx" />
     <Content Include="Admin\WinningNumberManage.aspx" />
     <Content Include="App_Themes\Main\Images\gopher5Logo.png" />
     <Content Include="App_Themes\Main\Images\lottery-banner.jpg" />
@@ -110,6 +112,9 @@
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="Scripts\ContentBodyNavControl.js" />
+    <Content Include="Scripts\DrawingManageClient.js" />
+    <Content Include="Scripts\GameManageClient.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.js" />
@@ -131,6 +136,9 @@
       <DependentUpon>Main.css</DependentUpon>
     </Content>
     <Content Include="Global.asax" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\Main.js" />
     <Content Include="Testing.aspx" />
     <Content Include="UserControls\ContentBodyNavControl.ascx" />
@@ -146,6 +154,13 @@
     <Compile Include="Admin\DrawingManage.aspx.designer.cs">
       <DependentUpon>DrawingManage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\DrawingManageClient.aspx.cs">
+      <DependentUpon>DrawingManageClient.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\DrawingManageClient.aspx.designer.cs">
+      <DependentUpon>DrawingManageClient.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\GameAvailableManage.aspx.cs">
       <DependentUpon>GameAvailableManage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -159,6 +174,13 @@
     </Compile>
     <Compile Include="Admin\GameManage.aspx.designer.cs">
       <DependentUpon>GameManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\GameManageClient.aspx.cs">
+      <DependentUpon>GameManageClient.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\GameManageClient.aspx.designer.cs">
+      <DependentUpon>GameManageClient.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\WinningNumberManage.aspx.cs">
       <DependentUpon>WinningNumberManage.aspx</DependentUpon>

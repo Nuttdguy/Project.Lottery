@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web;
 using System.Web.Routing;
 using System.ServiceModel.Activation;
 using Project.Lottery.Services.REST;
@@ -22,7 +23,7 @@ namespace Project.Lottery.Services
 
         protected void Application_BeginRequest(object sender, EventArgs e)
         {
-
+            this.EnableCrossDomainAjaxCall();
         }
 
         protected void Application_AuthenticateRequest(object sender, EventArgs e)
@@ -44,5 +45,19 @@ namespace Project.Lottery.Services
         {
 
         }
+
+        private void EnableCrossDomainAjaxCall()
+        {
+            HttpContext.Current.Response.AddHeader("Access-Control-Allow-Origin", "http://localhost:58090");
+
+            if (HttpContext.Current.Request.HttpMethod == "OPTIONS")
+            {
+                HttpContext.Current.Response.AddHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+                HttpContext.Current.Response.AddHeader("Access-Control-Allow-Headers", "Content-Type, Accept");
+                HttpContext.Current.Response.AddHeader("Access-Control-Max-Age", "1728000");
+                HttpContext.Current.Response.End();
+            }
+        }
+
     }
 }
