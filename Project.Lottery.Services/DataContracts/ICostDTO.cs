@@ -8,7 +8,7 @@ namespace Project.Lottery.Services.DataContracts
 {
     interface ICostDTO
     {
-        int CostId { get; set; }
+        string CostId { get; set; }
         string CostDescription { get; set; }
         string CostToPlay { get; set; }
     }

@@ -32,7 +32,7 @@ namespace Project.Lottery.Services.REST
         {
             BallType tmpItem = new BallType();
 
-            tmpItem.BallTypeId = dtoItem.BallTypeId;
+            tmpItem.BallTypeId = dtoItem.BallTypeId.ToInt();
             tmpItem.BallTypeDescription = dtoItem.BallTypeDescription;
 
             return tmpItem;
@@ -45,7 +45,7 @@ namespace Project.Lottery.Services.REST
         {
             BallTypeDTO tmpDto = new BallTypeDTO();
 
-            tmpDto.BallTypeId = itemIn.BallTypeId;
+            tmpDto.BallTypeId = itemIn.BallTypeId.ToString();
             tmpDto.BallTypeDescription = itemIn.BallTypeDescription;
 
             return tmpDto;

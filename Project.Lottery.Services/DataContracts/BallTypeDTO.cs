@@ -7,7 +7,7 @@ namespace Project.Lottery.Services.DataContracts
     public class BallTypeDTO : IBallTypeDTO
     {
         [DataMember]
-        public int BallTypeId { get; set; }
+        public string BallTypeId { get; set; }
 
         [DataMember]
         public string BallTypeDescription { get; set; }

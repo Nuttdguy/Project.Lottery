@@ -1,7 +1,7 @@
 ﻿/// <reference path="jquery-3.1.1.min.js" />
 
 var _serviceNavUrl = "http://localhost:64999/Game";
-var _selectedLotteryId = "";
+
 
 $(document).ready(function (e) {
 
@@ -9,6 +9,8 @@ $(document).ready(function (e) {
     getDropDownGameNames();
 
 })
+
+
 
 
 //==||  DROP-DOWN GAME NAME NAVIGATION ||==\\
@@ -34,12 +36,14 @@ function getDropDownGameNames() {
     })
 }
 
-//==||  ON-SELECT : LOAD CONTENT  ||==\\
 
-function onChange_drpDownGameName() {
 
-    _selectedLotteryId =  $('#js_drpDownGameName').val();
+////==||  ON-SELECT : LOAD CONTENT  ||==\\
 
-}
+//function onChange_drpDownGameName() {
+
+//    _selectedLotteryId =  $('#js_drpDownGameName').val();
+
+//}
 
 

@@ -167,35 +167,35 @@ namespace Project.Lottery.Services.REST
         #region SECTION 3 ||=======  SAVE ITEM  =======||
 
         #region || LOTTERY-DETAIL OPERATION ||=======  SAVE/UPDATE SINGLE ITEM | LOTTERY-GAME NAME | PARAM OBJECT  =======||
-        public int SaveDetailItem(LotteryDetailDTO lottoDTOObject)
+        public string SaveDetailItem(LotteryDetailDTO lottoDTOObject)
         {
             int returnValue = LotteryDetailBLL.SaveItem(DTO_ToItem(lottoDTOObject));
-            return returnValue;
+            return returnValue.ToString();
 
         }
         #endregion
 
         #region || DRAWING OPERATION ||=======  SAVE/UPDATE ITEM | LOTTERY-DRAWING-ITEM | PARAM LOTTERY-DRAWING-OBJECT  =======||
-        public int SaveDrawingItem(LotteryDetailDTO drawObjectDTO)
+        public string SaveDrawingItem(LotteryDetailDTO drawObjectDTO)
         {
             int saveRecord = LotteryDrawingBLL.SaveItem(DTO_ToItem(drawObjectDTO));
-            return saveRecord;
+            return saveRecord.ToString();
         }
         #endregion //==||  END  ||==  LOCATION-MANAGE SAVE  ==||==\\
 
         #region || WINNNG-NUMBER OPERATION ||=======  SAVE/UPDATE SINGLE ITEM | WINNING-NUMBER | PARAM WINNING-NUMBER-OBJECT  =======||
-        public int SaveWinningNumberItem(LotteryDetailDTO winNumberObjectDto)
+        public string SaveWinningNumberItem(LotteryDetailDTO winNumberObjectDto)
         {
             int saveRecord = WinningNumberBLL.SaveItem(DTO_ToItem(winNumberObjectDto));
-            return saveRecord;
+            return saveRecord.ToString();
         }
         #endregion //==||  END  ||==  LOCATION-MANAGE SAVE  ==||==\\
 
         #region || LOCATION OPERATION ||=======  SAVE/UPDATE ITEM(S) | LOCATION & ASSOCIATED GAME NAME | PARAM OBJECT  =======||
-        public int SaveLocationItem(LotteryDetailDTO locObjectDTO)
+        public string SaveLocationItem(LotteryDetailDTO locObjectDTO)
         {
             int saveRecord = LocationBLL.SaveItem(DTO_ToItem(locObjectDTO));
-            return saveRecord;
+            return saveRecord.ToString();
         }
         #endregion //==||  END  ||==  LOCATION-MANAGE SAVE  ==||==\\
 
@@ -208,34 +208,34 @@ namespace Project.Lottery.Services.REST
         #region SECTION 4 ||=======  DELETE ITEM  =======||
 
         #region || LOTTERY-DETAIL OPERATION ||=======  DELETE SINGLE ITEM | LOTTERY-GAME NAME BY LOTTERY-ID | PARAM LOTTERY-ID  =======||
-        public int DeleteDetailItem(string id)
+        public string DeleteDetailItem(string id)
         {
             int returnValue = LotteryDetailBLL.DeleteItem(id.ToInt());
-            return returnValue;
+            return returnValue.ToString();
         }
         #endregion
 
         #region || DRAWING OPERATION ||=======  DELETE | LOTTERY-DRAWING-ITEM | PARAM LOTTERY-DRAWING-ID  =======||
-        public int DeleteDrawingItem(string drawId)
+        public string DeleteDrawingItem(string drawId)
         {
             int delRecord = LotteryDrawingBLL.DeleteItem(drawId.ToInt());
-            return delRecord;
+            return delRecord.ToString();
         }
         #endregion //==||  END  ||==  LOCATION-MANAGE DELETE  ==||==\\
 
         #region || WINNNG-NUMBER OPERATION ||=======  DELETE ITEM COLLECTION | WINNING-NUMBER-ITEM(S) BY DRAWING-ID | PARAM, DRAWING-ID  =======||
-        public int DeleteWinningNumberItem(string winningId)
+        public string DeleteWinningNumberItem(string winningId)
         {
             int delRecord = WinningNumberBLL.DeleteItem(winningId.ToInt());
-            return delRecord;
+            return delRecord.ToString();
         }
         #endregion //==||  END  ||==  LOCATION-MANAGE DELETE  ==||==\\
 
         #region || LOCATION/GAME AVAILABLE OPERATION ||=======  DELETE ITEM(S) | LOCATION & ASSOCIATED GAME NAME | PARAM LOCATION-ID, LOTTERY-ID [OP] =======||
-        public int DeleteLocationItem(string locId, string lottoId)
+        public string DeleteLocationItem(string locId, string lottoId)
         {
             int delRecord = LocationBLL.DeleteItem(locId.ToInt(), lottoId.ToInt());
-            return delRecord;
+            return delRecord.ToString();
         }
 
         #endregion //==||  END  ||==  LOCATION-MANAGE DELETE  ==||==\\
@@ -252,25 +252,24 @@ namespace Project.Lottery.Services.REST
 
             LotteryDetail tmpItem = new LotteryDetail();
 
-            tmpItem.LotteryId = dtoItem.LotteryId;
+            tmpItem.LotteryId = dtoItem.LotteryId.ToInt();
             tmpItem.LotteryName = dtoItem.LotteryName;
             tmpItem.HasSpecialBall = dtoItem.HasSpecialBall;
             tmpItem.HasRegularBall = dtoItem.HasRegularBall;
-            tmpItem.NumberOfBalls = dtoItem.NumberOfBalls;
+            tmpItem.NumberOfBalls = dtoItem.NumberOfBalls.ToInt();
 
             ////==||  INTERFACE PROPERTIES  ||==\\
-            tmpItem.LocationId = dtoItem.LocationId;
+            tmpItem.LocationId = dtoItem.LocationId.ToInt();
             tmpItem.State = dtoItem.State;
 
-            tmpItem.LotteryDrawingId = dtoItem.LotteryDrawingId;
+            tmpItem.LotteryDrawingId = dtoItem.LotteryDrawingId.ToInt();
             tmpItem.Jackpot = dtoItem.Jackpot;
-
             tmpItem.LotteryDrawingDate = dtoItem.DrawDates.ToDate();
 
-            tmpItem.WinningNumberId = dtoItem.WinningNumberId;
-            tmpItem.BallNumber = dtoItem.BallNumber;
+            tmpItem.WinningNumberId = dtoItem.WinningNumberId.ToInt();
+            tmpItem.BallNumber = dtoItem.BallNumber.ToInt();
 
-            tmpItem.BallTypeId = dtoItem.BallTypeId;
+            tmpItem.BallTypeId = dtoItem.BallTypeId.ToInt();
             tmpItem.BallTypeDescription = dtoItem.BallTypeDescription;
 
             return tmpItem;
@@ -284,25 +283,25 @@ namespace Project.Lottery.Services.REST
         {
             LotteryDetailDTO tmpDto = new LotteryDetailDTO();
 
-            tmpDto.LotteryId = itemIn.LotteryId;
+            tmpDto.LotteryId = itemIn.LotteryId.ToString();
             tmpDto.LotteryName = itemIn.LotteryName;
             tmpDto.HasSpecialBall = itemIn.HasSpecialBall;
             tmpDto.HasRegularBall = itemIn.HasRegularBall;
-            tmpDto.NumberOfBalls = itemIn.NumberOfBalls;
+            tmpDto.NumberOfBalls = itemIn.NumberOfBalls.ToString();
 
             //==||  INTERFACE PROPERTIES  ||==\\
-            tmpDto.LocationId = itemIn.LocationId;
+            tmpDto.LocationId = itemIn.LocationId.ToString();
             tmpDto.State = itemIn.State;
 
-            tmpDto.LotteryDrawingId = itemIn.LotteryDrawingId;
+            tmpDto.LotteryDrawingId = itemIn.LotteryDrawingId.ToString();
             tmpDto.Jackpot = itemIn.Jackpot;
 
             tmpDto.DrawDates = itemIn.LotteryDrawingDate.ToShortDateString();
 
-            tmpDto.WinningNumberId = itemIn.WinningNumberId;
-            tmpDto.BallNumber = itemIn.BallNumber;
+            tmpDto.WinningNumberId = itemIn.WinningNumberId.ToString();
+            tmpDto.BallNumber = itemIn.BallNumber.ToString();
 
-            tmpDto.BallTypeId = itemIn.BallTypeId;
+            tmpDto.BallTypeId = itemIn.BallTypeId.ToString();
             tmpDto.BallTypeDescription = itemIn.BallTypeDescription;
 
             return tmpDto;

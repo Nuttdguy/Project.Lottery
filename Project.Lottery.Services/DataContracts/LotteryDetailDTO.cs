@@ -15,17 +15,17 @@ namespace Project.Lottery.Services.DataContracts
         public string LotteryName { get; set; }
 
         [DataMember]
-        public string HasSpecialBall { get; set; }
+        public bool HasSpecialBall { get; set; }
 
         [DataMember]
-        public string HasRegularBall { get; set; }
+        public bool HasRegularBall { get; set; }
 
         [DataMember]
         public string NumberOfBalls { get; set; }
 
         #region INTERFACE 1 ||=======  ILocationDTO
         [DataMember]
-        public int LocationId { get; set; }
+        public string LocationId { get; set; }
 
         [DataMember]
         public string State { get; set; }

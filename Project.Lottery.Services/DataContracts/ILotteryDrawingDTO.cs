@@ -8,7 +8,7 @@ namespace Project.Lottery.Services.DataContracts
 {
     interface ILotteryDrawingDTO
     {
-        int LotteryDrawingId { get; set; }
+        string LotteryDrawingId { get; set; }
         string Jackpot { get; set; }
         string DrawDates { get; set; }
     }

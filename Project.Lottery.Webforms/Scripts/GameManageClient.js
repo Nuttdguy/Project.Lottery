@@ -3,12 +3,14 @@
 var _serviceUrl = "http://localhost:64999/Game/";
 
 
+
 $(document).ready(function (e) {
 
-    //==||  LOAD GAME-LIST  ||==\\
+    //  LOAD GAME-LIST  ||==\\
     GetLotteryGames();
 
 });
+
 
 
 /*=========================================
@@ -22,6 +24,7 @@ $(document).ready(function (e) {
 
 //== [0]. GetLotteryGames()
 //== [2]. SaveGameNameButton_Click()
+//== [4]. js_DeleteOnClick();
 
 
 /*========================================
@@ -29,7 +32,6 @@ $(document).ready(function (e) {
 ==========================================*/
 
 //== [100]. js_EditOnClick()
-
 
 
 
@@ -42,10 +44,10 @@ $(document).ready(function (e) {
 
 
 
+/*===========    END TOC   ===================*/
 
-//======================================\\
-//==||  [END] === TABLE OF CONTENTS 
-//======================================//
+
+
 
 
 /*****  [0]  GET THE LIST OF ALL GAMES  *****/
@@ -83,11 +85,73 @@ function GetLotteryGames() {
 }
 
 
+/*****  [2] SAVE-BUTTON || CLICK-EVENT  *****/
+function SaveGameName_OnClick() {
+    
+    var lotteryName = $('#js_txtLotteryName').val();
+    var specialBall = $('#js_txtHasSpecialBall').prop('checked');
+    var regularBall = $('#js_txtHasRegularBall').prop('checked');
+    var numberOfBall = $('#js_txtNumberOfBalls').val();
+    var lotteryObject = {
+        "LotteryName": lotteryName,
+        "HasSpecialBall": specialBall,
+        "HasRegularBall": regularBall,
+        "NumberOfBalls": numberOfBall
+    }
+
+    var jsonLottery = JSON.stringify(lotteryObject);
+
+    $.ajax({
+        type: "PUT",
+        url: _serviceUrl + 'Detail/',
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        data: jsonLottery
+
+    }).done(function (data) {
+        console.log(data);
+
+    }).fail(function (data) {
+        console.log(data + 'failed');
+
+    }).always(function () {
+        console.log('always');
+    })
+    
+}
+
+
+/*****  [4] DELETE-BUTTON || AJAX CLICK-EVENT  *****/
+function js_DeleteOnClick() {
+
+    $(this).click(function (event) {
+        var id = event.target.id;
+
+        $.ajax({
+            type: "DELETE",
+            url: _serviceUrl + "Detail/" + id,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+
+        }).done(function (data) {
+            console.log(data + "success");
+
+        }).fail(function (data) {
+            console.log(data + "fail");
+
+        }).always(function () {
+            console.log("always");
+
+        });
+
+    })
+}
+
 
 /*****  [100] EDIT-BUTTON || CLICK-EVENT || APPEND SELECTED DATA INTO FORM  *****/
 function js_EditOnClick() {
 
-    $(this).on('click', function(event) {
+    $(this).on('click', function (event) {
 
         startNode = $('.js_EditButton');
 
@@ -139,45 +203,7 @@ function js_EditOnClick() {
 }
 
 
-/*****  [2] SAVE-BUTTON || CLICK-EVENT  *****/
-function SaveGameName_OnClick() {
-    
-    var lotteryName = $('#js_txtLotteryName').val();
-    var specialBall = $('#js_txtHasSpecialBall').prop('checked');
-    var regularBall = $('#js_txtHasRegularBall').prop('checked');
-    var numberOfBall = $('#js_txtNumberOfBalls').val();
-    var lotteryObject = {
-        "LotteryName": lotteryName,
-        "SpecialBall": specialBall,
-        "RegularBall": regularBall,
-        "NumberOfBall": numberOfBall
-    }
-
-    var jsonLottery = JSON.stringify(lotteryObject);
-
-    $.ajax({
-        type: "PUT",
-        url: _serviceUrl + 'Detail/',
-        contentType: 'application/json; charset=utf-8',
-        dataType: 'json',
-        data: jsonLottery
-    }).done(function (data) {
-        console.log(data);
-    }).fail(function (data) {
-        console.log('failed');
-    }).always(function () {
-        console.log('always');
-    })
-    
-}
-
-
-
-
-
-
-
-//==||  CHANGE OUTPUT OF BOOL VALUE  ||==\\
+/*****  [500] CHANGE OUTPUT OF BOOL VALUE  *****/
 function changeBoolOutputDisplayText(boolToChange) {
 
     if (boolToChange) {

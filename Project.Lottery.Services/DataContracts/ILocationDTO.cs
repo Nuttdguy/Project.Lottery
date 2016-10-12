@@ -8,7 +8,7 @@ namespace Project.Lottery.Services.DataContracts
 {
     interface ILocationDTO
     {
-        int LocationId { get; set; }
+        string LocationId { get; set; }
         string State { get; set; }
     }
 }

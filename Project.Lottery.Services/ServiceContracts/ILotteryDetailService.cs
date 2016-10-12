@@ -33,14 +33,14 @@ namespace Project.Lottery.Services.ServiceContracts
         [Description("Save/Update Lottery Detail Item")]
         [OperationContract]
         [WebInvoke(UriTemplate = "/Detail/", Method = "PUT", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
-        int SaveDetailItem(LotteryDetailDTO lottoDTOObject);
+        string SaveDetailItem(LotteryDetailDTO lottoDTOObject);
         #endregion
 
         #region ||=======  DELETE OPERATIONS  =======||
         [Description("Delete Lottery Detail Item")]
         [OperationContract]
         [WebInvoke(UriTemplate = "/Detail/{id}", Method = "DELETE", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
-        int DeleteDetailItem(string id);
+        string DeleteDetailItem(string id);
         #endregion
 
         #endregion
@@ -75,14 +75,14 @@ namespace Project.Lottery.Services.ServiceContracts
         [Description("Save Drawing Item")]
         [OperationContract]
         [WebInvoke(UriTemplate = "/Drawing/", Method = "PUT", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
-        int SaveDrawingItem(LotteryDetailDTO drawObjectDTO);
+        string SaveDrawingItem(LotteryDetailDTO drawObjectDTO);
         #endregion
 
         #region ||=======  DELETE OPERATIONS  =======||
         [Description("Delete Drawing Item")]
         [OperationContract]
         [WebInvoke(UriTemplate = "/Drawing/{drawId}", Method = "DELETE", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
-        int DeleteDrawingItem(string drawId);
+        string DeleteDrawingItem(string drawId);
         #endregion
 
         #endregion
@@ -116,14 +116,14 @@ namespace Project.Lottery.Services.ServiceContracts
         [Description("Save Winning Number Item")]
         [OperationContract]
         [WebInvoke(UriTemplate = "/WinningNumber/", Method = "PUT", RequestFormat = WebMessageFormat.Json)]
-        int SaveWinningNumberItem(LotteryDetailDTO winNumberObjectDto);
+        string SaveWinningNumberItem(LotteryDetailDTO winNumberObjectDto);
         #endregion
 
         #region ||=======  DELETE OPERATIONS  =======||
         [Description("Delete Winning Number Item")]
         [OperationContract]
         [WebInvoke(UriTemplate = "/WinningNumber/{winningId}", Method = "DELETE", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)]
-        int DeleteWinningNumberItem(string winningId);
+        string DeleteWinningNumberItem(string winningId);
         #endregion
 
         #endregion
@@ -157,14 +157,14 @@ namespace Project.Lottery.Services.ServiceContracts
         [Description("Save Location Item ")]
         [OperationContract]
         [WebInvoke(UriTemplate = "/Location/", Method = "PUT", RequestFormat = WebMessageFormat.Json)]
-        int SaveLocationItem(LotteryDetailDTO locObjectDTO);
+        string SaveLocationItem(LotteryDetailDTO locObjectDTO);
         #endregion
 
         #region ||=======  DELETE OPERATIONS  =======||
         [Description("Delete Location Item With LocationId and LotteryId")]
         [OperationContract]
         [WebInvoke(UriTemplate = "/Location/{locId},{lottoId}", Method = "DELETE", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)]
-        int DeleteLocationItem(string locId, string lottoId);
+        string DeleteLocationItem(string locId, string lottoId);
         #endregion
 
         #endregion
